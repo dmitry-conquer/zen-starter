@@ -1,3 +1,5 @@
 import '../styles/style.scss';
 
-document.addEventListener('DOMContentLoaded', (): void => {});
+const app = (): void => {};
+
+document.addEventListener('DOMContentLoaded', app);

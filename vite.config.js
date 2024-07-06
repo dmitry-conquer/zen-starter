@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
+import babel from '@rollup/plugin-babel';
 
 export default defineConfig({
   build: {
@@ -22,6 +23,12 @@ export default defineConfig({
     },
   },
   plugins: [
+    babel({
+      babelHelpers: 'bundled',
+      presets: ['@babel/preset-env'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      exclude: 'node_modules/**',
+    }),
     handlebars({
       partialDirectory: resolve(__dirname, 'partials'),
     }),
