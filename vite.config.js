@@ -2,6 +2,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 import babel from '@rollup/plugin-babel';
+import viteJoinMediaQueries from 'vite-join-media-queries';
 
 export default defineConfig({
   build: {
@@ -23,6 +24,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    viteJoinMediaQueries(),
     babel({
       babelHelpers: 'bundled',
       presets: ['@babel/preset-env'],
