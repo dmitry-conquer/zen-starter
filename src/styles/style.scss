@@ -1,8 +1,7 @@
-@import "normalize";
+@import 'normalize';
+@import 'helpers';
 
 // @tailwind base;
 // @tailwind components;
 // @tailwind utilities;
 
-// Delete this import before building the site.
-@import './welcome-page';

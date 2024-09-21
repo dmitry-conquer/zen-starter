@@ -1,0 +1,19 @@
+@function em($px, $cur-fz) {
+  @return calc($px / $cur-fz * 1em);
+}
+
+@function lh($lh, $fz) {
+  @return calc($lh / $fz);
+}
+
+@function per($pxOne, $pxTwo) {
+  @return calc((100% * $pxOne) / $pxTwo);
+}
+
+@mixin av($property, $startSize, $minSize, $widthFrom: 1430, $widthTo: 375) {
+  $addSize: $startSize - $minSize;
+  #{$property}: calc(#{$minSize + px} + #{$addSize} * (100vw - #{$widthTo + px}) / #{($widthFrom) - ($widthTo)});
+  @media (min-width: ($widthFrom + px)) {
+    #{$property}: $startSize + px;
+  }
+}
