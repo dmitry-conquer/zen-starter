@@ -1,4 +1,3 @@
-/* Main styles */
-import '../styles/style.scss';
+import "../styles/style.scss";
 
-document.addEventListener('DOMContentLoaded', () => {});
+document.addEventListener("DOMContentLoaded", () => {});
