@@ -1,0 +1,13 @@
+@use "helpers" as *;
+
+:root {
+  --color-light: #---;
+  --color-dark: #---;
+  --color-accent: #---;
+
+  --font-family-base: "---, sans-serif";
+  --font-family-accent: "---, sans-serif";
+
+  --container-width: #{rem(1440)};
+  --container-padding-x: #{rem(20)};
+}

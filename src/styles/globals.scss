@@ -1,0 +1,6 @@
+@use "helpers" as *;
+
+body {
+  font-family: var(--font-family-base);
+  font-size: fluid(16, 20);
+}
