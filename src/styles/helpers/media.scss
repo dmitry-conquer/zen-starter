@@ -41,6 +41,32 @@ $x-small: 575.98;
   }
 }
 
+@mixin above-x-large {
+  @media (min-width: rem($x-large + 0.02)) {
+    @content;
+  }
+}
+@mixin above-large {
+  @media (min-width: rem($large + 0.02)) {
+    @content;
+  }
+}
+@mixin above-medium {
+  @media (min-width: rem($medium + 0.02)) {
+    @content;
+  }
+}
+@mixin above-small {
+  @media (min-width: rem($small + 0.02)) {
+    @content;
+  }
+}
+@mixin above-x-small {
+  @media (min-width: rem($x-small + 0.02)) {
+    @content;
+  }
+}
+
 @mixin hover() {
   @media (any-hover: hover) {
     &:hover {

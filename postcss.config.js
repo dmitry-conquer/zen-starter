@@ -2,7 +2,7 @@ export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {
-      overrideBrowserslist: "last 2 versions",
+      overrideBrowserslist: ["> 0.5%", "last 2 versions", "Firefox ESR", "not dead"],
     },
   },
 };

@@ -1,6 +1,42 @@
 @use "helpers" as *;
 
 body {
-  font-family: var(--font-family-base);
-  font-size: fluid(16, 20);
+  /*
+    font-family
+    font-size
+    color
+  */
+}
+
+h1, .h1, //
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+}
+
+.container-base {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding-x);
+}
+
+.inline-icon {
+  --size: #{rem(30)};
+  --gap: #{rem(10)};
+
+  display: inline-flex;
+  align-items: center;
+  column-gap: var(--gap);
+
+  &::after {
+    content: "";
+    flex-shrink: 0;
+    width: var(--size);
+    height: var(--size);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 }
