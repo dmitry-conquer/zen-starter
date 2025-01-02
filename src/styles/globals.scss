@@ -7,6 +7,10 @@ body {
     color
   */
 }
+.wrapper {
+  overflow: hidden;
+  position: relative;
+}
 
 h1, .h1, //
 h2, .h2,
@@ -14,6 +18,12 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
+}
+
+a {
+  @include hover {
+    color: #5757f0; // update color
+  }
 }
 
 .container-base {
@@ -31,12 +41,17 @@ h6, .h6 {
   column-gap: var(--gap);
 
   &::after {
-    content: "";
-    flex-shrink: 0;
+    // background-image: url(""); // inline svg
+
     width: var(--size);
     height: var(--size);
+    content: "";
+    flex-shrink: 0;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
   }
+}
+
+.button {
 }
