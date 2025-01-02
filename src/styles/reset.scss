@@ -21,6 +21,11 @@
 7. Disable tap highlights on iOS
 */
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
 html,
 :host {
   line-height: 1.5; /* 1 */ /* 3 */

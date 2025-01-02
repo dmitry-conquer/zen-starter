@@ -7,7 +7,7 @@ export class Accordion {
   private accordionTriggers: NodeListOf<HTMLElement>;
   private defaults: AccordionOptions;
   private settings: AccordionOptions;
-  constructor(options: Partial<AccordionOptions>) {
+  constructor(options?: Partial<AccordionOptions>) {
     this.defaults = {
       triggerClass: "accordion-header",
       toggleClass: "accordion-active",

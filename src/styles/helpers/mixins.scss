@@ -1,0 +1,38 @@
+@mixin font-face($font-family, $file-name, $font-weight: 400) {
+  @font-face {
+    font-family: #{$font-family};
+    src:
+      local("#{$file-name}"),
+      url("../fonts/#{$file-name}.woff2") format("woff2");
+    font-weight: $font-weight;
+    font-display: swap;
+  }
+}
+
+@mixin hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else  {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
