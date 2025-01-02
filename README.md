@@ -5,7 +5,7 @@
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url> zen-starter
+   git clone https://github.com/dmitry-conquer/zen-starter zen-starter
    cd zen-starter
    ```
 
