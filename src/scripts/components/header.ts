@@ -13,6 +13,7 @@ export class Header {
   private rootElement: HTMLElement | null;
   private overlayElement: HTMLElement | null;
   private triggerButtonElement: HTMLElement | null;
+
   constructor() {
     this.rootElement = document.querySelector(this.selectors.root);
     this.overlayElement = this.rootElement?.querySelector(this.selectors.overlay) || null;
