@@ -1,0 +1,73 @@
+<div class="tabs" data-js-tabs>
+  <h2 class="sr-only" id="tabs-title">Tabs</h2>
+  <div class="tabs__buttons" role="tablist" aria-labelledby="tabs-title">
+    <button
+      type="button"
+      class="tabs__button is-active"
+      id="tab-1"
+      role="tab"
+      aria-controls="tabpanel-1"
+      data-js-tabs-button
+      aria-selected="false"
+      tabindex="0"
+    >
+      First tab
+    </button>
+    <button
+      type="button"
+      class="tabs__button"
+      id="tab-2"
+      role="tab"
+      aria-controls="tabpanel-2"
+      data-js-tabs-button
+      aria-selected="true"
+      tabindex="-1"
+    >
+      Second tab
+    </button>
+    <button
+      type="button"
+      class="tabs__button"
+      id="tab-3"
+      role="tab"
+      aria-controls="tabpanel-3"
+      data-js-tabs-button
+      aria-selected="false"
+      tabindex="-1"
+    >
+      Third tab
+    </button>
+  </div>
+  <div class="tabs__body">
+    <div
+      class="tabs__content is-active"
+      tabindex="0"
+      role="tabpanel"
+      data-js-tabs-content
+      aria-labelledby="tab-1"
+      id="tabpanel-1"
+    >
+      content1
+    </div>
+    <div
+      class="tabs__content"
+      role="tabpanel"
+      tabindex="0"
+      data-js-tabs-content
+      aria-labelledby="tab-2"
+      id="tabpanel-2"
+    >
+      content2
+    </div>
+    <div
+      class="tabs__content"
+      tabindex="0"
+      role="tabpanel"
+      data-js-tabs-content
+      aria-labelledby="tab-3"
+      id="tabpanel-3"
+    >
+      content3
+    </div>
+  </div>
+</div>

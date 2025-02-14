@@ -11,7 +11,7 @@ export const ApiService = {
       return { success: false, error: (error as Error).message };
     }
   },
-  post: async (url: string, data: any) => {
+  post: async <T, R = unknown>(url: string, data: T): Promise<R> => {
     const response = await fetch(url, {
       method: "POST",
       headers: {

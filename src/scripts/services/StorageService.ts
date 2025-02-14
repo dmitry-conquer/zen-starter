@@ -1,9 +1,9 @@
 export const LocalStorageService = {
-  getItem<T>(key: string): any {
+  getItem<T>(key: string): T | null {
     const item = localStorage.getItem(key);
     return item ? (JSON.parse(item) as T) : null;
   },
-  setItem(key: string, value: any): void {
+  setItem<T>(key: string, value: T): void {
     localStorage.setItem(key, JSON.stringify(value));
   },
   removeItem(key: string): void {

@@ -5,7 +5,7 @@ export class Header {
     triggerButton: "[data-js-header-trigger-button]",
   };
 
-  private readonly states: Record<string, string> = {
+  private readonly stateClasses: Record<string, string> = {
     isActive: "is-active",
     isLock: "is-lock",
   };
@@ -22,9 +22,9 @@ export class Header {
   }
 
   onTriggerButtonClick = (): void => {
-    this.triggerButtonElement?.classList.toggle(this.states.isActive);
-    this.overlayElement?.classList.toggle(this.states.isActive);
-    document.documentElement.classList.toggle(this.states.isLock);
+    this.triggerButtonElement?.classList.toggle(this.stateClasses.isActive);
+    this.overlayElement?.classList.toggle(this.stateClasses.isActive);
+    document.documentElement.classList.toggle(this.stateClasses.isLock);
   };
 
   bindEvents(): void {
