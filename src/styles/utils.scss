@@ -11,3 +11,24 @@
   white-space: nowrap;
   border-width: 0;
 }
+
+.inline-icon {
+  --size: #{rem(30)};
+  --gap: #{rem(10)};
+
+  display: inline-flex;
+  align-items: center;
+  column-gap: var(--gap);
+
+  &::after {
+    // background-image: url(""); // inline svg
+
+    width: var(--size);
+    height: var(--size);
+    content: "";
+    flex-shrink: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}

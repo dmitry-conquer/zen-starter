@@ -1,14 +1,30 @@
 <section data-js-accordion>
   <div>
-    <button aria-controls="accordion-panel-1" type="button" aria-expanded="false" data-js-accordion-button>
+    <button
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-expanded="false"
+      aria-controls="accordion-panel-1"
+      data-js-accordion-button
+      id="accordion-button-1"
+    >
       Button 1
     </button>
-    <div id="accordion-panel-1">CONTENT 1</div>
+    <div role="tabpanel" id="accordion-panel-1" aria-labelledby="accordion-button-1">CONTENT 1</div>
   </div>
   <div>
-    <button aria-controls="accordion-panel-2" type="button" aria-expanded="false" data-js-accordion-button>
+    <button
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-expanded="false"
+      aria-controls="accordion-panel-2"
+      data-js-accordion-button
+      id="accordion-button-2"
+    >
       Button 2
     </button>
-    <div id="accordion-panel-2">CONTENT 2</div>
+    <div role="tabpanel" id="accordion-panel-2" aria-labelledby="accordion-button-2">CONTENT 2</div>
   </div>
 </section>

@@ -20,38 +20,8 @@ h5, .h5,
 h6, .h6 {
 }
 
-a {
-  @include hover {
-    color: #5757f0; // update color
-  }
-}
-
 .container-base {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 var(--container-padding-x);
-}
-
-.inline-icon {
-  --size: #{rem(30)};
-  --gap: #{rem(10)};
-
-  display: inline-flex;
-  align-items: center;
-  column-gap: var(--gap);
-
-  &::after {
-    // background-image: url(""); // inline svg
-
-    width: var(--size);
-    height: var(--size);
-    content: "";
-    flex-shrink: 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-}
-
-.button {
 }

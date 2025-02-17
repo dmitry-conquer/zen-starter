@@ -14,7 +14,8 @@ class Accordion {
     isActive: "is-active",
   };
   private readonly stateAttributes: Record<string, string> = {
-    areaExpanded: "aria-expanded",
+    ariaExpanded: "aria-expanded",
+    ariaSelected: "aria-selected",
   };
   private rootElement: HTMLElement;
   private buttonElements: NodeListOf<HTMLElement>;
@@ -59,7 +60,8 @@ class Accordion {
       const content = buttonElement.nextElementSibling as HTMLElement;
 
       buttonElement.classList.toggle(this.stateClasses.isActive, isActive);
-      buttonElement.setAttribute(this.stateAttributes.areaExpanded, isActive.toString());
+      buttonElement.setAttribute(this.stateAttributes.ariaExpanded, isActive.toString());
+      buttonElement.setAttribute(this.stateAttributes.ariaSelected, isActive.toString());
       content.style.maxHeight = isActive ? `${content.scrollHeight}px` : "";
     });
   }

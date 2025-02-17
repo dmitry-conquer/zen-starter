@@ -16,7 +16,7 @@ class Tabs {
   };
 
   private readonly stateAttributes: Record<string, string> = {
-    areaSelected: "aria-selected",
+    ariaSelected: "aria-selected",
     tabIndex: "tabindex",
   };
 
@@ -58,7 +58,7 @@ class Tabs {
       const isActive: boolean = activeTabIndex === index;
 
       buttonElement.classList.toggle(this.stateClasses.isActive, isActive);
-      buttonElement.setAttribute(this.stateAttributes.areaSelected, isActive.toString());
+      buttonElement.setAttribute(this.stateAttributes.ariaSelected, isActive.toString());
       buttonElement.setAttribute(this.stateAttributes.tabIndex, isActive ? "0" : "-1");
     });
 
