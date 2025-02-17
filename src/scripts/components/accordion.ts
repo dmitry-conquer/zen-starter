@@ -1,39 +1,82 @@
-type AccordionOptions = {
-  triggerClass: string;
-  toggleClass: string;
+type indexStateType = {
+  activeAccordionIndex: number;
 };
 
-export class Accordion {
-  private accordionTriggers: NodeListOf<HTMLElement>;
-  private defaults: AccordionOptions;
-  private settings: AccordionOptions;
+const rootSelector = "[data-js-accordion]";
 
-  constructor(options?: Partial<AccordionOptions>) {
-    this.defaults = {
-      triggerClass: "accordion-header",
-      toggleClass: "accordion-active",
-    };
-    this.settings = { ...this.defaults, ...options };
-    this.accordionTriggers = document.querySelectorAll(`.${this.settings.triggerClass}`);
+class Accordion {
+  private readonly selectors: Record<string, string> = {
+    root: rootSelector,
+    button: "[data-js-accordion-button]",
+    content: "[data-js-accordion-content]",
+  };
+  private readonly stateClasses: Record<string, string> = {
+    isActive: "is-active",
+  };
+  private readonly stateAttributes: Record<string, string> = {
+    areaExpanded: "aria-expanded",
+  };
+  private rootElement: HTMLElement;
+  private buttonElements: NodeListOf<HTMLElement>;
+  private state: indexStateType;
+
+  constructor(rootElement: HTMLElement) {
+    this.rootElement = rootElement;
+    this.buttonElements = this.rootElement.querySelectorAll(this.selectors.button);
+    this.state = this.getProxyState({
+      activeAccordionIndex: [...this.buttonElements].findIndex(buttonElement =>
+        buttonElement.classList.contains(this.stateClasses.isActive)
+      ),
+    });
+
+    this.bindEvents();
   }
 
-  public init(): void {
-    if (this.accordionTriggers.length <= 0) {
-      return;
-    }
-    this.initListeners();
-  }
-
-  private initListeners(): void {
-    this.accordionTriggers.forEach(el => {
-      el?.addEventListener("click", () => this.handleToggle(el.nextElementSibling as HTMLElement, el as HTMLElement));
+  private bindEvents(): void {
+    this.buttonElements.forEach((buttonElement, index: number) => {
+      buttonElement?.addEventListener("click", () => this.onButtonClick(index));
     });
   }
 
-  private handleToggle(content: HTMLElement, trigger: HTMLElement) {
-    requestAnimationFrame(() => {
-      content.style.maxHeight = content.style.maxHeight === "" ? `${content.scrollHeight}px` : "";
+  private getProxyState(state: indexStateType) {
+    return new Proxy(state, {
+      get: (target: indexStateType, prop: keyof indexStateType) => {
+        return target[prop];
+      },
+      set: (target: indexStateType, prop: keyof indexStateType, value: number) => {
+        target[prop] = value;
+        this.updateUI();
+
+        return true;
+      },
     });
-    trigger.classList.toggle(this.settings.toggleClass);
+  }
+
+  private updateUI() {
+    const { activeAccordionIndex } = this.state;
+    this.buttonElements.forEach((buttonElement: HTMLElement, index: number) => {
+      const isActive = activeAccordionIndex === index;
+      const content = buttonElement.nextElementSibling as HTMLElement;
+
+      buttonElement.classList.toggle(this.stateClasses.isActive, isActive);
+      buttonElement.setAttribute(this.stateAttributes.areaExpanded, isActive.toString());
+      content.style.maxHeight = isActive ? `${content.scrollHeight}px` : "";
+    });
+  }
+
+  private onButtonClick(index: number) {
+    this.state.activeAccordionIndex = index;
   }
 }
+
+class AccordionCollection {
+  constructor() {
+    this.init();
+  }
+
+  private init(): void {
+    document.querySelectorAll(rootSelector).forEach(element => new Accordion(element as HTMLElement));
+  }
+}
+
+export default AccordionCollection;

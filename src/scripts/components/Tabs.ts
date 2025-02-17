@@ -120,7 +120,7 @@ class TabsCollection {
     this.init();
   }
 
-  init() {
+  private init(): void {
     document.querySelectorAll(rootSelector).forEach(element => new Tabs(element as HTMLElement));
   }
 }
