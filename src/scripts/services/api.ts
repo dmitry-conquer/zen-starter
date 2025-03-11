@@ -1,4 +1,4 @@
-export const ApiService = {
+export const api = {
   get: async (url: string) => {
     try {
       const response = await fetch(url);

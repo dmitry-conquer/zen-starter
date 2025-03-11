@@ -4,3 +4,6 @@
 @use "utils";
 @use "globals";
 @use "helpers" as *;
+
+@use './components/footer';
+@use './components/header';
