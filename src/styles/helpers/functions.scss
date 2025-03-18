@@ -8,17 +8,26 @@
   }
 }
 
+@function round-to($number, $decimals: 4) {
+  $factor: math.pow(10, $decimals);
+  @return math.div(math.round($number * $factor), $factor);
+}
+
 @function fluid($min, $max) {
   $maxViewportWidth: 1400;
   $minViewportWidth: 375;
 
-  $maxSize: math.div($max, 16);
-  $minSize: math.div($min, 16);
-  $maxWidth: math.div($maxViewportWidth, 16);
-  $minWidth: math.div($minViewportWidth, 16);
+  $maxSize: round-to(math.div($max, 16));
+  $minSize: round-to(math.div($min, 16));
+  $maxWidth: round-to(math.div($maxViewportWidth, 16));
+  $minWidth: round-to(math.div($minViewportWidth, 16));
 
-  $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
-  $yAxisIntersection: -$minWidth * $slope + $minSize;
+  $slope: round-to(math.div(($maxSize - $minSize), ($maxWidth - $minWidth)));
+  $yAxisIntersection: round-to(-$minWidth * $slope + $minSize);
 
-  @return clamp(#{$minSize * 1rem}, #{$yAxisIntersection * 1rem} + #{$slope * 100vw}, #{$maxSize * 1rem});
+  @return clamp(
+    #{$minSize * 1rem}, 
+    #{$yAxisIntersection * 1rem} + #{$slope * 100vw}, 
+    #{$maxSize * 1rem}
+  );
 }
