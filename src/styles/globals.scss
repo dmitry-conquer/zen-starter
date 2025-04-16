@@ -20,8 +20,8 @@ h5, .h5,
 h6, .h6 {
 }
 
-.container-base {
+.container {
   max-width: var(--container-width);
-  margin: 0 auto;
   padding: 0 var(--container-padding-x);
+  margin: 0 auto;
 }

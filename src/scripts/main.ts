@@ -1,3 +1,7 @@
 import "../styles/main.scss";
 
-document.addEventListener("DOMContentLoaded", () => {});
+document.addEventListener("DOMContentLoaded", () => {
+  /*
+    Code...
+  */
+});
