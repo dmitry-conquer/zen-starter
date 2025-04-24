@@ -1,9 +1,5 @@
 const rootSelector = "[data-js-tabs]";
 
-type initialStateType = {
-  activeTabIndex: number;
-};
-
 class Tabs {
   private readonly selectors: Record<string, string> = {
     root: rootSelector,
@@ -36,15 +32,23 @@ class Tabs {
       ),
     });
     this.limitTabsIndex = this.buttonElements.length - 1;
+  }
+
+  private isReady(): boolean {
+    return !!this.rootElement && !!this.buttonElements.length && !!this.contentElements.length;
+  }
+
+  public init(): void {
+    if (!this.isReady()) return;
     this.bindEvents();
   }
 
-  private getProxyState(initialState: initialStateType) {
+  private getProxyState(initialState: TypeTabsState) {
     return new Proxy(initialState, {
-      get: (target: initialStateType, prop: keyof initialStateType): number => {
+      get: (target: TypeTabsState, prop: keyof TypeTabsState): number => {
         return target[prop];
       },
-      set: (target: initialStateType, prop: keyof initialStateType, value: number) => {
+      set: (target: TypeTabsState, prop: keyof TypeTabsState, value: number) => {
         target[prop] = value;
         this.updateUI();
         return true;

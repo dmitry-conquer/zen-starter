@@ -1,7 +1,3 @@
-type indexStateType = {
-  activeAccordionIndex: number;
-};
-
 const rootSelector = "[data-js-accordion]";
 
 class Accordion {
@@ -19,7 +15,7 @@ class Accordion {
   };
   private rootElement: HTMLElement;
   private buttonElements: NodeListOf<HTMLElement>;
-  private state: indexStateType;
+  private state: TypeAccordioState;
 
   constructor(rootElement: HTMLElement) {
     this.rootElement = rootElement;
@@ -29,8 +25,15 @@ class Accordion {
         buttonElement.classList.contains(this.stateClasses.isActive)
       ),
     });
+  }
 
+  public init(): void {
+    if (!this.isReady()) return;
     this.bindEvents();
+  }
+
+  private isReady(): boolean {
+    return !!this.rootElement && !!this.buttonElements.length;
   }
 
   private bindEvents(): void {
@@ -39,12 +42,12 @@ class Accordion {
     });
   }
 
-  private getProxyState(state: indexStateType) {
+  private getProxyState(state: TypeAccordioState) {
     return new Proxy(state, {
-      get: (target: indexStateType, prop: keyof indexStateType) => {
+      get: (target: TypeAccordioState, prop: keyof TypeAccordioState) => {
         return target[prop];
       },
-      set: (target: indexStateType, prop: keyof indexStateType, value: number) => {
+      set: (target: TypeAccordioState, prop: keyof TypeAccordioState, value: number) => {
         target[prop] = value;
         this.updateUI();
 
