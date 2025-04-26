@@ -11,9 +11,10 @@ export default class BackTopButton {
 
   constructor() {
     this.rootElement = document.querySelector(this.selectors.root);
+    this.init();
   }
 
-  public init() {
+  private init() {
     if (!this.rootElement) return;
     this.bindEvents();
   }

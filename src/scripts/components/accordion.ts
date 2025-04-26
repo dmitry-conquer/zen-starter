@@ -25,9 +25,11 @@ class Accordion {
         buttonElement.classList.contains(this.stateClasses.isActive)
       ),
     });
+
+    this.init();
   }
 
-  public init(): void {
+  private init(): void {
     if (!this.isReady()) return;
     this.bindEvents();
   }

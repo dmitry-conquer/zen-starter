@@ -18,13 +18,15 @@ export class Header {
     this.rootElement = document.querySelector(this.selectors.root);
     this.overlayElement = this.rootElement?.querySelector(this.selectors.overlay) || null;
     this.triggerButtonElement = this.rootElement?.querySelector(this.selectors.triggerButton) || null;
+
+    this.init();
   }
 
   private isReady(): boolean {
     return !!this.rootElement && !!this.overlayElement && !!this.triggerButtonElement;
   }
 
-  public init(): void {
+  private init(): void {
     if (!this.isReady()) return;
     this.bindEvents();
   }

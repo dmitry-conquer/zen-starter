@@ -32,13 +32,15 @@ class Tabs {
       ),
     });
     this.limitTabsIndex = this.buttonElements.length - 1;
+
+    this.init();
   }
 
   private isReady(): boolean {
     return !!this.rootElement && !!this.buttonElements.length && !!this.contentElements.length;
   }
 
-  public init(): void {
+  private init(): void {
     if (!this.isReady()) return;
     this.bindEvents();
   }
