@@ -20,6 +20,17 @@ h5, .h5,
 h6, .h6 {
 }
 
+a:not([class]) {
+  transition: color 0.3s ease;
+  @include hover {
+    color: var(--color-primary);
+  }
+}
+
+p:not([class]):not(:last-of-type) {
+  margin-bottom: rem(16);
+}
+
 .container {
   max-width: var(--container-width);
   padding: 0 var(--container-padding-x);
