@@ -16,6 +16,7 @@ export class Header {
   private triggerButtonElement: HTMLElement | null;
   private itemHasSubmenuElements: HTMLElement[];
   private isMobileView: boolean;
+  private isTouchDevice: boolean;
 
   constructor() {
     this.rootElement = document.querySelector(this.selectors.root);
@@ -26,6 +27,7 @@ export class Header {
     ) as HTMLElement[];
 
     this.isMobileView = this.checkIfMobileView();
+    this.isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     this.init();
   }
 
@@ -59,12 +61,10 @@ export class Header {
       const isActive = menuItem.classList.contains(this.stateClasses.isActive);
 
       if (currentIndex === index) {
-        menuItem.classList.toggle(this.stateClasses.isActive);
-        subMenu.classList.toggle(this.stateClasses.isActive);
+        menuItem?.classList.toggle(this.stateClasses.isActive);
         subMenu.style.maxHeight = isActive ? "" : `${subMenu.scrollHeight}px`;
       } else {
-        menuItem.classList.remove(this.stateClasses.isActive);
-        subMenu.classList.remove(this.stateClasses.isActive);
+        menuItem?.classList.remove(this.stateClasses.isActive);
         subMenu.style.maxHeight = "";
       }
     });
@@ -75,8 +75,7 @@ export class Header {
     // Reset all submenus
     this.itemHasSubmenuElements.forEach(menuItem => {
       const subMenu = menuItem.querySelector("ul") as HTMLElement;
-      menuItem.classList.remove(this.stateClasses.isActive);
-      subMenu?.classList.remove(this.stateClasses.isActive);
+      menuItem?.classList.remove(this.stateClasses.isActive);
       subMenu.style.maxHeight = "";
     });
 
@@ -91,24 +90,18 @@ export class Header {
     // Handle menu toggle
     this.triggerButtonElement?.addEventListener("click", () => this.toggleMenu());
 
-    // Detect if the device is touch-enabled
-    const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-
     // Handle submenu interactions
     this.itemHasSubmenuElements.forEach((item, index) => {
       const link = item.querySelector(":scope > a") as HTMLAnchorElement;
 
       const handleInteraction = (e: Event) => {
-        if (isTouchDevice || this.isMobileView) {
+        if (this.isTouchDevice || this.isMobileView) {
           e.preventDefault(); // Prevent navigation
           this.toggleSubmenu(index);
         }
       };
 
       link.addEventListener("click", handleInteraction);
-      if (isTouchDevice) {
-        link.addEventListener("touchstart", handleInteraction);
-      }
     });
 
     // Close menu when clicking outside
