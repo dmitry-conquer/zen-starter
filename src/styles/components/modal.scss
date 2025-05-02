@@ -1,3 +1,5 @@
+@use "../helpers/" as *;
+
 .modal {
   position: fixed;
   inset: 0;
@@ -9,7 +11,7 @@
   visibility: hidden;
   pointer-events: none;
   transition: all 0.3s ease;
-  padding: 50px 0;
+  padding: rem(50) 0;
   &.is-open {
     opacity: 1;
     visibility: visible;
@@ -24,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 16px;
+    padding: 0 rem(16);
     *::-webkit-scrollbar {
       height: 5px;
       width: 5px;
@@ -43,7 +45,7 @@
     }
 
     *::-webkit-scrollbar-thumb {
-      border-radius: 5px;
+      border-radius: rem(5);
       background-color: #ff0000;
     }
 
@@ -57,41 +59,36 @@
   }
   &__inner {
     width: 100%;
-    max-width: 700px;
+    max-width: rem(700);
     max-height: max-content;
     height: 100%;
     overflow: auto;
     display: inline-block;
-    border-radius: 13px;
+    border-radius: rem(300);
   }
   &__content {
-    padding: 49px 57px 35px 57px;
+    padding: rem(24);
     background-color: #fff;
-    border-radius: 13px;
+    border-radius: rem(13);
     opacity: 0;
     transition: opacity 0.3s ease;
     width: 100%;
     position: relative;
-    @media (max-width: 640px) {
-      padding: 45px 20px 30px 20px;
-    }
   }
   &__title {
-    font-size: 20px;
+    font-size: rem(20);
     color: #626262;
-    margin-bottom: 12px;
+    margin-bottom: rem(12);
     font-weight: 700;
     line-height: 1.2;
-    @media (max-width: 640px) {
-      text-align: center;
-    }
+    text-align: center;
   }
   &__form {
   }
   &__close {
     position: absolute;
-    right: 12px;
-    top: 12px;
+    right: rem(12);
+    top: rem(12);
     @media (any-hover: hover) {
       &:hover {
         & svg {
@@ -101,8 +98,8 @@
     }
     svg {
       pointer-events: none;
-      width: 30px;
-      height: 30px;
+      width: rem(30);
+      height: rem(30);
       color: #626262;
     }
   }
