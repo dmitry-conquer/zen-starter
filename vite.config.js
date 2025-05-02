@@ -31,7 +31,7 @@ export default defineConfig({
   plugins: [
     viteJoinMediaQueries(),
     handlebars({
-      partialDirectory: resolve(__dirname, "partials"),
+      partialDirectory: resolve(__dirname, "components"),
     }),
   ],
 });
