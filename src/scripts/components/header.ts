@@ -15,6 +15,7 @@ export class Header {
   private overlayElement: HTMLElement | null;
   private triggerButtonElement: HTMLElement | null;
   private itemHasSubmenuElements: HTMLElement[];
+  private mediaQuery: MediaQueryList;
   private isMobileView: boolean;
   private isTouchDevice: boolean;
 
@@ -26,14 +27,10 @@ export class Header {
       this.rootElement?.querySelectorAll(this.selectors.itemHasSubmenu) || []
     ) as HTMLElement[];
 
-    this.isMobileView = this.checkIfMobileView();
+    this.mediaQuery = window.matchMedia("(max-width: 1400px)");
+    this.isMobileView = this.mediaQuery.matches;
     this.isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     this.init();
-  }
-
-  // Check if the current view is mobile
-  private checkIfMobileView(): boolean {
-    return window.matchMedia("(max-width: 1400px)").matches;
   }
 
   // Ensure all required elements are ready
@@ -112,8 +109,11 @@ export class Header {
     });
 
     // Update view type on window resize
-    window.addEventListener("resize", () => {
-      this.isMobileView = this.checkIfMobileView();
+    this.mediaQuery.addEventListener("change", (e: MediaQueryListEvent) => {
+      this.isMobileView = e.matches;
+      if (!this.isMobileView) {
+        this.closeAllMenus();
+      }
     });
   }
 }
