@@ -33,25 +33,21 @@ export class Header {
     this.init();
   }
 
-  // Ensure all required elements are ready
   private isReady(): boolean {
     return !!this.rootElement && !!this.overlayElement && !!this.triggerButtonElement;
   }
 
-  // Initialization
   private init(): void {
     if (!this.isReady()) return;
     this.bindEvents();
   }
 
-  // Toggle the main menu (for mobile and desktop)
-  private toggleMenu(): void {
+  private toggleMenu = (): void => {
     this.triggerButtonElement?.classList.toggle(this.stateClasses.isActive);
     this.overlayElement?.classList.toggle(this.stateClasses.isActive);
     document.documentElement.classList.toggle(this.stateClasses.isLock);
-  }
+  };
 
-  // Handle submenu toggle
   private toggleSubmenu(currentIndex: number): void {
     this.itemHasSubmenuElements.forEach((menuItem, index) => {
       const subMenu = menuItem.querySelector("ul") as HTMLElement;
@@ -67,7 +63,6 @@ export class Header {
     });
   }
 
-  // Close all menus
   private closeAllMenus(): void {
     // Reset all submenus
     this.itemHasSubmenuElements.forEach(menuItem => {
@@ -82,39 +77,42 @@ export class Header {
     document.documentElement.classList.remove(this.stateClasses.isLock);
   }
 
+  private onDocumentClick = (e: MouseEvent): void => {
+    if (!this.rootElement?.contains(e.target as Node)) {
+      this.closeAllMenus();
+    }
+  };
+
+  private onMediaQueryChange = (e: MediaQueryListEvent): void => {
+    this.isMobileView = e.matches;
+    if (!this.isMobileView) {
+      this.closeAllMenus();
+    }
+  };
+
   // Bind all events
   private bindEvents(): void {
     // Handle menu toggle
-    this.triggerButtonElement?.addEventListener("click", () => this.toggleMenu());
+    this.triggerButtonElement?.addEventListener("click", this.toggleMenu);
 
     // Handle submenu interactions
     this.itemHasSubmenuElements.forEach((item, index) => {
       const link = item.querySelector(":scope > a") as HTMLAnchorElement;
-
       const handleInteraction = (e: Event) => {
         if (this.isTouchDevice || this.isMobileView) {
-          e.preventDefault(); // Prevent navigation
-          this.toggleSubmenu(index);
+          const isActive = item.classList.contains(this.stateClasses.isActive);
+          if (!isActive) {
+            e.preventDefault();
+            this.toggleSubmenu(index);
+          }
         }
       };
 
       link.addEventListener("click", handleInteraction);
     });
 
-    // Close menu when clicking outside
-    document.addEventListener("click", (e: MouseEvent) => {
-      if (!this.rootElement?.contains(e.target as Node)) {
-        this.closeAllMenus();
-      }
-    });
-
-    // Update view type on window resize
-    this.mediaQuery.addEventListener("change", (e: MediaQueryListEvent) => {
-      this.isMobileView = e.matches;
-      if (!this.isMobileView) {
-        this.closeAllMenus();
-      }
-    });
+    document.addEventListener("click", this.onDocumentClick);
+    this.mediaQuery.addEventListener("change", this.onMediaQueryChange);
   }
 }
 
