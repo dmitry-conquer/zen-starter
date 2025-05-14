@@ -7,7 +7,7 @@ export class Header {
   };
 
   private readonly stateClasses: Record<string, string> = {
-    isActive: "is-active",
+    active: "is-active",
     isLock: "is-lock",
   };
 
@@ -43,21 +43,21 @@ export class Header {
   }
 
   private toggleMenu = (): void => {
-    this.triggerButtonElement?.classList.toggle(this.stateClasses.isActive);
-    this.overlayElement?.classList.toggle(this.stateClasses.isActive);
+    this.triggerButtonElement?.classList.toggle(this.stateClasses.active);
+    this.overlayElement?.classList.toggle(this.stateClasses.active);
     document.documentElement.classList.toggle(this.stateClasses.isLock);
   };
 
   private toggleSubmenu(currentIndex: number): void {
     this.itemHasSubmenuElements.forEach((menuItem, index) => {
       const subMenu = menuItem.querySelector("ul") as HTMLElement;
-      const isActive = menuItem.classList.contains(this.stateClasses.isActive);
+      const active = menuItem.classList.contains(this.stateClasses.active);
 
       if (currentIndex === index) {
-        menuItem?.classList.toggle(this.stateClasses.isActive);
-        subMenu.style.maxHeight = isActive ? "" : `${subMenu.scrollHeight}px`;
+        menuItem?.classList.toggle(this.stateClasses.active);
+        subMenu.style.maxHeight = active ? "" : `${subMenu.scrollHeight}px`;
       } else {
-        menuItem?.classList.remove(this.stateClasses.isActive);
+        menuItem?.classList.remove(this.stateClasses.active);
         subMenu.style.maxHeight = "";
       }
     });
@@ -67,13 +67,13 @@ export class Header {
     // Reset all submenus
     this.itemHasSubmenuElements.forEach(menuItem => {
       const subMenu = menuItem.querySelector("ul") as HTMLElement;
-      menuItem?.classList.remove(this.stateClasses.isActive);
+      menuItem?.classList.remove(this.stateClasses.active);
       subMenu.style.maxHeight = "";
     });
 
     // Reset main menu
-    this.triggerButtonElement?.classList.remove(this.stateClasses.isActive);
-    this.overlayElement?.classList.remove(this.stateClasses.isActive);
+    this.triggerButtonElement?.classList.remove(this.stateClasses.active);
+    this.overlayElement?.classList.remove(this.stateClasses.active);
     document.documentElement.classList.remove(this.stateClasses.isLock);
   }
 
@@ -100,8 +100,8 @@ export class Header {
       const link = item.querySelector(":scope > a") as HTMLAnchorElement;
       const handleInteraction = (e: Event) => {
         if (this.isTouchDevice || this.isMobileView) {
-          const isActive = item.classList.contains(this.stateClasses.isActive);
-          if (!isActive) {
+          const active = item.classList.contains(this.stateClasses.active);
+          if (!active) {
             e.preventDefault();
             this.toggleSubmenu(index);
           }
