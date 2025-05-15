@@ -11,26 +11,28 @@ export default class ThemeToggle {
   };
 
   private toggleElement: HTMLInputElement | null = null;
+  private systemTheme: MediaQueryList | null = null;
 
   constructor() {
     this.toggleElement = document.querySelector(this.selectors.toggle);
+    this.systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
     this.init();
   }
 
   private init() {
     if (!this.toggleElement) return;
-    this.setTheme();
+    this.applyTheme();
     this.bindEvents();
   }
 
-  private setTheme() {
+  private applyTheme() {
     if (!this.toggleElement) return;
-    const currentTheme = this.loadTheme();
-    document.documentElement.setAttribute(this.attributes.theme, currentTheme || this.theme.light);
+    const currentTheme = this.getCurrentTheme() || (this.systemTheme?.matches ? this.theme.dark : this.theme.light);
+    document.documentElement.setAttribute(this.attributes.theme, currentTheme);
     this.toggleElement.checked = currentTheme === this.theme.dark;
   }
 
-  private loadTheme() {
+  private getCurrentTheme() {
     return localStorage.getItem("theme");
   }
 

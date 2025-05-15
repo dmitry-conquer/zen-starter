@@ -11,3 +11,7 @@
   --container-width: #{rem(1440)};
   --container-padding-x: #{rem(20)};
 }
+
+[data-theme="dark"] {
+  --color-accent: #9c0606;
+}
