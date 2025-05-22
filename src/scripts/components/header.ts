@@ -90,7 +90,6 @@ export class Header {
     }
   };
 
-  // Bind all events
   private bindEvents(): void {
     // Handle menu toggle
     this.triggerButtonElement?.addEventListener("click", this.toggleMenu);

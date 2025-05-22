@@ -27,7 +27,7 @@ export default defineConfig({
       },
     },
   },
-   css: {
+  css: {
     preprocessorOptions: {
       scss: {
         api: "modern-compiler",
@@ -37,7 +37,7 @@ export default defineConfig({
   plugins: [
     viteJoinMediaQueries(),
     handlebars({
-      partialDirectory: resolve(__dirname, "components"),
+      partialDirectory: resolve(__dirname, "./src/components"),
     }),
   ],
 });
