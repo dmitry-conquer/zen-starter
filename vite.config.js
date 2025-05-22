@@ -1,22 +1,21 @@
-import { resolve } from "path";
+import { resolve, dirname } from "path";
+import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
 import viteJoinMediaQueries from "vite-join-media-queries";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig({
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: "modern-compiler",
-      },
-    },
-  },
+  root: "./src",
   build: {
+    outDir: "../dist",
+    emptyOutDir: true,
     modulePreload: false,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "index.html"),
-        nested: resolve(__dirname, "pages/index.html"),
+        index: resolve(__dirname, "./src/index.html"),
+        // nested: resolve(__dirname, "./src/pages/index.html"),
       },
       output: {
         assetFileNames: ({ name }) => {
@@ -25,6 +24,13 @@ export default defineConfig({
           }
           return "assets/[name]-[hash][extname]";
         },
+      },
+    },
+  },
+   css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
       },
     },
   },
