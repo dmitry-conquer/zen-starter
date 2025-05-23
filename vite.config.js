@@ -7,15 +7,19 @@ import viteJoinMediaQueries from "vite-join-media-queries";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  root: "./src",
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+      },
+    },
+  },
   build: {
-    outDir: "../dist",
-    emptyOutDir: true,
     modulePreload: false,
     rollupOptions: {
       input: {
-        index: resolve(__dirname, "./src/index.html"),
-        // nested: resolve(__dirname, "./src/pages/index.html"),
+        main: resolve(__dirname, "index.html"),
+        nested: resolve(__dirname, "pages/index.html"),
       },
       output: {
         assetFileNames: ({ name }) => {
@@ -27,17 +31,10 @@ export default defineConfig({
       },
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: "modern-compiler",
-      },
-    },
-  },
   plugins: [
     viteJoinMediaQueries(),
     handlebars({
-      partialDirectory: resolve(__dirname, "./src/components"),
+      partialDirectory: resolve(__dirname, "components"),
     }),
   ],
 });
