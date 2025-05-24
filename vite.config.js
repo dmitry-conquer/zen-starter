@@ -7,6 +7,7 @@ import viteJoinMediaQueries from "vite-join-media-queries";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  appType: "mpa",
   css: {
     preprocessorOptions: {
       scss: {
