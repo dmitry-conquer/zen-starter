@@ -47,12 +47,15 @@ npm run dev
 
 ## 📦 Scripts
 
-| Command                | Description                                    |
-|------------------------|------------------------------------------------|
-| `npm run dev`          | 🚧 Start the development server with hot reload |
-| `npm run build`        | 📦 Build the project for production             |
-| `npm run lint:styles`  | 🎯 Check SCSS with Stylelint                    |
-| `npm run format:styles`| ✨ Auto-format SCSS with Stylelint              |
+| Command                  | Description                                    |
+|--------------------------|------------------------------------------------|
+| `npm run dev`            | 🚧 Start the development server with hot reload |
+| `npm run build`          | 📦 Build the project for production             |
+| `npm run preview`        | 👀 Preview the production build locally         |
+| `npm run host`           | 🌐 Start dev server on local network (host)     |
+| `npm run lint`           | 🧹 Check JS/TS code with ESLint                 |
+| `npm run lint:styles`    | 🎯 Check SCSS with Stylelint                    |
+| `npm run format:styles`  | ✨ Auto-format SCSS with Stylelint              |
 
 ---
 
