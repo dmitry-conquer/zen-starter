@@ -1,47 +1,58 @@
-# ZEN-starter
+# ✨ ZEN-starter
 
-## Installation
+A modern, fast, and flexible starter kit for web projects with Vite, TypeScript, Handlebars, SCSS, and more!  
+Boost your productivity and keep your code zen 🧘
 
-1. Clone the repository:
+---
 
-   ```bash
-   git clone https://github.com/dmitry-conquer/zen-starter zen-starter
-   cd zen-starter
-   ```
+## 🚀 Quick Start
 
-2. Install dependencies:
+### Option 1: Clone this repo
 
-   ```bash
-   npm install
-   ```
+```bash
+git clone https://github.com/dmitry-conquer/zen-starter zen-starter
+cd zen-starter
+npm install
+npm run dev
+```
 
-3. Run the development server:
+### Option 2: Easy scaffolding with npm
 
-   ```bash
-   npm run dev
-   ```
+```bash
+npm create zen@latest my-zen-project
+cd my-zen-project
+npm install
+npm run dev
+```
+> Replace `my-zen-project` with your desired project name.
 
-4. Build the project for production:
+---
 
-   ```bash
-   npm run build
-   ```
+## ✨ Features
 
-## Features
+- ⚡ **Vite** + **TypeScript**
+- 🧩 **vite-plugin-handlebars** — powerful HTML templating
+- 🎨 **SCSS** & **PostCSS** — style your project your way
+- 🧹 **ESLint** & **Stylelint** — code & style quality out of the box
+- 💄 **Prettier** — automatic code formatting
+- 🪄 **vite-join-media-queries** — smart CSS optimization
+- 📦 Ready for production with one command
 
-- **Vite** + TypeScript
-- **Tailwind CSS**
-- **ESLint**
-- **Stylelint**
-- **Prettier**
-- **vite-plugin-handlebars**
-- **vite-join-media-queries**
-- **SCSS Support**
-- **PostCSS**
+---
 
-## Scripts
+## 📦 Scripts
 
-- `npm run dev`: Start the development server with hot reload.
-- `npm run build`: Build the project for production.
-- `npm run lint:styles`: Run Stylelint to check for SCSS issues.
-- `npm run format:styles`: Run Stylelint to format SCSS issues.
+| Command                | Description                                    |
+|------------------------|------------------------------------------------|
+| `npm run dev`          | 🚧 Start the development server with hot reload |
+| `npm run build`        | 📦 Build the project for production             |
+| `npm run lint:styles`  | 🎯 Check SCSS with Stylelint                    |
+| `npm run format:styles`| ✨ Auto-format SCSS with Stylelint              |
+
+---
+
+## 🤝 Contributing
+
+PRs, issues and ideas are welcome! Help make this starter even better.
+
+---
