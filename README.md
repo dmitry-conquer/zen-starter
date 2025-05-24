@@ -37,6 +37,11 @@ npm run dev
 - 💄 **Prettier** — automatic code formatting
 - 🪄 **vite-join-media-queries** — smart CSS optimization
 - 📦 Ready for production with one command
+- 📦 **Modular JS system** — easy script organization and integration
+- 🛠 **Ready-made solutions for Tabs, Accordions, and other components** — fast start, no hassle
+- 🗂 **Polished style file structure, mixins, functions for responsive design, CSS variables** — maximum flexibility and reusability
+- 🧱 **Component-based HTML page creation** — every element is independent and easy to maintain
+- 🔄 **Continuous updates and support** — the project is actively maintained and improved
 
 ---
 
