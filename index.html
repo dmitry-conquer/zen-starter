@@ -7,59 +7,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --zen-bg: #101112;
-        --zen-panel: #18191b;
-        --zen-card: #18191b;
-        --zen-border: #34363a; /* lighter border */
-        --zen-border-hover: #5b5e65; /* even lighter on hover */
-        --zen-text: #f1f3f6;
-        --zen-text-muted: #b5b9be;
-        --zen-title: #fff;
-        --zen-green: #6bcd86;
+        --zen-bg1: #eaf6ff;
+        --zen-bg2: #f6fbff;
+        --zen-bg3: #e3f0fb;
+        --zen-panel: #ffffff;
+        --zen-card: #eaf6ff;
+        --zen-border: #cbe7fa;
+        --zen-border-hover: #35b8ff;
+        --zen-text: #1a2a3a;
+        --zen-text-muted: #7d97b2;
+        --zen-title: #1565c0;
+        --zen-blue: #2196f3;
+        --zen-accent: #35b8ff;
       }
       html,
       body {
         height: 100%;
         margin: 0;
         padding: 0;
-        background: var(--zen-bg);
-        color: var(--zen-text);
+        min-height: 100vh;
         font-family: "Inter", Arial, sans-serif;
         font-size: 16px;
-        min-height: 100vh;
+        color: var(--zen-text);
         box-sizing: border-box;
       }
       body {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        /* animated gradient background */
+        background: linear-gradient(120deg, var(--zen-bg1), var(--zen-bg2), var(--zen-bg3), var(--zen-bg1));
+        background-size: 300% 300%;
+        animation: gradientMove 12s ease-in-out infinite;
+        padding-inline: 1.2rem;
+      }
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
       header {
-        background: var(--zen-panel);
-        border-bottom: 1px solid var(--zen-border);
         text-align: center;
         padding: 2.2rem 1rem 1.5rem 1rem;
-      }
-      .zen-logo {
-        width: 68px;
-        height: 68px;
-        margin-bottom: 1.1rem;
-        border-radius: 14px;
-        object-fit: contain;
-        background: #1a1b1d;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        border-bottom: 1.5px solid var(--zen-border);
+        background: transparent;
       }
       h1 {
-        font-size: 2rem;
+        font-size: 4.2rem;
         margin: 0 0 0.4rem 0;
-        font-weight: 600;
-        color: var(--zen-title);
-        letter-spacing: 1px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        background: linear-gradient(90deg, #2196f3 30%, #35b8ff 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        animation: gradientMove 6s linear infinite;
+        transition: font-size 0.2s;
       }
       p {
-        font-size: 1.04rem;
+        font-size: 1.08rem;
         color: var(--zen-text-muted);
         margin: 0.2rem 0 0 0;
       }
@@ -67,9 +80,10 @@
         width: 100%;
         max-width: 520px;
         margin: 2.3rem auto 0 auto;
-        background: var(--zen-bg);
+        background: var(--zen-panel);
         border-radius: 18px;
         padding: 0 1.5rem 2.5rem 1.5rem;
+        box-shadow: 0 4px 24px 0 rgba(33, 150, 243, 0.07);
       }
       .section-title {
         font-size: 1.22rem;
@@ -100,7 +114,6 @@
         background: var(--zen-card);
         border: 1px solid var(--zen-border);
         border-radius: 15px;
-        box-shadow: none;
         color: var(--zen-title);
         text-decoration: none;
         font-size: 1.07rem;
@@ -109,8 +122,10 @@
         width: 100%;
         transition:
           border-color 0.22s,
-          box-shadow 0.2s,
-          color 0.18s;
+          box-shadow 0.3s cubic-bezier(0.4, 2, 0.6, 1),
+          color 0.22s,
+          background 0.4s cubic-bezier(0.4, 2, 0.6, 1);
+        background: linear-gradient(90deg, #eaf6ff 60%, #f6fbff 100%);
       }
       .page-link:visited {
         color: var(--zen-title);
@@ -118,16 +133,22 @@
       .page-link:hover,
       .page-link:focus {
         border-color: var(--zen-border-hover);
-        box-shadow: 0 2px 10px 0 rgba(91, 94, 101, 0.1);
-        color: var(--zen-green);
+        box-shadow: 0 8px 32px 0 rgba(33, 150, 243, 0.18);
+        color: var(--zen-blue);
+        background: linear-gradient(90deg, #e3f0fb 0%, #bbdefb 100%);
         outline: none;
       }
       .page-card__icon {
         width: 1.5em;
         height: 1.5em;
         flex-shrink: 0;
-        color: var(--zen-green);
+        color: var(--zen-blue);
         display: block;
+        transition: color 0.2s;
+      }
+      .page-link:hover .page-card__icon,
+      .page-link:focus .page-card__icon {
+        color: var(--zen-accent);
       }
       .footer {
         margin-top: auto;
@@ -138,10 +159,55 @@
         letter-spacing: 0.01em;
         opacity: 0.75;
       }
+      .quick-info {
+        margin: 2.2rem 0 0.7rem 0;
+        background: linear-gradient(90deg, #eaf6ff 60%, #f6fbff 100%);
+        border: 1px solid var(--zen-border);
+        border-radius: 13px;
+        padding: 1.1rem 1.2rem 0.7rem 1.2rem;
+        font-size: 1.01rem;
+        color: var(--zen-title);
+        box-shadow: 0 2px 10px 0 rgba(33, 150, 243, 0.06);
+      }
+      .quick-info ul {
+        margin: 0.5em 0 0 0;
+        padding: 0 0 0 1.1em;
+        color: var(--zen-text);
+        font-size: 0.99rem;
+        padding-left: 0;
+      }
+      .quick-info code {
+        background: #e3f0fb;
+        border-radius: 5px;
+        padding: 0.13em 0.5em;
+        font-size: 0.97em;
+        color: var(--zen-blue);
+        font-family: "Fira Mono", "Consolas", monospace;
+      }
+      .features-list {
+        margin: 2.2rem 0 0.7rem 0;
+        background: linear-gradient(90deg, #eaf6ff 60%, #f6fbff 100%);
+        border: 1px solid var(--zen-border);
+        border-radius: 13px;
+        padding: 1.1rem 1.2rem 0.7rem 1.2rem;
+        font-size: 1.01rem;
+        color: var(--zen-title);
+        box-shadow: 0 2px 10px 0 rgba(33, 150, 243, 0.06);
+      }
+      .features-list ul {
+        margin: 0.5em 0 0 0;
+        padding: 0 0 0 1.1em;
+        color: var(--zen-text);
+        font-size: 0.99rem;
+        padding-left: 0;
+      }
+      .features-list li {
+        margin-bottom: 0.3em;
+      }
       @media (max-width: 700px) {
         main {
           max-width: 100vw;
-          padding: 0 0.2rem 1.2rem 0.2rem;
+          padding: 0 1.2rem 1.2rem 1.2rem;
         }
         .section-title {
           margin-left: 0.2rem;
@@ -149,15 +215,13 @@
         .page-link {
           padding: 1.1rem 0.7rem 1.1rem 1rem;
         }
+        h1 {
+          font-size: 2.7rem;
+        }
       }
     </style>
   </head>
   <body>
-    <header>
-      <img src="/images/zen.svg" alt="ZEN Logo" class="zen-logo" onerror="this.style.display='none';" />
-      <h1>ZEN Starter</h1>
-      <p>Kickstart your next project with a clean and minimal template.<br />Flexible. Modern. Lightning fast.</p>
-    </header>
     <main>
       <div class="section-title">Project Pages</div>
       <ul class="page-list">
@@ -186,6 +250,18 @@
           </a>
         </li>
       </ul>
+      <div class="quick-info">
+        <b>How to use:</b>
+        <ul>
+          <li><code>npm run dev</code> – Start dev server with hot reload</li>
+          <li><code>npm run build</code> – Build for production</li>
+          <li><code>npm run preview</code> – Preview production build</li>
+          <li><code>npm run host</code> – Dev server on local network</li>
+          <li><code>npm run lint</code> – Check JS/TS code</li>
+          <li><code>npm run lint:styles</code> – Check SCSS with Stylelint</li>
+          <li><code>npm run format:styles</code> – Auto-format SCSS</li>
+        </ul>
+      </div>
     </main>
     <div class="footer">Created by Dmitry Frolov</div>
     <script type="module" src="src/scripts/main.ts"></script>

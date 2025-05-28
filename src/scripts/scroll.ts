@@ -3,13 +3,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "lenis/dist/lenis.css";
 
-declare const acfData: {
+declare const backendData: {
   smoothScroll?: boolean;
 };
 
 export default class Scroll {
   private isSmoothScrollReady() {
-    return typeof acfData !== "undefined" && acfData.smoothScroll;
+    return typeof backendData !== "undefined" && backendData.smoothScroll;
   }
 
   public initSmoothScroll() {
