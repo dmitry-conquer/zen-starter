@@ -8,6 +8,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         api: "modern-compiler",
+        silenceDeprecations: ["mixed-decls"],
       },
     },
   },
@@ -15,7 +16,6 @@ export default defineConfig({
     modulePreload: false,
     rollupOptions: {
       input: {
-        main: "index.html",
         nested: "pages/index.html",
       },
       output: {
@@ -39,5 +39,20 @@ export default defineConfig({
     handlebars({
       partialDirectory: "components",
     }),
+    {
+      name: "wrap-in-iife",
+      generateBundle(outputOptions, bundle) {
+        Object.keys(bundle).forEach(fileName => {
+          const file = bundle[fileName];
+          if (fileName.slice(-3) === ".js" && "code" in file) {
+            file.code = `(() => {\n${file.code}})()`;
+          }
+        });
+      },
+    },
   ],
+
+  server: {
+    open: true,
+  },
 });

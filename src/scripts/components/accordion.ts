@@ -11,7 +11,6 @@ class Accordion {
   };
   private readonly stateAttributes: Record<string, string> = {
     ariaExpanded: "aria-expanded",
-    ariaSelected: "aria-selected",
   };
   private rootElement: HTMLElement;
   private buttonElements: NodeListOf<HTMLElement>;
@@ -66,12 +65,15 @@ class Accordion {
 
       buttonElement.classList.toggle(this.stateClasses.isActive, isActive);
       buttonElement.setAttribute(this.stateAttributes.ariaExpanded, isActive.toString());
-      buttonElement.setAttribute(this.stateAttributes.ariaSelected, isActive.toString());
       content.style.maxHeight = isActive ? `${content.scrollHeight}px` : "";
     });
   }
 
   private onButtonClick(index: number) {
+    if (this.state.activeAccordionIndex === index) {
+      this.state.activeAccordionIndex = -1;
+      return;
+    }
     this.state.activeAccordionIndex = index;
   }
 }

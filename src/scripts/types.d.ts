@@ -5,3 +5,10 @@ type TypeAccordioState = {
 type TypeTabsState = {
   activeTabIndex: number;
 };
+
+type ModalOptions = {
+  onShow?: () => void;
+  onClose?: () => void;
+  disableScroll?: boolean;
+  disableFocus?: boolean;
+};

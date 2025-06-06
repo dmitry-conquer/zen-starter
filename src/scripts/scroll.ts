@@ -8,13 +8,15 @@ declare const backendData: {
 };
 
 export default class Scroll {
+  public lenis: Lenis | null = null;
+
   private isSmoothScrollReady() {
     return typeof backendData !== "undefined" && backendData.smoothScroll;
   }
 
   public initSmoothScroll() {
     if (!this.isSmoothScrollReady()) return;
-    new Lenis({
+    this.lenis = new Lenis({
       autoRaf: true,
       anchors: true,
     });

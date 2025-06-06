@@ -53,7 +53,7 @@ export class Header {
 
   private onDocumentClick = (e: MouseEvent): void => {
     const target = e.target as HTMLElement;
-    if (target.closest(this.selectors.triggerButton) || target.closest(this.selectors.overlay)) return;
+    if (target.closest(this.selectors.root)) return;
     this.setActive(false);
   };
 
