@@ -1,7 +1,9 @@
 import "../styles/main.scss";
 
-document.addEventListener("DOMContentLoaded", () => {
-  /*
-    Code...
-  */
+const initScrollServices = (): void => {};
+const initUIComponents = (): void => {};
+
+document.addEventListener("DOMContentLoaded", (): void => {
+  initScrollServices();
+  initUIComponents();
 });
