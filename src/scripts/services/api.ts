@@ -1,4 +1,4 @@
-export const get = async (url: string) => {
+const get = async (url: string) => {
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -11,7 +11,7 @@ export const get = async (url: string) => {
   }
 };
 
-export const post = async <T, R = unknown>(url: string, data: T): Promise<R> => {
+const post = async <T, R = unknown>(url: string, data: T): Promise<R> => {
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -21,3 +21,5 @@ export const post = async <T, R = unknown>(url: string, data: T): Promise<R> => 
   });
   return response.json();
 };
+
+export { get, post };

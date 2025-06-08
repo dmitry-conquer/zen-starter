@@ -1,4 +1,4 @@
-export const LocalStorage = {
+const LocalStorage = {
   getItem<T>(key: string): T | null {
     const item = localStorage.getItem(key);
     return item ? (JSON.parse(item) as T) : null;
@@ -16,3 +16,5 @@ export const LocalStorage = {
     return localStorage.getItem(key) !== null;
   },
 };
+
+export default LocalStorage;
