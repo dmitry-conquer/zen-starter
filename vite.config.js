@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
-import viteJoinMediaQueries from "vite-join-media-queries";
 
 export default defineConfig({
   appType: "mpa",
@@ -35,7 +34,6 @@ export default defineConfig({
     },
   },
   plugins: [
-    viteJoinMediaQueries(),
     handlebars({
       partialDirectory: "components",
     }),

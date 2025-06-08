@@ -20,7 +20,9 @@
     "install": "^0.13.0",
     "npm": "^11.4.1",
     "postcss": "^8.5.3",
+    "postcss-combine-media-query": "^2.0.0",
     "postcss-scss": "^4.0.9",
+    "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.5.3",
     "sass": "1.83.4",
     "stylelint": "^16.19.1",
@@ -31,7 +33,6 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1",
     "vite": "^6.3.5",
-    "vite-join-media-queries": "^0.1.4",
     "vite-plugin-handlebars": "^2.0.0"
   },
   "dependencies": {
