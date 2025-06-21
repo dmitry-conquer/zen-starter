@@ -131,150 +131,25 @@
   <body>
     <main>
       <h1>Project Pages</h1>
-      <form class="add-form" id="add-page-form" autocomplete="off">
-        <label>
-          Name<br />
-          <input type="text" id="page-name" required placeholder="Page name" />
-        </label>
-        <label>
-          Link<br />
-          <input type="text" id="page-link" required placeholder="/pages/example.html" />
-        </label>
-        <button type="submit">Add</button>
-      </form>
       <table>
         <thead>
           <tr>
             <th style="width: 32%">Page Name</th>
             <th style="width: 38%">Link</th>
-            <th style="width: 15%">Done</th>
-            <th style="width: 15%">Delete</th>
           </tr>
         </thead>
         <tbody id="pages-table-body">
-          <!-- Rows will be rendered by JS -->
+          <tr>
+            <td>Home</td>
+            <td><a href="/pages/index.html" target="_blank">/pages/index.html</a></td>
+          </tr>
+          <tr>
+            <td>404 Not Found</td>
+            <td><a href="/pages/404.html" target="_blank">/pages/404.html</a></td>
+          </tr>
         </tbody>
       </table>
     </main>
     <div class="footer">Created by Dmitry Frolov</div>
-    <script>
-      // --- Storage keys ---
-      const PAGES_KEY = "zen_pages_list";
-      const STATUS_KEY = "zen_pages_status";
-
-      // --- Default pages ---
-      const defaultPages = [
-        { name: "Home", link: "/pages/index.html" },
-        { name: "404 Not Found", link: "/pages/404.html" },
-      ];
-
-      // --- Load pages from localStorage or use default ---
-      function loadPages() {
-        try {
-          const data = localStorage.getItem(PAGES_KEY);
-          if (data) return JSON.parse(data);
-        } catch {}
-        return [...defaultPages];
-      }
-
-      // --- Save pages to localStorage ---
-      function savePages(pages) {
-        localStorage.setItem(PAGES_KEY, JSON.stringify(pages));
-      }
-
-      // --- Load checked statuses from localStorage ---
-      function loadStatuses() {
-        try {
-          return JSON.parse(localStorage.getItem(STATUS_KEY) || "{}");
-        } catch {
-          return {};
-        }
-      }
-
-      // --- Save checked statuses to localStorage ---
-      function saveStatuses(statuses) {
-        localStorage.setItem(STATUS_KEY, JSON.stringify(statuses));
-      }
-
-      // --- Render table rows ---
-      function renderTable() {
-        const pages = loadPages();
-        const statuses = loadStatuses();
-        const tbody = document.getElementById("pages-table-body");
-        tbody.innerHTML = "";
-        pages.forEach((page, idx) => {
-          const tr = document.createElement("tr");
-
-          // Name
-          const tdName = document.createElement("td");
-          tdName.textContent = page.name;
-          tr.appendChild(tdName);
-
-          // Link
-          const tdLink = document.createElement("td");
-          const a = document.createElement("a");
-          a.href = page.link;
-          a.textContent = page.link;
-          a.target = "_blank";
-          tdLink.appendChild(a);
-          tr.appendChild(tdLink);
-
-          // Checkbox
-          const tdStatus = document.createElement("td");
-          tdStatus.className = "status-checkbox";
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.checked = !!statuses[page.link];
-          checkbox.addEventListener("change", () => {
-            statuses[page.link] = checkbox.checked;
-            saveStatuses(statuses);
-          });
-          tdStatus.appendChild(checkbox);
-          tr.appendChild(tdStatus);
-
-          // Delete button
-          const tdDelete = document.createElement("td");
-          const delBtn = document.createElement("button");
-          delBtn.textContent = "Delete";
-          delBtn.className = "delete-btn";
-          delBtn.addEventListener("click", () => {
-            if (confirm(`Delete page "${page.name}"?`)) {
-              const pagesArr = loadPages();
-              pagesArr.splice(idx, 1);
-              savePages(pagesArr);
-              // Remove status for this page
-              const statuses = loadStatuses();
-              delete statuses[page.link];
-              saveStatuses(statuses);
-              renderTable();
-            }
-          });
-          tdDelete.appendChild(delBtn);
-          tr.appendChild(tdDelete);
-
-          tbody.appendChild(tr);
-        });
-      }
-
-      // --- Add page form handler ---
-      document.getElementById("add-page-form").addEventListener("submit", function (e) {
-        e.preventDefault();
-        const name = document.getElementById("page-name").value.trim();
-        const link = document.getElementById("page-link").value.trim();
-        if (!name || !link) return;
-        const pages = loadPages();
-        // Prevent duplicates by link
-        if (pages.some(p => p.link === link)) {
-          alert("Page with this link already exists.");
-          return;
-        }
-        pages.push({ name, link });
-        savePages(pages);
-        renderTable();
-        this.reset();
-      });
-
-      renderTable();
-    </script>
   </body>
 </html>
