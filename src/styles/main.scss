@@ -1,11 +1,13 @@
-@use "reset";
-@use "fonts";
-@use "variables";
-@use "utils";
-@use "globals";
-@use "helpers" as *;
-@use "typography";
+@use "tailwindcss";
 
-// Importing components
-@use "./components/footer";
-@use "./components/header";
+// @use "reset";
+// @use "fonts";
+// @use "variables";
+// @use "utils";
+// @use "globals";
+// @use "helpers" as *;
+// @use "typography";
+
+// // Importing components
+// @use "./components/footer";
+// @use "./components/header";
