@@ -1,66 +1,89 @@
-# ✨ ZEN-starter
+# Zen Starter
 
-A modern, fast, and flexible starter kit for web projects with Vite, TypeScript, Handlebars, SCSS, and more!  
-Boost your productivity and keep your code zen 🧘
-
----
+A modern starter template for web projects with TypeScript, Vite, Tailwind CSS, and Bun.
 
 ## 🚀 Quick Start
 
-### Option 1: Clone this repo
-
+### Install dependencies
 ```bash
-git clone https://github.com/dmitry-conquer/zen-starter zen-starter
-cd zen-starter
-npm install
-npm run dev
+bun install
 ```
 
-### Option 2: Easy scaffolding with npm
+### Development
+```bash
+bun run dev
+```
+
+### Build project
+```bash
+bun run build
+```
+
+### Preview build
+```bash
+bun run preview
+```
+
+## 🛠 Technologies
+
+- **Bun** - fast JavaScript runtime and package manager
+- **TypeScript** - typed JavaScript
+- **Vite** - fast build tool
+- **Tailwind CSS** - utility-first CSS framework
+- **Sass** - CSS preprocessor
+- **ESLint** - code linter
+- **Prettier** - code formatter
+
+## 📁 Project Structure
+
+```
+zen-starter/
+├── components/          # HTML components
+├── pages/              # Project pages
+├── public/             # Static files
+├── src/
+│   ├── fonts/          # Fonts
+│   ├── scripts/        # TypeScript code
+│   └── styles/         # SCSS styles
+├── bunfig.toml         # Bun configuration
+└── package.json        # Dependencies and scripts
+```
+
+## 🔧 Commands
 
 ```bash
-npm create zen@latest my-zen-project
-cd my-zen-project
-npm install
-npm run dev
+# Development
+bun run dev          # Local server
+bun run host         # Network accessible server
+
+# Build
+bun run build        # Build project
+bun run preview      # Preview build
+
+# Linting
+bun run lint         # Code check
+bun run lint:fix     # Auto fix
 ```
-> Replace `my-zen-project` with your desired project name.
 
----
+## ⚡ Bun Benefits
 
-## ✨ Features
+- **Speed**: 20-100x faster package installation
+- **Efficiency**: Less memory usage
+- **Compatibility**: Full compatibility with npm packages
+- **TypeScript**: Built-in support
 
-- ⚡ **Vite** + **TypeScript**
-- 🧩 **vite-plugin-handlebars** — powerful HTML templating
-- 🎨 **SCSS** & **PostCSS** — style your project your way
-- 🧹 **ESLint** & **Stylelint** — code & style quality out of the box
-- 💄 **Prettier** — automatic code formatting
-- 🪄 **vite-join-media-queries** — smart CSS optimization
-- 📦 Ready for production with one command
-- 📦 **Modular JS system** — easy script organization and integration
-- 🛠 **Ready-made solutions for Tabs, Accordions, and other components** — fast start, no hassle
-- 🗂 **Polished style file structure, mixins, functions for responsive design, CSS variables** — maximum flexibility and reusability
-- 🧱 **Component-based HTML page creation** — every element is independent and easy to maintain
-- 🔄 **Continuous updates and support** — the project is actively maintained and improved
+## 🐛 Troubleshooting
 
----
+### Windows Issues
+```bash
+# If errors occur, use:
+bun install --no-scripts
+```
 
-## 📦 Scripts
+### Permission Issues
+- Run PowerShell as administrator
+- Or use WSL2
 
-| Command                  | Description                                    |
-|--------------------------|------------------------------------------------|
-| `npm run dev`            | 🚧 Start the development server with hot reload |
-| `npm run build`          | 📦 Build the project for production             |
-| `npm run preview`        | 👀 Preview the production build locally         |
-| `npm run host`           | 🌐 Start dev server on local network (host)     |
-| `npm run lint`           | 🧹 Check JS/TS code with ESLint                 |
-| `npm run lint:styles`    | 🎯 Check SCSS with Stylelint                    |
-| `npm run format:styles`  | ✨ Auto-format SCSS with Stylelint              |
+## 📝 License
 
----
-
-## 🤝 Contributing
-
-PRs, issues and ideas are welcome! Help make this starter even better.
-
----
+MIT
