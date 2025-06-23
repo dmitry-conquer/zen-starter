@@ -1,5 +1,20 @@
 import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const pagesDir = path.resolve(__dirname, "pages");
+const input = {};
+
+fs.readdirSync(pagesDir).forEach(file => {
+  if (file.endsWith(".html")) {
+    const name = path.parse(file).name;
+    input[name] = path.resolve(pagesDir, file);
+  }
+});
 
 export default defineConfig({
   appType: "mpa",
@@ -14,9 +29,7 @@ export default defineConfig({
   build: {
     modulePreload: false,
     rollupOptions: {
-      input: {
-        nested: "pages/index.html",
-      },
+      input,
       output: {
         assetFileNames: ({ name }) => {
           if (/\.(gif|jpe?g|png|svg)$/.test(name ?? "")) {
@@ -42,14 +55,13 @@ export default defineConfig({
       generateBundle(outputOptions, bundle) {
         Object.keys(bundle).forEach(fileName => {
           const file = bundle[fileName];
-          if (fileName.slice(-3) === ".js" && "code" in file) {
+          if (fileName.endsWith(".js") && "code" in file) {
             file.code = `(() => {\n${file.code}})()`;
           }
         });
       },
     },
   ],
-
   server: {
     open: true,
   },

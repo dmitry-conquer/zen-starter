@@ -1,13 +1,5 @@
-@use "tailwind-theme";
+// To use base SCSS, keep this line uncommented
+@use 'core' as *;
 
-// @use "reset";
-// @use "fonts";
-// @use "variables";
-// @use "utils";
-// @use "globals";
-// @use "helpers" as *;
-// @use "typography";
-
-// // Importing components
-// @use "./components/footer";
-// @use "./components/header";
+// To use Tailwind, comment out the line above and uncomment the one below
+// @use "tailwind" as *; 
