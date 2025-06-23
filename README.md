@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=25&duration=4000&pause=500&color=05F7C3&center=true&vCenter=true&width=435&lines=Zen+Starter)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=25&duration=4000&pause=500&color=05F7C3&center=true&vCenter=true&width=435&lines=Zen+Starter;Stop+worrying+about+setup,+just+code.)](https://git.io/typing-svg)
 
 </div>
 
@@ -14,7 +14,7 @@ A modern and intuitive starter template for web projects, designed to streamline
   <img src="https://img.shields.io/badge/Handlebars.js-f0772b?style=for-the-badge&logo=handlebars.js&logoColor=white" alt="Handlebars"/>
 </p>
 
-![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="line" />
 
 ## ✨ Features
 
@@ -25,7 +25,7 @@ A modern and intuitive starter template for web projects, designed to streamline
 - **PostCSS**: A tool for transforming styles with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.
 - **Handlebars**: Templating engine to keep your HTML clean and organized.
 
-![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="line" />
 
 ## 🚀 Getting Started
 
@@ -56,7 +56,7 @@ Alternatively, you can clone the repository manually:
     npm install
     ```
 
-![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="line" />
 
 ## 🛠️ Available Scripts
 
@@ -67,7 +67,7 @@ Alternatively, you can clone the repository manually:
 - `npm run lint` - Lints the TypeScript files in the project.
 - `npm run lint:fix` - Lints and automatically fixes problems in TypeScript files.
 
-![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="line" />
 
 ## 📁 Project Structure
 
@@ -89,7 +89,7 @@ zen-starter/
 └── vite.config.js       # Vite configuration
 ```
 
-![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="line" />
 
 ## 📝 License
 
