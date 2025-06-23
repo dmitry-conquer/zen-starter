@@ -1,89 +1,96 @@
-# Zen Starter
+<div align="center">
 
-A modern starter template for web projects with TypeScript, Vite, Tailwind CSS, and Bun.
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=25&duration=4000&pause=500&color=05F7C3&center=true&vCenter=true&width=435&lines=Zen+Starter)](https://git.io/typing-svg)
 
-## 🚀 Quick Start
+</div>
 
-### Install dependencies
+A modern and intuitive starter template for web projects, designed to streamline your development process. It comes pre-configured with essential tools like TypeScript, Vite, and SCSS.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/>
+  <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="Sass"/>
+  <img src="https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white" alt="PostCSS"/>
+  <img src="https://img.shields.io/badge/Handlebars.js-f0772b?style=for-the-badge&logo=handlebars.js&logoColor=white" alt="Handlebars"/>
+</p>
+
+![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
+
+## ✨ Features
+
+- **Vite**: Next-generation frontend tooling for a blazing fast development experience.
+- **TypeScript**: Strong typing for more robust and maintainable code.
+- **SCSS**: CSS with superpowers, enabling variables, nesting, and mixins.
+- **ESLint**: Pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript.
+- **PostCSS**: A tool for transforming styles with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.
+- **Handlebars**: Templating engine to keep your HTML clean and organized.
+
+![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (version 18.x or higher)
+- [npm](https://www.npmjs.com/)
+
+### Installation
+
+You can create a new project using `npm create`:
 ```bash
-bun install
+npm create zen@latest project-name
 ```
 
-### Development
-```bash
-bun run dev
-```
+Alternatively, you can clone the repository manually:
 
-### Build project
-```bash
-bun run build
-```
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/zen-starter.git
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd zen-starter
+    ```
+3.  Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-### Preview build
-```bash
-bun run preview
-```
+![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
 
-## 🛠 Technologies
+## 🛠️ Available Scripts
 
-- **Bun** - fast JavaScript runtime and package manager
-- **TypeScript** - typed JavaScript
-- **Vite** - fast build tool
-- **Tailwind CSS** - utility-first CSS framework
-- **Sass** - CSS preprocessor
-- **ESLint** - code linter
-- **Prettier** - code formatter
+- `npm run dev` - Starts the development server.
+- `npm run host` - Starts the development server, accessible on your local network.
+- `npm run build` - Builds the project for production.
+- `npm run preview` - Serves the production build locally for preview.
+- `npm run lint` - Lints the TypeScript files in the project.
+- `npm run lint:fix` - Lints and automatically fixes problems in TypeScript files.
+
+![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
 
 ## 📁 Project Structure
 
 ```
 zen-starter/
-├── components/          # HTML components
-├── pages/              # Project pages
-├── public/             # Static files
+├── components/          # Reusable HTML partials (header, footer, etc.)
+├── pages/               # Project pages (HTML files)
+├── public/              # Static assets (images, fonts, etc.)
 ├── src/
-│   ├── fonts/          # Fonts
-│   ├── scripts/        # TypeScript code
-│   └── styles/         # SCSS styles
-├── bunfig.toml         # Bun configuration
-└── package.json        # Dependencies and scripts
+│   ├── scripts/         # TypeScript source code
+│   │   ├── components/  # TS classes for UI components
+│   │   ├── services/    # Services (API, etc.)
+│   │   └── main.ts      # Main entry point
+│   └── styles/          # SCSS stylesheets
+│       ├── components/  # Styles for components
+│       ├── helpers/     # Mixins, functions, etc.
+│       └── main.scss    # Main stylesheet
+├── index.html           # List of all pages for easy navigation
+└── vite.config.js       # Vite configuration
 ```
 
-## 🔧 Commands
-
-```bash
-# Development
-bun run dev          # Local server
-bun run host         # Network accessible server
-
-# Build
-bun run build        # Build project
-bun run preview      # Preview build
-
-# Linting
-bun run lint         # Code check
-bun run lint:fix     # Auto fix
-```
-
-## ⚡ Bun Benefits
-
-- **Speed**: 20-100x faster package installation
-- **Efficiency**: Less memory usage
-- **Compatibility**: Full compatibility with npm packages
-- **TypeScript**: Built-in support
-
-## 🐛 Troubleshooting
-
-### Windows Issues
-```bash
-# If errors occur, use:
-bun install --no-scripts
-```
-
-### Permission Issues
-- Run PowerShell as administrator
-- Or use WSL2
+![line](https://github.com/d-frolov/content/blob/main/line.png?raw=true)
 
 ## 📝 License
 
-MIT
+This project is licensed under the MIT License.
