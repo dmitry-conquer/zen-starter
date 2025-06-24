@@ -1,7 +1,5 @@
 @use "helpers" as *;
 
-@use "helpers" as *;
-
 // ===================================
 // 🎨 Design Tokens System
 // ===================================
@@ -123,22 +121,4 @@
   // ===============================
 
   --animation-duration: 300ms;
-
-  // ===============================
-  // 🌍 Z-INDEX SCALE
-  // ===============================
-
-  --z-index-hide: -1;
-  --z-index-auto: auto;
-  --z-index-base: 0;
-  --z-index-docked: 10;
-  --z-index-dropdown: 1000;
-  --z-index-sticky: 1100;
-  --z-index-banner: 1200;
-  --z-index-overlay: 1300;
-  --z-index-modal: 1400;
-  --z-index-popover: 1500;
-  --z-index-skipLink: 1600;
-  --z-index-toast: 1700;
-  --z-index-tooltip: 1800;
 }
