@@ -1,17 +1,144 @@
 @use "helpers" as *;
 
-:root {
-  --color-black: #000000;
-  --color-white: #ffffff;
-  --color-accent: #d35b5b;
+@use "helpers" as *;
 
-  --font-family-base: "Roboto", sans-serif;
-  --font-family-accent: "Roboto", sans-serif;
+// ===================================
+// 🎨 Design Tokens System
+// ===================================
+
+:root {
+  // ===============================
+  // 🌈 COLOR PALETTE
+  // ===============================
+
+  // Base colors
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  // Project colors
+  --color-primary: #566362;
+  --color-primary-dark: #033d3d;
+  --color-secondary: #ae8858;
+  --color-secondary-dark: #947649;
+  --color-neutral-100: #f2f5f5;
+  --color-neutral-200: #f8fbfa;
+  --color-neutral-300: #dadfe1;
+
+  // ===============================
+  // 🔤 TYPOGRAPHY SYSTEM
+  // ===============================
+
+  // Font families
+  --font-family-base: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-family-accent: var(--font-family-base);
+
+  // ===============================
+  // 📏 TYPOGRAPHY SCALES
+  // ===============================
+
+  // Headings
+  --h-xl: #{fluid(70, 130)};
+  --h-lg: #{fluid(42, 80)};
+  --h-md: #{fluid(28, 42)};
+  --h-sm: #{fluid(20, 32)};
+  --h-xs: #{fluid(16, 24)};
+
+  // Description
+  --description: #{fluid(12, 16)};
+
+  // Body
+  --body-lg: #{rem(24)};
+  --body-md: #{rem(16)};
+  --body-sm: #{rem(12)};
+
+  // Links
+  --link-md: #{fluid(18, 20)};
+  --link-sm: #{fluid(13, 16)};
+
+  // ===============================
+  // 📐 SPACING SYSTEM
+  // ===============================
+
+  --space-0: 0;
+  --space-1: #{rem(4)};
+  --space-2: #{rem(8)};
+  --space-3: #{rem(12)};
+  --space-4: #{rem(16)};
+  --space-5: #{rem(20)};
+  --space-6: #{rem(24)};
+  --space-8: #{rem(32)};
+  --space-10: #{rem(40)};
+  --space-12: #{rem(48)};
+  --space-16: #{rem(64)};
+  --space-20: #{rem(80)};
+  --space-24: #{rem(96)};
+  --space-32: #{rem(128)};
+  --space-40: #{rem(160)};
+  --space-48: #{rem(192)};
+  --space-56: #{rem(224)};
+  --space-64: #{rem(256)};
+
+  // Fluid spacing
+  --space-fluid-xs: #{fluid(8, 16)};
+  --space-fluid-sm: #{fluid(16, 24)};
+  --space-fluid-md: #{fluid(24, 32)};
+  --space-fluid-lg: #{fluid(32, 48)};
+  --space-fluid-xl: #{fluid(48, 64)};
+  --space-fluid-2xl: #{fluid(64, 96)};
+  --space-fluid-3xl: #{fluid(96, 128)};
+
+  // ===============================
+  // 🎯 LAYOUT
+  // ===============================
 
   --container-width: #{rem(1440)};
   --container-padding-x: #{rem(20)};
-}
 
-[data-theme="dark"] {
-  --color-accent: #9c0606;
+  // ===============================
+  // 🎭 BORDERS & RADIUS
+  // ===============================
+
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 4px;
+
+  --border-radius-xs: #{rem(2)};
+  --border-radius-sm: #{rem(4)};
+  --border-radius-md: #{rem(6)};
+  --border-radius-lg: #{rem(8)};
+  --border-radius-xl: #{rem(12)};
+  --border-radius-2xl: #{rem(16)};
+  --border-radius-3xl: #{rem(24)};
+  --border-radius-full: 50%;
+
+  // ===============================
+  // 🌟 SHADOWS
+  // ===============================
+
+  --shadow-xs: 0px 2px 2px 0px rgba(0, 0, 0, 0.15);
+  --shadow-sm: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  // ===============================
+  // ⚡ ANIMATIONS
+  // ===============================
+
+  --animation-duration: 300ms;
+
+  // ===============================
+  // 🌍 Z-INDEX SCALE
+  // ===============================
+
+  --z-index-hide: -1;
+  --z-index-auto: auto;
+  --z-index-base: 0;
+  --z-index-docked: 10;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1100;
+  --z-index-banner: 1200;
+  --z-index-overlay: 1300;
+  --z-index-modal: 1400;
+  --z-index-popover: 1500;
+  --z-index-skipLink: 1600;
+  --z-index-toast: 1700;
+  --z-index-tooltip: 1800;
 }
