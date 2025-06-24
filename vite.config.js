@@ -51,6 +51,25 @@ export default defineConfig({
       partialDirectory: "components",
     }),
     {
+      name: "handlebars-watcher",
+      configureServer(server) {
+        const watcher = server.watcher;
+        
+        watcher.add([
+          path.resolve(__dirname, "components/**/*.html"),
+        ]);
+        
+        watcher.on("change", (file) => {
+          if (file.endsWith(".html")) {
+            server.ws.send({
+              type: "full-reload",
+              path: "*",
+            });
+          }
+        });
+      },
+    },
+    {
       name: "wrap-in-iife",
       generateBundle(outputOptions, bundle) {
         Object.keys(bundle).forEach(fileName => {
@@ -62,7 +81,4 @@ export default defineConfig({
       },
     },
   ],
-  server: {
-    open: true,
-  },
 });
