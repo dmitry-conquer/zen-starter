@@ -29,21 +29,6 @@
   --font-family-accent: var(--font-family-base);
 
   // ===============================
-  // 📏 TYPOGRAPHY SCALES
-  // ===============================
-
-  --font-size-xs: #{fluid(10, 12)};
-  --font-size-sm: #{fluid(12, 16)};
-  --font-size-base: #{fluid(16, 20)};
-  --font-size-md: #{fluid(18, 22)};
-  --font-size-lg: #{fluid(18, 24)};
-  --font-size-xl: #{fluid(24, 32)};
-  --font-size-2xl: #{fluid(32, 40)};
-  --font-size-3xl: #{fluid(40, 48)};
-  --font-size-4xl: #{fluid(42, 80)};
-  --font-size-5xl: #{fluid(70, 130)};
-
-  // ===============================
   // 🎯 LAYOUT
   // ===============================
 

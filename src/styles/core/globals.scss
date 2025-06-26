@@ -84,6 +84,12 @@ p:not([class]):not(:last-of-type) {
   margin-bottom: rem(16);
 }
 
+@include large {
+  br {
+    display: none !important;
+  }
+}
+
 .text-sm {
   font-size: var(--font-size-sm);
 }
