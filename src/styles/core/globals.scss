@@ -1,29 +1,82 @@
 @use "helpers" as *;
 
-body {
-  /*
-    font-family
-    font-size
-    color
-  */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+  background-color: var(--color-white);
+  line-height: 1.5;
+}
+
+// ===========================
+// 📐 CONTAINER & LAYOUT
+// ===========================
+
 .wrapper {
   overflow: hidden;
   position: relative;
 }
 
-h1, .h1, //
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+.container {
+  max-width: var(--container-width);
+  padding-inline: var(--container-padding-x);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-padding-y);
+}
+
+// ===========================
+// ✒️ TYPOGRAPHY
+// ===========================
+
+h1,
+.heading-xl {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+h2,
+.heading-lg {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h3,
+.heading-md {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h4,
+.heading-sm {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h5,
+.heading-xs {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+p,
+.text-base {
+  font-size: var(--font-size-base);
+  color: var(--color-black);
 }
 
 a:not([class]) {
-  transition: color 0.3s ease;
   @include hover {
-    color: var(--color-primary);
+    text-decoration: underline;
   }
 }
 
@@ -31,8 +84,40 @@ p:not([class]):not(:last-of-type) {
   margin-bottom: rem(16);
 }
 
-.container {
-  max-width: var(--container-width);
-  padding: 0 var(--container-padding-x);
-  margin: 0 auto;
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+.text-bold {
+  font-weight: var(--font-weight-bold);
+}
+.text-center {
+  text-align: center;
+}
+
+// ===========================
+// 🎯 UTILITIES
+// ===========================
+
+.rounded {
+  border-radius: var(--radius-md);
+}
+.rounded-sm {
+  border-radius: var(--radius-sm);
+}
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+
+.shadow {
+  box-shadow: var(--shadow-md);
+}
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.transition {
+  transition: all var(--transition-base);
 }
