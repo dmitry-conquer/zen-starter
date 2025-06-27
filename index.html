@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zen Starter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
       * {
         margin: 0;
@@ -12,7 +15,7 @@
       }
 
       body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Noto Serif SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -30,7 +33,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background: linear-gradient(-45deg, #87CEEB, #B0E0E6, #40E0D0, #ADD8E6);
         background-size: 400% 400%;
         animation: gradientShift 15s ease infinite;
         z-index: -1;
@@ -55,18 +58,19 @@
 
       .title {
         font-size: 3.5rem;
-        font-weight: 700;
+        font-weight: 300;
         color: white;
         margin-bottom: 2rem;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         letter-spacing: 2px;
+        font-family: 'Noto Serif SC', serif;
       }
 
       .get-started-btn {
         display: inline-block;
         padding: 1.2rem 3rem;
         font-size: 1.3rem;
-        font-weight: 600;
+        font-weight: 400;
         color: white;
         background: rgba(255, 255, 255, 0.2);
         border: 2px solid rgba(255, 255, 255, 0.3);
@@ -77,6 +81,7 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         position: relative;
         overflow: hidden;
+        font-family: 'Noto Serif SC', serif;
       }
 
       .get-started-btn::before {
