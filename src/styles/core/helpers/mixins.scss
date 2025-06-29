@@ -3,7 +3,7 @@
     font-family: #{$font-family};
     src:
       local("#{$file-name}"),
-      url("../fonts/#{$file-name}.woff2") format("woff2");
+      url("/fonts/#{$file-name}.woff2") format("woff2");
     font-weight: $font-weight;
     font-style: $font-style;
     font-display: swap;

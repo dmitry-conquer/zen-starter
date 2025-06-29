@@ -18,7 +18,7 @@ export const openModal = (modalId: string, scroll: any) => {
   });
 };
 
-const preventLinkClick = () => {
+export const preventModalLinkClick = () => {
   const links = document.querySelectorAll("a[data-micromodal-trigger]");
   if (!links.length) return;
   links.forEach(link => {
@@ -27,5 +27,3 @@ const preventLinkClick = () => {
     });
   });
 };
-
-preventLinkClick();

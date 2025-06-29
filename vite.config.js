@@ -1,23 +1,11 @@
 import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
-import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const pagesDir = path.resolve(__dirname, "pages");
-const input = {};
-
-fs.readdirSync(pagesDir).forEach(file => {
-  if (file.endsWith(".html")) {
-    const name = path.parse(file).name;
-    input[name] = path.resolve(pagesDir, file);
-  }
-});
-
 export default defineConfig({
-  appType: "mpa",
   css: {
     preprocessorOptions: {
       scss: {
@@ -26,18 +14,18 @@ export default defineConfig({
       },
     },
   },
+
   build: {
+    appType: "mpa",
+    publicDir: "public",
     modulePreload: false,
     rollupOptions: {
-      input,
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        pages: path.resolve(__dirname, "pages/index.html"),
+      },
       output: {
         assetFileNames: ({ name }) => {
-          if (/\.(gif|jpe?g|png|svg)$/.test(name ?? "")) {
-            return "assets/images/[name][extname]";
-          }
-          if (/\.(woff|woff2|eot|ttf|otf)$/.test(name ?? "")) {
-            return "assets/fonts/[name][extname]";
-          }
           if (/\.(css|scss|sass|less|styl|stylus)$/.test(name ?? "")) {
             return "assets/style[extname]";
           }
@@ -46,6 +34,7 @@ export default defineConfig({
       },
     },
   },
+
   plugins: [
     handlebars({
       partialDirectory: "components",
@@ -54,12 +43,10 @@ export default defineConfig({
       name: "handlebars-watcher",
       configureServer(server) {
         const watcher = server.watcher;
-        
-        watcher.add([
-          path.resolve(__dirname, "components/**/*.html"),
-        ]);
-        
-        watcher.on("change", (file) => {
+
+        watcher.add([path.resolve(__dirname, "components/**/*.html")]);
+
+        watcher.on("change", file => {
           if (file.endsWith(".html")) {
             server.ws.send({
               type: "full-reload",
