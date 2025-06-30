@@ -12,6 +12,13 @@
   border-width: 0;
 }
 
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
 .inline-icon {
   --size: #{rem(30)};
   --gap: #{rem(10)};
