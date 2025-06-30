@@ -30,6 +30,7 @@ A premium Vite starter kit for rapid web development, designed to streamline you
 - **📱 Responsive Design**: Mobile-first approach with modern breakpoints
 - **🌙 Dark/Light Theme**: Built-in theme switching with persistence
 - **📦 Modern Build**: Optimized for production with tree-shaking
+- **🧹 PurgeCSS**: Automatic removal of unused CSS for optimal bundle size
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="line" />
 
@@ -183,6 +184,7 @@ The project uses a well-organized SCSS structure:
 - SCSS preprocessing with modern compiler API
 - PostCSS integration with autoprefixer
 - Handlebars templating support
+- PurgeCSS for unused CSS removal
 - Optimized build output
 
 ### TypeScript Configuration

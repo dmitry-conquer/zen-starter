@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
+import purgeCss from "vite-plugin-purgecss";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -37,6 +38,10 @@ export default defineConfig({
   },
 
   plugins: [
+    purgeCss({
+      content: ["./pages/**/*.html"],
+      safelist: ["prose"],
+    }),
     handlebars({
       partialDirectory: "components",
     }),

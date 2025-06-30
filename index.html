@@ -590,7 +590,7 @@
         <nav class="floating-nav">
           <h3>Navigation</h3>
           <div class="nav-links">
-            <a href="#hero" class="nav-link active">Hero</a>
+            <a href="#hero" class="nav-link active">Home</a>
             <a href="#features" class="nav-link">Features</a>
             <a href="#npm-scripts" class="nav-link">NPM Scripts</a>
             <a href="#scss-docs" class="nav-link">SCSS Docs</a>
@@ -652,11 +652,16 @@
               <h4>📱 Responsive</h4>
               <p>Mobile-first responsive design with optimized media queries</p>
             </div>
+            <div class="feature-card">
+              <h4>🧹 PurgeCSS</h4>
+              <p>Automatic removal of unused CSS for optimal bundle size and performance</p>
+            </div>
           </div>
           
           <h3>CSS Optimization Features</h3>
           <p>Advanced CSS processing and optimization tools are included:</p>
           <ul>
+            <li><strong>PurgeCSS:</strong> Automatically removes unused CSS to reduce bundle size and improve performance</li>
             <li><strong>Media Query Combine:</strong> Automatically combines duplicate media queries for smaller CSS output</li>
             <li><strong>Media Query Sort:</strong> Sorts media queries for better organization and performance</li>
             <li><strong>Autoprefixer:</strong> Automatically adds vendor prefixes for cross-browser compatibility</li>
@@ -842,13 +847,13 @@
       
       // Intersection Observer for navigation highlighting
       const observerOptions = {
-        threshold: 0.3,
+        threshold: [0, 0.25, 0.5, 0.75, 1],
         rootMargin: '-20% 0px -70% 0px'
       };
       
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
             const id = entry.target.id;
             document.querySelectorAll('.nav-link').forEach(link => {
               link.classList.remove('active');
@@ -864,6 +869,50 @@
       document.querySelectorAll('.docs-section, .hero-section').forEach(section => {
         observer.observe(section);
       });
+      
+      // Alternative scroll-based navigation highlighting
+      function updateActiveNavLink() {
+        const sections = document.querySelectorAll('.docs-section, .hero-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
+        
+        let currentSection = '';
+        let minDistance = Infinity;
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionCenter = sectionTop + sectionHeight / 2;
+          const distance = Math.abs(scrollPosition - sectionCenter);
+          
+          if (distance < minDistance) {
+            minDistance = distance;
+            currentSection = section.id;
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      // Throttled scroll event
+      let ticking = false;
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            updateActiveNavLink();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+      
+      window.addEventListener('scroll', requestTick);
+      ticking = false;
     </script>
   </body>
 </html>
