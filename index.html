@@ -31,7 +31,7 @@
         min-height: 100vh;
         overflow-x: hidden;
       }
-      
+
       /* Main Layout */
       .main-wrapper {
         overflow-x: hidden;
@@ -41,7 +41,7 @@
         box-sizing: border-box;
         padding: 0;
       }
-      
+
       /* Background Blobs */
       .blobs-bg {
         position: fixed;
@@ -88,7 +88,7 @@
           transform: scale(1.12) translateY(40px);
         }
       }
-      
+
       /* Floating Navigation */
       .floating-nav {
         position: fixed;
@@ -136,7 +136,7 @@
         color: #5eead4;
         font-weight: 600;
       }
-      
+
       /* Hero Section */
       .hero-section {
         position: relative;
@@ -210,7 +210,7 @@
       .start-btn:hover svg {
         transform: translateX(6px) scale(1.1);
       }
-      
+
       /* Documentation Sections */
       .docs-container {
         max-width: 1200px;
@@ -272,7 +272,7 @@
         position: absolute;
         left: 0;
       }
-      
+
       /* Code Blocks */
       .code-block {
         background: rgba(15, 18, 30, 0.8);
@@ -292,7 +292,7 @@
       .code-block code {
         color: #5eead4;
       }
-      
+
       /* Features Grid */
       .features-grid {
         display: grid;
@@ -321,7 +321,7 @@
         color: #a5b4fc;
         margin: 0;
       }
-      
+
       /* NPM Scripts Table */
       .scripts-table {
         width: 100%;
@@ -355,7 +355,7 @@
         color: #5eead4;
         font-weight: 600;
       }
-      
+
       /* Project Structure */
       .project-structure {
         font-family: "Fira Mono", "Consolas", monospace;
@@ -369,7 +369,7 @@
         overflow-x: auto;
         line-height: 1.6;
       }
-      
+
       /* Footer */
       .footer-glass {
         width: 100%;
@@ -390,7 +390,7 @@
         user-select: none;
         text-align: center;
       }
-      
+
       /* GitHub Widget */
       .github-stars-widget {
         position: fixed;
@@ -434,7 +434,7 @@
         display: inline-block;
         vertical-align: middle;
       }
-      
+
       /* Animations */
       @keyframes fadeInDown {
         0% {
@@ -466,7 +466,7 @@
           transform: translateY(0) scale(1);
         }
       }
-      
+
       /* Responsive Design */
       @media (max-width: 1200px) {
         .floating-nav {
@@ -564,11 +564,13 @@
         <div class="blob blob2"></div>
         <div class="blob blob3"></div>
       </div>
-      
+
       <!-- Hero Section -->
       <section class="hero-section" id="hero">
         <div class="zen-logo">ZEN Starter</div>
-        <div class="zen-subtitle">A premium Vite starter kit for rapid web development with modern tooling and optimized workflow</div>
+        <div class="zen-subtitle">
+          A premium Vite starter kit for rapid web development with modern tooling and optimized workflow
+        </div>
         <a href="pages/index.html" class="start-btn">
           <span>Get Started</span>
           <svg viewBox="0 0 24 24">
@@ -583,7 +585,7 @@
           </svg>
         </a>
       </section>
-      
+
       <!-- Documentation Container -->
       <div class="docs-container">
         <!-- Floating Navigation -->
@@ -597,12 +599,12 @@
             <a href="#project-structure" class="nav-link">Structure</a>
           </div>
         </nav>
-        
+
         <!-- Features Section -->
         <section class="docs-section" id="features">
           <h2><span>✨</span>Features</h2>
           <p>ZEN Starter comes packed with modern development tools and optimizations to streamline your workflow:</p>
-          
+
           <div class="features-grid">
             <div class="feature-card">
               <h4>🌀 Smooth Scrolling</h4>
@@ -652,28 +654,26 @@
               <h4>📱 Responsive</h4>
               <p>Mobile-first responsive design with optimized media queries</p>
             </div>
-            <div class="feature-card">
-              <h4>🧹 PurgeCSS</h4>
-              <p>Automatic removal of unused CSS for optimal bundle size and performance</p>
-            </div>
           </div>
-          
+
           <h3>CSS Optimization Features</h3>
           <p>Advanced CSS processing and optimization tools are included:</p>
           <ul>
-            <li><strong>PurgeCSS:</strong> Automatically removes unused CSS to reduce bundle size and improve performance</li>
-            <li><strong>Media Query Combine:</strong> Automatically combines duplicate media queries for smaller CSS output</li>
+            <li>
+              <strong>Media Query Combine:</strong> Automatically combines duplicate media queries for smaller CSS
+              output
+            </li>
             <li><strong>Media Query Sort:</strong> Sorts media queries for better organization and performance</li>
             <li><strong>Autoprefixer:</strong> Automatically adds vendor prefixes for cross-browser compatibility</li>
             <li><strong>CSS Minification:</strong> Optimized CSS output for production builds</li>
           </ul>
         </section>
-        
+
         <!-- NPM Scripts Section -->
         <section class="docs-section" id="npm-scripts">
           <h2><span>⚡</span>NPM Scripts</h2>
           <p>Essential commands to get you started with development and deployment:</p>
-          
+
           <table class="scripts-table">
             <thead>
               <tr>
@@ -713,31 +713,34 @@
             </tbody>
           </table>
         </section>
-        
+
         <!-- SCSS Documentation Section -->
         <section class="docs-section" id="scss-docs">
           <h2><span>💎</span>SCSS Documentation</h2>
           <p>Comprehensive SCSS architecture with utilities, mixins, and functions for scalable styling:</p>
-          
+
           <h3>Available Mixins</h3>
           <ul>
-            <li><code>@mixin font-face($font-family, $file-name, $font-weight, $font-style)</code> - Define custom font faces with WOFF2 support</li>
+            <li>
+              <code>@mixin font-face($font-family, $file-name, $font-weight, $font-style)</code> - Define custom font
+              faces with WOFF2 support
+            </li>
             <li><code>@mixin hide</code> - Hide element with opacity and visibility</li>
             <li><code>@mixin show</code> - Show element with opacity and visibility</li>
             <li><code>@mixin abs-center</code> - Center element absolutely using transform</li>
             <li><code>@mixin flex-center($isInline)</code> - Center content with flexbox (inline or block)</li>
           </ul>
-          
+
           <h3>SCSS Functions</h3>
           <ul>
             <li><code>rem($pixel)</code> - Convert pixels to rem units (16px base)</li>
             <li><code>round-to($number, $decimals)</code> - Round number to specified decimal places</li>
             <li><code>fluid($min, $max)</code> - Create fluid typography with clamp()</li>
           </ul>
-          
+
           <h3>Usage Examples</h3>
           <div class="code-block">
-<pre><code>// Using mixins
+            <pre><code>// Using mixins
 .button {
   @include flex-center;
   @include abs-center;
@@ -762,12 +765,12 @@
 @include font-face("CustomFont", "custom-font", 400, normal);</code></pre>
           </div>
         </section>
-        
+
         <!-- Project Structure Section -->
         <section class="docs-section" id="project-structure">
           <h2><span>📁</span>Project Structure & Scripts</h2>
           <p>Well-organized project structure with clear separation of concerns and modular architecture:</p>
-          
+
           <h3>TypeScript Components</h3>
           <p>Modular component system with TypeScript for type safety:</p>
           <ul>
@@ -777,7 +780,7 @@
             <li><strong>Tabs:</strong> Tabbed interface with keyboard navigation and ARIA support</li>
             <li><strong>Theme:</strong> Dark/light theme switcher with system preference detection</li>
           </ul>
-          
+
           <h3>Service Modules</h3>
           <p>Reusable service modules for common functionality:</p>
           <ul>
@@ -786,7 +789,7 @@
             <li><strong>Storage Service:</strong> Local storage wrapper with type safety</li>
             <li><strong>Modal Utils:</strong> Modal management and accessibility utilities</li>
           </ul>
-          
+
           <h3>Build Configuration</h3>
           <p>Optimized build setup with modern tooling:</p>
           <ul>
@@ -798,107 +801,119 @@
           </ul>
         </section>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer-glass">
         <span>Created ❤️ by Dmytro Frolov</span>
       </footer>
     </div>
-    
+
     <!-- GitHub Stars Widget -->
-    <a class="github-stars-widget" href="https://github.com/dmitry-conquer/zen-starter" target="_blank" rel="noopener" title="GitHub Stars">
-      <svg class="github-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.48 2.87 8.28 6.84 9.63.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+    <a
+      class="github-stars-widget"
+      href="https://github.com/dmitry-conquer/zen-starter"
+      target="_blank"
+      rel="noopener"
+      title="GitHub Stars"
+    >
+      <svg class="github-icon" viewBox="0 0 24 24">
+        <path
+          d="M12 2C6.48 2 2 6.58 2 12.26c0 4.48 2.87 8.28 6.84 9.63.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"
+        />
+      </svg>
       <span class="github-stars-count" id="github-stars-count">—</span>
-      <svg class="star-icon" viewBox="0 0 20 20"><path d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/></svg>
+      <svg class="star-icon" viewBox="0 0 20 20">
+        <path d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z" />
+      </svg>
     </a>
-    
+
     <script>
       // GitHub Stars Fetch
       async function fetchStars() {
         try {
-          const res = await fetch('https://api.github.com/repos/dmitry-conquer/zen-starter');
+          const res = await fetch("https://api.github.com/repos/dmitry-conquer/zen-starter");
           if (!res.ok) return;
           const data = await res.json();
           const stars = data.stargazers_count;
-          document.getElementById('github-stars-count').textContent = stars;
+          document.getElementById("github-stars-count").textContent = stars;
         } catch (e) {}
       }
       fetchStars();
-      
+
       // Smooth Navigation
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', (e) => {
+      document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", e => {
           e.preventDefault();
-          const targetId = link.getAttribute('href').substring(1);
+          const targetId = link.getAttribute("href").substring(1);
           const targetElement = document.getElementById(targetId);
-          
+
           if (targetElement) {
             targetElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
+              behavior: "smooth",
+              block: "start",
             });
           }
-          
+
           // Update active state
-          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
+          document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
+          link.classList.add("active");
         });
       });
-      
+
       // Intersection Observer for navigation highlighting
       const observerOptions = {
         threshold: [0, 0.25, 0.5, 0.75, 1],
-        rootMargin: '-20% 0px -70% 0px'
+        rootMargin: "-20% 0px -70% 0px",
       };
-      
-      const observer = new IntersectionObserver((entries) => {
+
+      const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
             const id = entry.target.id;
-            document.querySelectorAll('.nav-link').forEach(link => {
-              link.classList.remove('active');
-              if (link.getAttribute('href') === `#${id}`) {
-                link.classList.add('active');
+            document.querySelectorAll(".nav-link").forEach(link => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
               }
             });
           }
         });
       }, observerOptions);
-      
+
       // Observe all sections
-      document.querySelectorAll('.docs-section, .hero-section').forEach(section => {
+      document.querySelectorAll(".docs-section, .hero-section").forEach(section => {
         observer.observe(section);
       });
-      
+
       // Alternative scroll-based navigation highlighting
       function updateActiveNavLink() {
-        const sections = document.querySelectorAll('.docs-section, .hero-section');
-        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll(".docs-section, .hero-section");
+        const navLinks = document.querySelectorAll(".nav-link");
         const scrollPosition = window.scrollY + window.innerHeight / 2;
-        
-        let currentSection = '';
+
+        let currentSection = "";
         let minDistance = Infinity;
-        
+
         sections.forEach(section => {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.offsetHeight;
           const sectionCenter = sectionTop + sectionHeight / 2;
           const distance = Math.abs(scrollPosition - sectionCenter);
-          
+
           if (distance < minDistance) {
             minDistance = distance;
             currentSection = section.id;
           }
         });
-        
+
         navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${currentSection}`) {
+            link.classList.add("active");
           }
         });
       }
-      
+
       // Throttled scroll event
       let ticking = false;
       function requestTick() {
@@ -910,8 +925,8 @@
           ticking = true;
         }
       }
-      
-      window.addEventListener('scroll', requestTick);
+
+      window.addEventListener("scroll", requestTick);
       ticking = false;
     </script>
   </body>
