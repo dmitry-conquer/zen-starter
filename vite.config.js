@@ -22,8 +22,7 @@ export default defineConfig({
     modulePreload: false,
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, "index.html"),
-        pages: path.resolve(__dirname, "pages/index.html"),
+        index: path.resolve(__dirname, "pages/index.html"),
       },
       output: {
         assetFileNames: ({ name }) => {
@@ -53,17 +52,6 @@ export default defineConfig({
               type: "full-reload",
               path: "*",
             });
-          }
-        });
-      },
-    },
-    {
-      name: "wrap-in-iife",
-      generateBundle(outputOptions, bundle) {
-        Object.keys(bundle).forEach(fileName => {
-          const file = bundle[fileName];
-          if (fileName.endsWith(".js") && "code" in file) {
-            file.code = `(() => {\n${file.code}})()`;
           }
         });
       },
