@@ -45,6 +45,6 @@ export default class BackTopButton {
   };
 
   private bindEvents(): void {
-    window.addEventListener("scroll", this.onScroll);
+    window.addEventListener("scroll", this.onScroll, { passive: true });
   }
 }
