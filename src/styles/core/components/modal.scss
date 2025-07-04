@@ -61,6 +61,7 @@
     width: 100%;
     max-width: rem(700);
     max-height: calc(100vh - fluid(40, 100));
+    max-height: calc(100dvh - fluid(40, 100));
     overflow: auto;
     display: inline-block;
     border-radius: rem(20);

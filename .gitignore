@@ -12,6 +12,7 @@ sftp
 dist
 dist-ssr
 *.local
+NEW_FEATURES.txt
 
 # Editor directories and files
 .vscode/*
