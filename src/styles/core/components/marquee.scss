@@ -1,0 +1,25 @@
+@use "../helpers/" as *;
+
+.marquee {
+  --slide-width: #{rem(200)};
+  --slide-gap: #{rem(30)};
+
+  overflow: hidden;
+  max-width: var(--container-width);
+
+  &__track {
+    display: flex;
+  }
+
+  &__item {
+    flex: 0 0 var(--slide-width);
+    padding-right: var(--slide-gap);
+
+    &-inner {
+      padding: rem(10);
+      white-space: nowrap;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}

@@ -1,8 +1,6 @@
 import "../styles/main.scss";
 
-const initUIComponents = (): void => {
-  // initialize UI components here
-};
+const initUIComponents = (): void => {};
 
 document.addEventListener("DOMContentLoaded", (): void => {
   initUIComponents();
