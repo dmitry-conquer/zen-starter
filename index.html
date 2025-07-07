@@ -568,7 +568,7 @@
       <!-- Hero Section -->
       <section class="hero-section" id="hero">
         <div class="zen-logo">ZEN Starter</div>
-        <div style="font-size: 0.9rem; color: #a5b4fc; margin-bottom: 1rem; opacity: 0.8;">v1.4.7</div>
+        <div style="font-size: 0.9rem; color: #a5b4fc; margin-bottom: 1rem; opacity: 0.8;">v1.4.8</div>
         <div class="zen-subtitle">
           A premium Vite starter kit for rapid web development with modern tooling and optimized workflow
         </div>
@@ -654,6 +654,10 @@
             <div class="feature-card">
               <h4>📱 Responsive</h4>
               <p>Mobile-first responsive design with optimized media queries</p>
+            </div>
+            <div class="feature-card">
+              <h4>🔄 AdaptiveDOM</h4>
+              <p>Dynamic DOM element repositioning for responsive layouts with MediaQueryList optimization</p>
             </div>
           </div>
 
@@ -790,6 +794,54 @@
             <li><strong>Scroll Service:</strong> Lenis smooth scrolling integration and controls</li>
             <li><strong>Storage Service:</strong> Local storage wrapper with type safety</li>
             <li><strong>Modal Utils:</strong> Modal management and accessibility utilities</li>
+          </ul>
+
+          <h3>Utility Modules</h3>
+          <p>Specialized utility classes for enhanced functionality:</p>
+          <ul>
+            <li><strong>AdaptiveDOM:</strong> Dynamic DOM element repositioning based on screen size with MediaQueryList optimization</li>
+          </ul>
+
+          <h3>AdaptiveDOM Usage</h3>
+          <p>AdaptiveDOM automatically moves DOM elements between containers when screen size changes, providing responsive layout control:</p>
+          
+          <div class="code-block">
+            <pre><code>// HTML structure:
+&lt;div id="container1"&gt;
+  &lt;div data-da="container2,768,first"&gt;This will move to container2 on mobile&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="container2"&gt;&lt;/div&gt;
+
+// JavaScript initialization:
+new AdaptiveDOM();</code></pre>
+          </div>
+
+          <h4>Data Attributes</h4>
+          <ul>
+            <li><code>data-da="container,breakpoint,position"</code> - Main attribute for element repositioning</li>
+            <li><strong>container:</strong> Target container ID where element should be moved</li>
+            <li><strong>breakpoint:</strong> Screen width in pixels (e.g., 768 for mobile breakpoint)</li>
+            <li><strong>position:</strong> Insertion position - "first", "last", or numeric index</li>
+          </ul>
+
+          <h4>Position Examples</h4>
+          <div class="code-block">
+            <pre><code>// Move to beginning of container:
+&lt;div data-da="container2,768,first"&gt;Element will be inserted first&lt;/div&gt;
+
+// Move to specific position (index 2):
+&lt;div data-da="container2,768,2"&gt;Element will be inserted at position 2&lt;/div&gt;
+
+// Move to end of container:
+&lt;div data-da="container2,768,last"&gt;Element will be appended to container&lt;/div&gt;</code></pre>
+          </div>
+
+          <h4>Key Features</h4>
+          <ul>
+            <li><strong>Performance Optimized:</strong> Uses MediaQueryList instead of resize events for better performance</li>
+            <li><strong>Automatic Restoration:</strong> Elements return to their original position when breakpoint is no longer active</li>
+            <li><strong>Flexible Positioning:</strong> Support for first, last, or specific index positioning</li>
+            <li><strong>TypeScript Support:</strong> Full type safety and IntelliSense support</li>
           </ul>
 
           <h3>Build Configuration</h3>
