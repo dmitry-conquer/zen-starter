@@ -68,7 +68,7 @@ $x-small: 575.98;
 }
 
 @mixin hover() {
-  @media (any-hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       @content;
     }
