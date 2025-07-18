@@ -10,9 +10,6 @@
  *
  * - Moves the element to #containerId when viewport ≤ 768px, at the specified position.
  * - Restores the element to its original place when viewport > 768px.
- *
- * @author Dmytro Frolov
- * @license MIT
  */
 
 class AdaptiveDOM {
