@@ -6,9 +6,261 @@
     <title>Not Found</title>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" style="min-height: 300vh;">
       {{> header}}
-      <main>Not Found</main>
+      <!-- <main>Not Found</main> -->
+      <div class="mega-header-wrapper">
+        <div id="site-topbar" class="site-topbar">
+          <div class="site-topbar-inner wrap">
+            <div class="site-topbar-flex">
+              <div class="topbar-left">
+                <a href="javascript:;" data-target="off-canvas-left" class="off-canvas-toggle">
+                  <span></span>
+                </a>
+                <div class="topbar-menu"></div>
+              </div>
+              <div class="topbar-right">
+                <div class="topbar-text">
+                  <a href="mailto:info@auroraathome.com"><i class="fa fa-envelope"> </i>info@auroraathome.com</a>
+                  <a href="tel:2153544444">
+                    <i class="fa fa-phone" style="margin-left: 30px"></i>Philadelphia: 215-354-4444</a
+                  >
+                  <a href="tel:6103751800">
+                    <i class="fa fa-phone" style="margin-left: 30px"></i>Reading: 610-375-1800
+                  </a>
+                  <a href="tel:7172001414">
+                    <i class="fa fa-phone" style="margin-left: 30px"></i>Lancaster: 717-200-1414</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <header class="mega-header" data-js-header>
+          <div class="mega-header__container">
+            <a href="/" class="mega-header__logo">
+              <img src="https://www.auroraathome.com/wp-content/uploads/2023/01/AURORA.svg" alt="logo" />
+            </a>
+            <nav class="mega-header__menu">
+              <ul class="mega-header__menu-list">
+                <li class="mega-header__menu-item has-submenu">
+                  <a href="#services" class="mega-header__menu-link">Services</a>
+                  <div class="mega-header__menu-dropdown">
+                    <ul class="mega-header__menu-dropdown-list">
+                      <li class="mega-header__menu-dropdown-item">
+                        <a href="#" class="mega-header__menu-dropdown-link has-next-sibling-list">HOME HEALTH CARE</a>
+                        <ul class="mega-header__menu-dropdown-sublist">
+                          <li class="mega-header__menu-dropdown-subitem">
+                            <a href="#" class="mega-header__menu-dropdown-sublink">Specialized Home Care</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="mega-header__menu-dropdown-item">
+                        <a href="#" class="mega-header__menu-dropdown-link has-next-sibling-list">Home Care</a>
+                        <ul class="mega-header__menu-dropdown-sublist">
+                          <li class="mega-header__menu-dropdown-subitem">
+                            <a href="#" class="mega-header__menu-dropdown-sublink">Companion Care</a>
+                          </li>
+                          <li class="mega-header__menu-dropdown-subitem">
+                            <a href="#" class="mega-header__menu-dropdown-sublink">Personal Care</a>
+                          </li>
+                          <li class="mega-header__menu-dropdown-subitem">
+                            <a href="#" class="mega-header__menu-dropdown-sublink">Light Housekeeping</a>
+                          </li>
+                          <li class="mega-header__menu-dropdown-subitem">
+                            <a href="#" class="mega-header__menu-dropdown-sublink">Care Management</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <ul class="mega-header__menu-dropdown-list">
+                      <li class="mega-header__menu-dropdown-item">
+                        <a href="#" class="mega-header__menu-dropdown-link">Pediatric Care</a>
+                      </li>
+                      <li class="mega-header__menu-dropdown-item">
+                        <a href="#" class="mega-header__menu-dropdown-link">VetAssist Program</a>
+                      </li>
+                      <li class="mega-header__menu-dropdown-item">
+                        <a href="#" class="mega-header__menu-dropdown-link"
+                          >Developmental Care <br />
+                          Services – ODP</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="mega-header__menu-item"><a href="/" class="mega-header__menu-link">About Us</a></li>
+                <li class="mega-header__menu-item"><a href="/" class="mega-header__menu-link">Transfer</a></li>
+                <li class="mega-header__menu-item"><a href="/" class="mega-header__menu-link">Our Team</a></li>
+                <li class="mega-header__menu-item">
+                  <a href="/" class="mega-header__menu-link">Patient Referral</a>
+                </li>
+                <li class="mega-header__menu-item"><a href="/" class="mega-header__menu-link">Blog</a></li>
+                <li class="mega-header__menu-item"><a href="/" class="mega-header__menu-link">Careers</a></li>
+                <li class="mega-header__menu-item has-submenu">
+                  <a href="/" class="mega-header__menu-link">Locations</a>
+                  <div class="mega-header__menu-dropdown">
+                    <ul class="mega-header__menu-dropdown-list">
+                      <li class="mega-header__menu-dropdown-item">
+                        <a href="#" class="mega-header__menu-dropdown-link">Home Care</a>
+                      </li>
+                    </ul>
+                    <ul class="mega-header__menu-dropdown-list">
+                      <li class="mega-header__menu-dropdown-item">
+                        <a href="#" class="mega-header__menu-dropdown-link">Pediatric Care</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="mega-header__menu-item"><a href="/" class="mega-header__menu-link">Contact Us</a></li>
+              </ul>
+            </nav>
+            <button
+              data-js-header-trigger-button
+              type="button"
+              aria-label="Toggle menu"
+              aria-expanded="false"
+              aria-controls="header-overlay"
+              id="menu-toggle"
+              class="mega-header__menu-trigger"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                <rect width="40" height="40" transform="translate(0.390625 0.160004)" fill="#C6D3E3" />
+                <rect x="8.89062" y="19.66" width="23" height="1" stroke="#273272" />
+                <rect x="8.89062" y="28.66" width="23" height="1" stroke="#273272" />
+                <rect x="8.89062" y="10.66" width="23" height="1" stroke="#273272" />
+              </svg>
+            </button>
+            <nav
+              id="header-overlay"
+              class="header__overlay header-overlay"
+              aria-labelledby="menu-toggle"
+              role="navigation"
+              aria-label="Mobile navigation"
+              data-js-header-overlay
+            >
+              <div class="header-overlay__panels">
+                <div
+                  class="header-overlay__panel is-active"
+                  data-lenis-prevent
+                  data-js-header-panel
+                  data-panel-id="main"
+                >
+                  <div class="header-overlay__panel-head">
+                    <form action="" class="header-overlay__panel-search">
+                      <input type="text" placeholder="Search" />
+                      <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M19.25 19.25L15.5 15.5M4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z"
+                            stroke="#14317F"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </form>
+                  </div>
+                  <ul class="header-overlay__nav-list">
+                    <li class="header-overlay__nav-item">
+                      <a
+                        class="header-overlay__nav-link next-panel inline-icon inline-icon_menu-item-arrow"
+                        data-panel="services"
+                        >Services</a
+                      >
+                    </li>
+                    <li class="header-overlay__nav-item">
+                      <a class="header-overlay__nav-link">About Us</a>
+                    </li>
+                    <li class="header-overlay__nav-item">
+                      <a
+                        class="header-overlay__nav-link next-panel inline-icon inline-icon_menu-item-arrow"
+                        data-panel="industries"
+                        >Transfer</a
+                      >
+                    </li>
+                    <li class="header-overlay__nav-item">
+                      <a class="header-overlay__nav-link">Our Team</a>
+                    </li>
+                    <li class="header-overlay__nav-item">
+                      <a class="header-overlay__nav-link">Blog</a>
+                    </li>
+                    <li class="header-overlay__nav-item">
+                      <a class="header-overlay__nav-link">Careers</a>
+                    </li>
+                    <li class="header-overlay__nav-item">
+                      <a class="header-overlay__nav-link">Locations</a>
+                    </li>
+                    <li class="header-overlay__nav-item">
+                      <a class="header-overlay__nav-link">Contact Us</a>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="header-overlay__panel to-right"
+                  data-lenis-prevent
+                  data-js-header-panel
+                  data-panel-id="services"
+                >
+                  <div class="header-overlay__panel-head">
+                    <button
+                      type="button"
+                      aria-label="Back"
+                      title="back"
+                      class="header-overlay__panel-back prev-panel inline-icon inline-icon_menu-item-arrow inline-icon_menu-item-arrow_rotate"
+                    >
+                      Services
+                    </button>
+                  </div>
+                  <div class="header-overlay__nav-content nav-content">
+                    <div class="nav-content__wrapper">
+                      <div class="nav-content__content">
+                        <ul class="nav-content__list">
+                          <li class="nav-content__item">
+                            <a>HOME HEALTH CARE</a>
+                            <ul>
+                              <li>
+                                <a href="#">Specialized Home Care</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li class="nav-content__item">
+                            <a>Home Care </a>
+                            <ul>
+                              <li>
+                                <a href="#">Companion Care</a>
+                              </li>
+                              <li>
+                                <a href="#">Personal Care</a>
+                              </li>
+                              <li>
+                                <a href="#">Light Housekeeping</a>
+                              </li>
+                              <li>
+                                <a href="#">Care Management</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li class="nav-content__item">
+                            <a>Pediatric Care</a>
+                          </li>
+                          <li class="nav-content__item">
+                            <a>VetAssist Program</a>
+                          </li>
+                          <li class="nav-content__item">
+                            <a>Developmental Care Services – ODP</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </header>
+      </div>
       {{> footer}}
     </div>
     <script type="module" src="/src/scripts/main.ts" defer></script>
