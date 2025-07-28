@@ -1,9 +1,6 @@
 import "../styles/main.scss";
-import { Header } from "./components";
 
-const initUIComponents = (): void => {
-  new Header();
-};
+const initUIComponents = (): void => {};
 
 document.addEventListener("DOMContentLoaded", (): void => {
   initUIComponents();

@@ -3,6 +3,7 @@ import handlebars from "vite-plugin-handlebars";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import webfontDownload from "vite-plugin-webfont-dl";
 
 // Constants
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -52,12 +53,10 @@ const buildConfig = {
 
 // Custom plugins
 const plugins = [
-  // Handlebars plugin
+  webfontDownload(["https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap"]),
   handlebars({
     partialDirectory: COMPONENTS_DIR,
   }),
-
-  // Handlebars watcher plugin
   {
     name: "handlebars-watcher",
     configureServer(server) {
@@ -74,8 +73,6 @@ const plugins = [
       });
     },
   },
-
-  // IIFE wrapper plugin
   {
     name: "wrap-in-iife",
     generateBundle(outputOptions, bundle) {
