@@ -3,7 +3,7 @@ import handlebars from "vite-plugin-handlebars";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import webfontDownload from "vite-plugin-webfont-dl";
+// import webfontDownload from "vite-plugin-webfont-dl";
 
 // Constants
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -53,7 +53,7 @@ const buildConfig = {
 
 // Custom plugins
 const plugins = [
-  webfontDownload(["https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap"]),
+  // webfontDownload(["https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap"]),
   handlebars({
     partialDirectory: COMPONENTS_DIR,
   }),
