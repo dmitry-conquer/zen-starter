@@ -3,1007 +3,842 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZEN Starter - Documentation</title>
+    <meta name="description" content="ZEN Starter - Professional Vite-based starter kit for modern web development with TypeScript, SCSS, and enterprise-grade tooling." />
+    <link rel="icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta name="robots" content="index, follow" />
+    <title>ZEN Starter - Professional Vite Kit</title>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap");
-      html,
-      body {
-        height: 100%;
+      :root {
+        --primary: #3ECF8E;
+        --primary-dark: #2d9d6b;
+        --secondary: #6366f1;
+        --accent: #f59e0b;
+        --text-primary: #FFFFFF;
+        --text-secondary: #C0C0C0;
+        --text-muted: #808080;
+        --bg-primary: #171717;
+        --bg-secondary: #282828;
+        --bg-tertiary: #333333;
+        --border: #505050;
+        --border-light: #606060;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      }
+
+      * {
         margin: 0;
         padding: 0;
-        font-family:
-          "Inter",
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          system-ui,
-          sans-serif;
-        background: #181c2a;
-        color: #eaf6fb;
-        overflow-x: hidden;
+        box-sizing: border-box;
+      }
+
+      html {
         scroll-behavior: smooth;
       }
-      li {
-        list-style: none;
-      }
+
       body {
-        display: flex;
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-
-      /* Main Layout */
-      .main-wrapper {
-        overflow-x: hidden;
-        position: relative;
-        min-height: 100vh;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 0;
-      }
-
-      /* Background Blobs */
-      .blobs-bg {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-      }
-      .blob {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.55;
-        animation: blobMove 18s ease-in-out infinite alternate;
-      }
-      .blob1 {
-        width: 600px;
-        height: 600px;
-        left: -180px;
-        top: -120px;
-        background: radial-gradient(circle, #5eead4 0%, #2563eb 80%);
-        animation-delay: 0s;
-        background-size: 200% 200%;
-        animation:
-          blobMove 18s ease-in-out infinite alternate,
-          gradientShift 8s ease-in-out infinite;
-      }
-      .blob2 {
-        width: 500px;
-        height: 500px;
-        right: -120px;
-        top: 80px;
-        background: radial-gradient(circle, #a78bfa 0%, #2563eb 80%);
-        animation-delay: 3s;
-        background-size: 200% 200%;
-        animation:
-          blobMove 18s ease-in-out infinite alternate,
-          gradientShift 8s ease-in-out infinite 3s;
-      }
-      .blob3 {
-        width: 400px;
-        height: 400px;
-        left: 50vw;
-        bottom: -120px;
-        background: radial-gradient(circle, #f472b6 0%, #a78bfa 80%);
-        animation-delay: 6s;
-        background-size: 200% 200%;
-        animation:
-          blobMove 18s ease-in-out infinite alternate,
-          gradientShift 8s ease-in-out infinite 6s;
-      }
-      @keyframes blobMove {
-        0% {
-          transform: scale(1) translateY(0);
-        }
-        100% {
-          transform: scale(1.12) translateY(40px);
-        }
-      }
-      @keyframes gradientShift {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      /* Top Navigation */
-      .top-nav {
-        position: fixed;
-        top: 24px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1000;
-        background: rgba(30, 34, 54, 0.85);
-        backdrop-filter: blur(20px) saturate(160%);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 0.8rem 1.2rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-      }
-      .nav-link {
-        font-size: 0.9rem;
-        color: #a5b4fc;
-        text-decoration: none;
-        padding: 0.6rem 1rem;
-        border-radius: 12px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        font-weight: 500;
-        position: relative;
-        overflow: hidden;
-      }
-      .nav-link::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.1), transparent);
-        transition: left 0.5s;
-      }
-      .nav-link:hover::before {
-        left: 100%;
-      }
-      .nav-link:hover {
-        background: rgba(94, 234, 212, 0.08);
-        color: #5eead4;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(94, 234, 212, 0.15);
-      }
-      .nav-link.active {
-        background: rgba(94, 234, 212, 0.12);
-        color: #5eead4;
-        font-weight: 600;
-        box-shadow: 0 4px 16px rgba(94, 234, 212, 0.2);
-      }
-
-      /* Hero Section */
-      .hero-section {
-        position: relative;
-        z-index: 2;
-        padding: 8vh 0 6vh 0;
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-      .zen-logo {
-        font-size: 4rem;
-        font-weight: 800;
-        letter-spacing: 0.09em;
-        margin-bottom: 1rem;
-        background: linear-gradient(90deg, #5eead4 20%, #a78bfa 60%, #2563eb 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 8px 48px rgba(80, 80, 180, 0.13);
-        animation: fadeInDown 1.1s cubic-bezier(0.77, 0, 0.18, 1) 0.1s both;
-      }
-      .zen-subtitle {
-        font-size: 1.4rem;
-        font-weight: 400;
-        color: #a5b4fc;
-        margin-bottom: 2.5rem;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
         line-height: 1.6;
-        animation: fadeInDown 1.1s cubic-bezier(0.77, 0, 0.18, 1) 0.2s both;
-      }
-      .start-btn {
-        margin-top: 0.5rem;
-        padding: 1.2rem 3.5rem;
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: #fff;
-        background: linear-gradient(90deg, #2563eb 0%, #a78bfa 100%);
-        border: none;
-        border-radius: 999px;
-        box-shadow:
-          0 4px 32px 0 rgba(94, 234, 212, 0.18),
-          0 2px 16px rgba(80, 80, 180, 0.13);
-        cursor: pointer;
-        transition:
-          background 0.4s ease,
-          transform 0.3s ease,
-          box-shadow 0.4s ease;
-        letter-spacing: 0.04em;
-        position: relative;
-        overflow: hidden;
-        animation: fadeInUp 1.1s cubic-bezier(0.77, 0, 0.18, 1) 0.3s both;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.7em;
-        text-decoration: none;
+        overflow-x: hidden;
       }
 
-      /* Install Command */
-      .install-command {
-        background: rgba(60, 70, 100, 0.4);
-        backdrop-filter: blur(20px) saturate(160%);
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 1rem 1.5rem;
-        margin: 1.5rem auto 0 auto;
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(23, 23, 23, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-content {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        animation: fadeInUp 1.1s cubic-bezier(0.77, 0, 0.18, 1) 0.4s both;
-        max-width: 310px;
-        overflow-x: visible;
+        padding: 16px 0;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--primary);
+      }
+
+      .github-btn {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        padding: 8px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        border: 1px solid var(--border);
+        transition: all 0.2s ease;
+      }
+
+      .github-btn:hover {
+        background: var(--bg-tertiary);
+        border-color: var(--border-light);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 120px 0 80px;
         text-align: center;
-        gap: 0.5rem;
+        background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
       }
-      .install-command:hover {
-        border-color: rgba(94, 234, 212, 0.2);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(62, 207, 142, 0.1);
+        color: var(--primary);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        border: 1px solid rgba(62, 207, 142, 0.2);
+      }
+
+      .hero-title {
+        font-size: 64px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-subtitle {
+        font-size: 20px;
+        color: var(--text-secondary);
+        margin-bottom: 40px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 48px;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: var(--bg-primary);
+        padding: 16px 32px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.2s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
         transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
       }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-primary);
+        padding: 16px 32px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        border: 1px solid var(--border);
+        transition: all 0.2s ease;
+      }
+
+      .btn-secondary:hover {
+        background: var(--bg-secondary);
+        border-color: var(--border-light);
+      }
+
+      .install-command {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 310px;
+        margin: 0 auto;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 12px;
+      }
+
       .command-text {
-        font-family: "Fira Mono", "Consolas", monospace;
-        font-size: 1rem;
-        color: #ffffff;
-        font-weight: 400;
-        letter-spacing: 0.02em;
+        color: var(--text-primary);
         user-select: all;
+        flex: 1;
+        text-align: center;
         white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
+
       .copy-btn {
         background: none;
         border: none;
-        border-radius: 8px;
-        padding: 0;
-        margin-left: 1.2em;
+        color: var(--text-muted);
         cursor: pointer;
-        display: flex;
-        align-items: center;
-        transition: background 0.2s;
+        padding: 6px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        margin-left: 8px;
       }
+
       .copy-btn:hover {
-        background: rgba(94, 234, 212, 0.08);
-      }
-      .copy-btn svg {
-        width: 1.3em;
-        height: 1.3em;
-        fill: none;
-        stroke: #eaf6fb;
-        transition: stroke 0.2s;
-        display: block;
-      }
-      .checkmark-icon {
-        display: none;
-      }
-      .checkmark-icon svg {
-        stroke: #22c55e;
-      }
-      .copy-btn.copied .checkmark-icon {
-        display: inline-block;
-      }
-      .copy-btn.copied .copy-icon {
-        display: none;
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
       }
 
-      .start-btn:hover {
-        box-shadow:
-          0 12px 48px 0 rgba(94, 234, 212, 0.22),
-          0 6px 32px rgba(80, 80, 180, 0.18);
+      /* Features Section */
+      .features {
+        padding: 80px 0;
+        background: var(--bg-secondary);
       }
 
-      /* Documentation Sections */
-      .docs-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px 80px 20px;
-        position: relative;
-        z-index: 2;
-      }
-      .docs-section {
-        margin-bottom: 3rem;
-        background: rgba(30, 34, 54, 0.6);
-        backdrop-filter: blur(20px) saturate(160%);
-        border-radius: 24px;
-        border: 1.5px solid rgba(94, 234, 212, 0.15);
-        padding: 3rem;
-        box-shadow: 0 8px 32px rgba(80, 80, 180, 0.1);
-        animation: fadeInCard 1.2s cubic-bezier(0.77, 0, 0.18, 1) both;
-      }
-      .docs-section h2 {
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        color: #5eead4;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-      }
-      .docs-section h2 span {
-        font-size: 1.8em;
-      }
-      .docs-section h3 {
-        font-size: 1.4rem;
-        font-weight: 600;
-        margin: 2rem 0 1rem 0;
-        color: #a78bfa;
-      }
-      .docs-section p {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: #eaf6fb;
-        margin-bottom: 1rem;
-      }
-
-      /* Why Choose Grid */
-      .why-choose-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-        margin: 2rem 0;
-      }
-      .why-card {
-        background: rgba(36, 41, 61, 0.6);
-        border-radius: 16px;
-        padding: 1.8rem;
-        border: 1px solid rgba(167, 139, 250, 0.15);
+      .section-header {
         text-align: center;
-        transition: transform 0.3s ease;
-      }
-      .why-card:hover {
-        transform: translateY(-4px);
-      }
-      .why-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        display: block;
-      }
-      .why-card h3 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #a78bfa;
-        margin-bottom: 0.8rem;
-      }
-      .why-card p {
-        font-size: 0.95rem;
-        color: #a5b4fc;
-        line-height: 1.6;
-        margin: 0;
+        margin-bottom: 64px;
       }
 
-      /* Features Categories */
-      .features-categories {
+      .section-title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: var(--text-primary);
+      }
+
+      .section-subtitle {
+        font-size: 18px;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin: 2rem 0;
+        gap: 32px;
       }
-      .category-card {
-        background: rgba(36, 41, 61, 0.6);
-        border-radius: 20px;
-        padding: 2rem;
-        border: 1px solid rgba(167, 139, 250, 0.15);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      .feature-card {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 32px;
+        transition: all 0.2s ease;
+      }
+
+      .feature-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .feature-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(62, 207, 142, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        font-size: 24px;
+      }
+
+      .feature-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: var(--text-primary);
+      }
+
+      .feature-description {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Philosophy Section */
+      .philosophy {
+        padding: 80px 0;
+        background: var(--bg-primary);
+      }
+
+      .philosophy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+        margin-top: 64px;
+      }
+
+      .philosophy-card {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 32px;
         position: relative;
         overflow: hidden;
       }
-      .category-card::before {
-        content: "";
+
+      .philosophy-card::before {
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #5eead4, #a78bfa, #2563eb);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
       }
 
-      .category-header {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        margin-bottom: 1.5rem;
+      .philosophy-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: var(--primary);
       }
-      .category-icon {
-        font-size: 1.8rem;
-        width: 3rem;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(94, 234, 212, 0.1);
-        border-radius: 12px;
-        color: #5eead4;
-      }
-      .category-title {
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: #a78bfa;
-        margin: 0;
-      }
-      .category-description {
-        font-size: 0.95rem;
-        color: #a5b4fc;
-        margin-bottom: 1.5rem;
+
+      .philosophy-description {
+        color: var(--text-secondary);
         line-height: 1.6;
-      }
-      .features-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      .feature-item {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        padding: 0.8rem;
-        border-radius: 10px;
-        transition: all 0.2s ease;
-        background: rgba(255, 255, 255, 0.02);
+        margin-bottom: 16px;
       }
 
-      .feature-icon {
-        width: 1.2rem;
-        height: 1.2rem;
-        color: #5eead4;
-        flex-shrink: 0;
-      }
-      .feature-text {
-        font-size: 0.9rem;
-        color: #eaf6fb;
-        font-weight: 500;
+      .philosophy-example {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 14px;
+        color: var(--text-primary);
+        overflow-x: auto;
       }
 
       /* Footer */
-      .footer-glass {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1.5rem;
-        background: rgba(30, 34, 54, 0.8);
-        backdrop-filter: blur(20px) saturate(160%);
-        border-top: 1px solid rgba(94, 234, 212, 0.1);
-        margin-top: 2rem;
-      }
-      .footer-glass span {
-        font-size: 0.95rem;
-        color: #a5b4fc;
-        opacity: 0.8;
-        letter-spacing: 0.04em;
-        user-select: none;
+      .footer {
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--border);
+        padding: 48px 0;
         text-align: center;
       }
 
-      /* GitHub Widget */
-      .github-stars-widget {
-        position: fixed;
-        top: 24px;
-        right: 24px;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        gap: 0.5em;
-        background: rgba(30, 34, 54, 0.9);
-        box-shadow: 0 4px 24px 0 rgba(80, 80, 180, 0.15);
-        backdrop-filter: blur(20px) saturate(160%);
-        border-radius: 16px;
-        border: 1.5px solid rgba(167, 139, 250, 0.18);
-        padding: 0.5em 1em 0.5em 0.8em;
-        font-size: 1em;
-        color: #a5b4fc;
-        cursor: pointer;
-        user-select: none;
-        text-decoration: none;
-        transition: transform 0.2s ease;
-      }
-      .github-stars-widget:hover {
-        transform: translateY(-2px);
-      }
-      .github-stars-widget .github-icon {
-        width: 2em;
-        height: 2em;
-        fill: #fff;
-        filter: drop-shadow(0 2px 8px #2563eb33);
-        flex-shrink: 0;
-        margin-right: 0.2em;
-        transition: fill 0.2s;
-      }
-      .github-stars-widget .star-icon {
-        width: 1.2em;
-        height: 1.2em;
-        margin-left: 0.2em;
-        fill: #facc15;
-        flex-shrink: 0;
-        display: inline-block;
-        vertical-align: middle;
+      .footer-content {
+        color: var(--text-muted);
+        font-size: 14px;
       }
 
-      /* Animations */
-      @keyframes fadeInDown {
-        0% {
-          opacity: 0;
-          transform: translateY(-40px);
+      /* Responsive */
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 16px;
         }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes fadeInCard {
-        0% {
-          opacity: 0;
-          transform: translateY(40px) scale(0.98);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-      @keyframes fadeInLeft {
-        0% {
-          opacity: 0;
-          transform: translateX(-40px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
 
-      /* Responsive Design */
-      @media (max-width: 1200px) {
-        .top-nav {
-          left: 20px;
-          right: 20px;
-          transform: none;
-          justify-content: center;
+        .hero-title {
+          font-size: 48px;
         }
-      }
-      @media (max-width: 900px) {
-        .hero-section {
-          padding: 6vh 20px 4vh 20px;
+
+        .hero-subtitle {
+          font-size: 18px;
         }
-        .zen-logo {
-          font-size: 3rem;
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
         }
-        .zen-subtitle {
-          font-size: 1.2rem;
-        }
-        .docs-section {
-          padding: 2rem;
-          margin-bottom: 4rem;
-        }
-        .docs-section h2 {
-          font-size: 1.8rem;
-        }
-        .features-categories {
+
+        .features-grid {
           grid-template-columns: 1fr;
         }
-        .top-nav {
-          position: static;
-          margin: 2rem auto;
-          max-width: 100%;
-          order: -1;
+
+        .philosophy-grid {
+          grid-template-columns: 1fr;
         }
-        .docs-container {
-          padding: 0 16px 60px 16px;
-        }
-      }
-      @media (max-width: 420px) {
-        .install-command {
-          max-width: 100%;
-          overflow-x: auto;
+
+        .nav {
+          display: none;
         }
       }
 
-      .zen-version {
-        font-size: 0.9rem;
-        color: #a5b4fc;
-        margin-bottom: 1rem;
-        opacity: 0.8;
-        animation: fadeInLeft 1.1s cubic-bezier(0.77, 0, 0.18, 1) 0.25s both;
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 36px;
+        }
+
+        .section-title {
+          font-size: 32px;
+        }
+
+        .install-command {
+          flex-direction: column;
+          gap: 16px;
+          text-align: center;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="main-wrapper">
-      <div class="blobs-bg">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
-      </div>
-
-      <!-- Hero Section -->
-      <section class="hero-section" id="hero">
-        <div class="zen-logo">ZEN Starter</div>
-        <div class="zen-version">v1.5.2 released on August 19, 2025</div>
-        <div class="zen-subtitle">
-          Ultimate Vite starter kit for rapid web development with modern tooling and optimized workflow
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="#" class="logo">ZEN</a>
+          <nav class="nav">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#philosophy" class="nav-link">Philosophy</a>
+            <a href="https://github.com/dmitry-conquer/zen-starter" class="github-btn" target="_blank" rel="noopener">
+              GitHub
+            </a>
+          </nav>
         </div>
-        <a href="pages/index.html" class="start-btn">
-          <span>Get Started</span>
-        </a>
-        <div class="install-command">
-          <span class="command-text" id="install-command-text">npm create zen@latest my-app</span>
-          <button class="copy-btn" id="copy-install-btn" title="Copy">
-            <span class="copy-icon">
-              <svg
-                viewBox="0 0 111.07 122.88"
-                width="1.3em"
-                height="1.3em"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M97.67,20.81L97.67,20.81l0.01,0.02c3.7,0.01,7.04,1.51,9.46,3.93c2.4,2.41,3.9,5.74,3.9,9.42h0.02v0.02v75.28 v0.01h-0.02c-0.01,3.68-1.51,7.03-3.93,9.46c-2.41,2.4-5.74,3.9-9.42,3.9v0.02h-0.02H38.48h-0.01v-0.02 c-3.69-0.01-7.04-1.5-9.46-3.93c-2.4-2.41-3.9-5.74-3.91-9.42H25.1c0-25.96,0-49.34,0-75.3v-0.01h0.02 c0.01-3.69,1.52-7.04,3.94-9.46c2.41-2.4,5.73-3.9,9.42-3.91v-0.02h0.02C58.22,20.81,77.95,20.81,97.67,20.81L97.67,20.81z M0.02,75.38L0,13.39v-0.01h0.02c0.01-3.69,1.52-7.04,3.93-9.46c2.41-2.4,5.74-3.9,9.42-3.91V0h0.02h59.19 c7.69,0,8.9,9.96,0.01,10.16H13.4h-0.02v-0.02c-0.88,0-1.68,0.37-2.27,0.97c-0.59,0.58-0.96,1.4-0.96,2.27h0.02v0.01v3.17 c0,19.61,0,39.21,0,58.81C10.17,83.63,0.02,84.09,0.02,75.38L0.02,75.38z M100.91,109.49V34.2v-0.02h0.02 c0-0.87-0.37-1.68-0.97-2.27c-0.59-0.58-1.4-0.96-2.28-0.96v0.02h-0.01H38.48h-0.02v-0.02c-0.88,0-1.68,0.38-2.27,0.97 c-0.59,0.58-0.96,1.4-0.96,2.27h0.02v0.01v75.28v0.02h-0.02c0,0.88,0.38,1.68,0.97,2.27c0.59,0.59,1.4,0.96,2.27,0.96v-0.02h0.01 h59.19h0.02v0.02c0.87,0,1.68-0.38,2.27-0.97c0.59-0.58,0.96-1.4,0.96-2.27L100.91,109.49L100.91,109.49L100.91,109.49 L100.91,109.49z"
-                  fill="#eaf6fb"
-                />
-              </svg>
-            </span>
-            <span class="checkmark-icon">
-              <svg
-                viewBox="0 0 24 24"
-                width="1.3em"
-                height="1.3em"
-                fill="none"
-                stroke="#22c55e"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="20 6 10.8 17 4 10.8" />
-              </svg>
-            </span>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-badge" data-aos="fade-up" data-aos-delay="100">
+          v1.5.2 • Professional Starter Kit by Dmytro Frolov • MIT License
+        </div>
+        
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+          Build Faster, Ship Sooner
+        </h1>
+        
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
+          Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling. 
+          Designed for developers who value quality, performance, and maintainability.
+        </p>
+        
+        <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
+          <a href="/pages/index.html" class="btn-primary" target="_blank" rel="noopener">
+            Get Started
+          </a>
+          <a href="https://github.com/dmitry-conquer/zen-starter" class="btn-secondary">
+            Learn More
+          </a>
+        </div>
+        
+        <div class="install-command" data-aos="fade-up" data-aos-delay="500">
+          <span class="command-text" id="install-command">npm create zen@latest my-app</span>
+          <button class="copy-btn" id="copy-btn" title="Copy command">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
           </button>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Documentation Container -->
-      <div class="docs-container">
-        <!-- Features Section -->
-        <section class="docs-section" id="features">
-          <div class="features-categories">
-            <!-- Development Tools -->
-            <div class="category-card">
-              <div class="category-header">
-                <div class="category-icon">⚡</div>
-                <h3 class="category-title">Development Tools</h3>
-              </div>
-              <p class="category-description">Modern build tools and development environment setup</p>
-              <div class="features-list">
-                <div class="feature-item">
-                  <span class="feature-icon">🚀</span>
-                  <span class="feature-text">Vite - Lightning-fast development server</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">📄</span>
-                  <span class="feature-text">Multi-page site configuration</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🔧</span>
-                  <span class="feature-text">TypeScript - Type-safe development</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🎨</span>
-                  <span class="feature-text">Prettier & ESLint - Code quality tools</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">📦</span>
-                  <span class="feature-text">Handlebars - Template engine</span>
-                </div>
-              </div>
-            </div>
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2 class="section-title">Why Choose ZEN Starter?</h2>
+          <p class="section-subtitle">
+            Built with modern best practices and enterprise-grade tooling for professional development teams
+          </p>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-icon">⚡</div>
+            <h3 class="feature-title">Lightning Fast Development</h3>
+            <p class="feature-description">
+              Vite-powered HMR with instant feedback. Multi-page application support with Handlebars templating. 
+              Optimized build pipeline for production-ready deployments.
+            </p>
+          </div>
+          
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon">🔧</div>
+            <h3 class="feature-title">Type-Safe Architecture</h3>
+            <p class="feature-description">
+              Full TypeScript integration with class-based component architecture. 
+              Modular design patterns for scalable applications. Comprehensive type definitions.
+            </p>
+          </div>
+          
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon">🎨</div>
+            <h3 class="feature-title">Professional Styling</h3>
+            <p class="feature-description">
+              SCSS with PostCSS optimization. CSS-in-JS alternatives with proper scoping. 
+              Responsive design utilities and modern CSS features.
+            </p>
+          </div>
+          
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon">🧩</div>
+            <h3 class="feature-title">Ready Components</h3>
+            <p class="feature-description">
+              Production-ready interactive components: Accordion, Tabs, Modal, Theme switcher. 
+              Built with accessibility and performance in mind.
+            </p>
+          </div>
+          
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="feature-icon">🚀</div>
+            <h3 class="feature-title">Performance Optimized</h3>
+            <p class="feature-description">
+              Lenis smooth scrolling integration. Optimized bundle splitting. 
+              Critical CSS extraction and lazy loading strategies.
+            </p>
+          </div>
+          
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="feature-icon">🛠️</div>
+            <h3 class="feature-title">Developer Experience</h3>
+            <p class="feature-description">
+              ESLint + Prettier configuration. Hot module replacement. 
+              Comprehensive error handling and debugging tools.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <!-- Styling & CSS -->
-            <div class="category-card">
-              <div class="category-header">
-                <div class="category-icon">💎</div>
-                <h3 class="category-title">Styling & CSS</h3>
-              </div>
-              <p class="category-description">Advanced CSS processing and styling capabilities</p>
-              <div class="features-list">
-                <div class="feature-item">
-                  <span class="feature-icon">🎨</span>
-                  <span class="feature-text">SCSS with variables & mixins</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🔧</span>
-                  <span class="feature-text">PostCSS with autoprefixer</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">📱</span>
-                  <span class="feature-text">Mobile-first responsive design</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">⚡</span>
-                  <span class="feature-text">CSS optimization & minification</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">📱</span>
-                  <span class="feature-text">Media query combine & sort</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ready Components -->
-            <div class="category-card">
-              <div class="category-header">
-                <div class="category-icon">🧩</div>
-                <h3 class="category-title">Ready Components</h3>
-              </div>
-              <p class="category-description">Pre-built interactive components with TypeScript</p>
-              <div class="features-list">
-                <div class="feature-item">
-                  <span class="feature-icon">📋</span>
-                  <span class="feature-text">Accordion with keyboard navigation</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🗂️</span>
-                  <span class="feature-text">Tabs with keyboard navigation</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🪟</span>
-                  <span class="feature-text">Modal system with accessibility</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🎠</span>
-                  <span class="feature-text">Marquee with smooth scrolling</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🌙</span>
-                  <span class="feature-text">Theme switcher (dark/light)</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">⬆️</span>
-                  <span class="feature-text">Back to top button</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- User Experience -->
-            <div class="category-card">
-              <div class="category-header">
-                <div class="category-icon">✨</div>
-                <h3 class="category-title">User Experience</h3>
-              </div>
-              <p class="category-description">Enhanced user interactions and smooth animations</p>
-              <div class="features-list">
-                <div class="feature-item">
-                  <span class="feature-icon">🌀</span>
-                  <span class="feature-text">Lenis smooth scrolling</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">📱</span>
-                  <span class="feature-text">Responsive header with mobile menu</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🔄</span>
-                  <span class="feature-text">AdaptiveDOM for dynamic layouts</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">⚡</span>
-                  <span class="feature-text">Performance optimized animations</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">♿</span>
-                  <span class="feature-text">ARIA support for accessibility</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Services & Utilities -->
-            <div class="category-card">
-              <div class="category-header">
-                <div class="category-icon">🔌</div>
-                <h3 class="category-title">Services & Utilities</h3>
-              </div>
-              <p class="category-description">Reusable service modules and utility functions</p>
-              <div class="features-list">
-                <div class="feature-item">
-                  <span class="feature-icon">🌐</span>
-                  <span class="feature-text">API service with error handling</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">💾</span>
-                  <span class="feature-text">Storage service with type safety</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">📜</span>
-                  <span class="feature-text">Scroll service with Lenis integration</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🛠️</span>
-                  <span class="feature-text">Modal utilities for accessibility</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Production Ready -->
-            <div class="category-card">
-              <div class="category-header">
-                <div class="category-icon">🚀</div>
-                <h3 class="category-title">Production Ready</h3>
-              </div>
-              <p class="category-description">Optimized for deployment and production use</p>
-              <div class="features-list">
-                <div class="feature-item">
-                  <span class="feature-icon">📦</span>
-                  <span class="feature-text">Optimized production builds</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🔍</span>
-                  <span class="feature-text">SEO optimized structure</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">⚡</span>
-                  <span class="feature-text">Fast loading performance</span>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🔄</span>
-                  <span class="feature-text">Continuous updates & support</span>
-                </div>
-              </div>
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="philosophy">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2 class="section-title">Development Philosophy</h2>
+          <p class="section-subtitle">
+            Core principles and architectural decisions that make ZEN Starter exceptional
+          </p>
+        </div>
+        
+        <div class="philosophy-grid">
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="philosophy-title">Modular TypeScript Architecture</h3>
+            <p class="philosophy-description">
+              Class-based component system with proper dependency injection. 
+              Each component is self-contained with clear interfaces.
+            </p>
+            <div class="philosophy-example">
+import { Header } from '@/components';<br>
+const header = new Header('#header', options);
             </div>
           </div>
-        </section>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="philosophy-title">Responsive Design Principles</h3>
+            <p class="philosophy-description">
+              Mobile-first approach with fluid typography using rem units. 
+              CSS custom properties for consistent spacing and breakpoints.
+            </p>
+            <div class="philosophy-example">
+:root {<br>
+  --spacing-xs: 0.5rem;<br>
+  --spacing-lg: 2rem;<br>
+}
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="300">
+            <h3 class="philosophy-title">Performance-First CSS</h3>
+            <p class="philosophy-description">
+              PostCSS optimization pipeline with media query combining. 
+              Critical CSS extraction and unused rule elimination.
+            </p>
+            <div class="philosophy-example">
+// Automatically combines media queries<br>
+// Sorts breakpoints logically<br>
+// Eliminates duplicate rules
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="400">
+            <h3 class="philosophy-title">Accessibility by Default</h3>
+            <p class="philosophy-description">
+              ARIA attributes, keyboard navigation, and semantic HTML structure. 
+              Screen reader compatibility and focus management.
+            </p>
+            <div class="philosophy-example">
+&lt;button aria-expanded="false"&gt;<br>
+  &lt;span class="sr-only"&gt;Toggle menu&lt;/span&gt;<br>
+&lt;/button&gt;
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="500">
+            <h3 class="philosophy-title">Service Layer Pattern</h3>
+            <p class="philosophy-description">
+              Reusable service modules for common functionality. 
+              API abstraction, storage management, and utility functions.
+            </p>
+            <div class="philosophy-example">
+class StorageService {<br>
+  static get(key: string): any { ... }<br>
+  static set(key: string, value: any): void { ... }<br>
+}
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="600">
+            <h3 class="philosophy-title">Responsive Typography with rem()</h3>
+            <p class="philosophy-description">
+              SCSS rem() function for consistent scaling across breakpoints. 
+              Automatic pixel-to-rem conversion with base font size consideration.
+            </p>
+            <div class="philosophy-example">
+// SCSS rem() function<br>
+font-size: rem(16px); // 1rem<br>
+padding: rem(24px); // 1.5rem<br>
+// Automatically scales with root font-size
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="700">
+            <h3 class="philosophy-title">Fluid Scaling with fluid()</h3>
+            <p class="philosophy-description">
+              CSS fluid() function for smooth scaling between breakpoints. 
+              Eliminates the need for multiple media queries for typography.
+            </p>
+            <div class="philosophy-example">
+// Fluid typography scaling<br>
+font-size: fluid(16px, 24px, 320px, 1200px);<br>
+// Smoothly scales from 16px to 24px
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="800">
+            <h3 class="philosophy-title">Component-Based SCSS Structure</h3>
+            <p class="philosophy-description">
+              Modular SCSS architecture with component-specific files. 
+              BEM methodology and consistent naming conventions for maintainability.
+            </p>
+            <div class="philosophy-example">
+// Component-based SCSS<br>
+.button {<br>
+  &--primary { @extend .button; }<br>
+  &--secondary { @extend .button; }<br>
+}
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="900">
+            <h3 class="philosophy-title">Accessibility & Semantic HTML</h3>
+            <p class="philosophy-description">
+              Proper heading hierarchy, landmark regions, and ARIA labels. 
+              Keyboard navigation support and screen reader optimization.
+            </p>
+            <div class="philosophy-example">
+&lt;main role="main"&gt;<br>
+  &lt;section aria-labelledby="section-title"&gt;<br>
+    &lt;h2 id="section-title"&gt;Section&lt;/h2&gt;<br>
+  &lt;/section&gt;<br>
+&lt;/main&gt;
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="1000">
+            <h3 class="philosophy-title">Mobile-First Responsive Design</h3>
+            <p class="philosophy-description">
+              Progressive enhancement approach starting from mobile devices. 
+              Touch-friendly interactions and optimized performance for small screens.
+            </p>
+            <div class="philosophy-example">
+// Mobile-first media queries<br>
+.element {<br>
+  padding: 1rem; // Mobile default<br>
+  @media (min-width: 768px) {<br>
+    padding: 2rem; // Tablet+<br>
+  }<br>
+}
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="1100">
+            <h3 class="philosophy-title">PostCSS Optimization Pipeline</h3>
+            <p class="philosophy-description">
+              Advanced PostCSS processing with autoprefixer, media query combining, 
+              and CSS optimization. Automatic vendor prefixing and cross-browser compatibility.
+            </p>
+            <div class="philosophy-example">
+// PostCSS configuration<br>
+autoprefixer(),<br>
+mqpacker(), // Combine media queries<br>
+cssnano() // Minification<br>
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="1200">
+            <h3 class="philosophy-title">TypeScript Class Architecture</h3>
+            <p class="philosophy-description">
+              Object-oriented approach with proper inheritance and composition. 
+              Interface definitions, type guards, and strict type checking.
+            </p>
+            <div class="philosophy-example">
+interface ComponentOptions {<br>
+  selector: string;<br>
+  config?: Config;<br>
+}<br>
+class Component {<br>
+  constructor(options: ComponentOptions) { ... }<br>
+}
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="1300">
+            <h3 class="philosophy-title">Modern JavaScript Patterns</h3>
+            <p class="philosophy-description">
+              ES6+ features, async/await patterns, and modern DOM APIs. 
+              Event delegation, performance optimization, and memory management.
+            </p>
+            <div class="philosophy-example">
+// Modern JavaScript patterns<br>
+const observer = new IntersectionObserver(entries => {<br>
+  entries.forEach(entry => {<br>
+    if (entry.isIntersecting) { ... }<br>
+  });<br>
+});
+            </div>
+          </div>
+          
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="1400">
+            <h3 class="philosophy-title">Build System Excellence</h3>
+            <p class="philosophy-description">
+              Vite configuration with custom plugins, asset optimization, 
+              and development server customization. Hot module replacement and fast refresh.
+            </p>
+            <div class="philosophy-example">
+// Vite configuration<br>
+export default defineConfig({<br>
+  plugins: [handlebars(), customPlugin()],<br>
+  build: { rollupOptions: { ... } }<br>
+});
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Footer -->
-      <footer class="footer-glass">
-        <span>Created ❤️ by Dmytro Frolov</span>
-      </footer>
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p>Built with ❤️ by Dmytro Frolov • MIT License</p>
+        </div>
+      </div>
+    </footer>
 
-    <!-- GitHub Stars Widget -->
-    <a
-      class="github-stars-widget"
-      href="https://github.com/dmitry-conquer/zen-starter"
-      target="_blank"
-      rel="noopener"
-      title="GitHub Stars"
-    >
-      <svg class="github-icon" viewBox="0 0 24 24">
-        <path
-          d="M12 2C6.48 2 2 6.58 2 12.26c0 4.48 2.87 8.28 6.84 9.63.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"
-        />
-      </svg>
-      <span class="github-stars-count" id="github-stars-count">—</span>
-      <svg class="star-icon" viewBox="0 0 20 20">
-        <path d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z" />
-      </svg>
-    </a>
-
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-      // GitHub Stars Fetch
-      async function fetchStars() {
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 100
+      });
+
+      // Copy to clipboard functionality
+      const copyBtn = document.getElementById('copy-btn');
+      const commandText = document.getElementById('install-command');
+
+      copyBtn.addEventListener('click', async () => {
         try {
-          const res = await fetch("https://api.github.com/repos/dmitry-conquer/zen-starter");
-          if (!res.ok) return;
-          const data = await res.json();
-          const stars = data.stargazers_count;
-          document.getElementById("github-stars-count").textContent = stars;
-        } catch (e) {}
-      }
-      fetchStars();
-
-      // Smooth Navigation
-      document.querySelectorAll(".nav-link").forEach(link => {
-        link.addEventListener("click", e => {
-          e.preventDefault();
-          const targetId = link.getAttribute("href").substring(1);
-          const targetElement = document.getElementById(targetId);
-
-          if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-
-          // Update active state
-          document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
-          link.classList.add("active");
-        });
-      });
-
-      // Intersection Observer for navigation highlighting
-      const observerOptions = {
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-        rootMargin: "-20% 0px -70% 0px",
-      };
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-            const id = entry.target.id;
-            document.querySelectorAll(".nav-link").forEach(link => {
-              link.classList.remove("active");
-              if (link.getAttribute("href") === `#${id}`) {
-                link.classList.add("active");
-              }
-            });
-          }
-        });
-      }, observerOptions);
-
-      // Observe all sections
-      document.querySelectorAll(".docs-section, .hero-section").forEach(section => {
-        observer.observe(section);
-      });
-
-      // Alternative scroll-based navigation highlighting
-      function updateActiveNavLink() {
-        const sections = document.querySelectorAll(".docs-section, .hero-section");
-        const navLinks = document.querySelectorAll(".nav-link");
-        const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-        let currentSection = "";
-        let minDistance = Infinity;
-
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          const sectionCenter = sectionTop + sectionHeight / 2;
-          const distance = Math.abs(scrollPosition - sectionCenter);
-
-          if (distance < minDistance) {
-            minDistance = distance;
-            currentSection = section.id;
-          }
-        });
-
-        navLinks.forEach(link => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${currentSection}`) {
-            link.classList.add("active");
-          }
-        });
-      }
-
-      // Throttled scroll event
-      let ticking = false;
-      function requestTick() {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            updateActiveNavLink();
-            ticking = false;
-          });
-          ticking = true;
+          await navigator.clipboard.writeText(commandText.textContent);
+          
+          // Visual feedback
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          `;
+          
+          setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
         }
-      }
+      });
 
-      window.addEventListener("scroll", requestTick);
-      ticking = false;
-
-      // Copy to clipboard for install command
-      const copyBtn = document.getElementById("copy-install-btn");
-      if (copyBtn) {
-        copyBtn.addEventListener("click", function () {
-          const text = document.getElementById("install-command-text").textContent;
-          navigator.clipboard.writeText(text).then(() => {
-            copyBtn.classList.add("copied");
-            setTimeout(() => copyBtn.classList.remove("copied"), 2000);
-          });
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         });
-      }
+      });
+
+      // Header background on scroll
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+          header.style.background = 'rgba(23, 23, 23, 0.95)';
+        } else {
+          header.style.background = 'rgba(23, 23, 23, 0.8)';
+        }
+      });
     </script>
   </body>
 </html>
