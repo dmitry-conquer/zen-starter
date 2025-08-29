@@ -1,8 +1,9 @@
 /**
- * Accordion
+ * Accordion Component
  *
- * Creates interactive accordion components with smooth animations and accessibility features.
- * Supports single-item expansion with automatic state management and ARIA attributes.
+ * Creates interactive accordion components with smooth animations and
+ * accessibility features. Supports single-item expansion with automatic
+ * state management and ARIA attributes.
  *
  * Usage:
  *   <div data-js-accordion>
@@ -12,124 +13,167 @@
  *     <div data-js-accordion-content>Content 2</div>
  *   </div>
  *   new AccordionCollection();
- *
- * - Automatically handles click events and state management
- * - Provides smooth height animations using maxHeight
- * - Sets proper ARIA attributes for accessibility
- * - Supports only one active section at a time
  */
 
-const rootSelector = "[data-js-accordion]";
+interface IAccordionSelectors {
+  root: string;
+  button: string;
+  content: string;
+}
 
+interface IAccordionStateClasses {
+  isActive: string;
+}
+
+interface IAccordionStateAttributes {
+  ariaExpanded: string;
+}
+
+interface IAccordionState {
+  activeAccordionIndex: number;
+}
+
+/**
+ * Main Accordion class
+ */
 class Accordion {
-  /** CSS selectors for accordion elements */
-  private readonly selectors: Record<string, string> = {
-    root: rootSelector,
+  // CSS selectors for accordion elements
+  private readonly selectors: IAccordionSelectors = {
+    root: "[data-js-accordion]",
     button: "[data-js-accordion-button]",
     content: "[data-js-accordion-content]",
   };
-  /** CSS classes for state management */
-  private readonly stateClasses: Record<string, string> = {
+
+  // CSS classes for state management
+  private readonly stateClasses: IAccordionStateClasses = {
     isActive: "is-active",
   };
-  /** ARIA attributes for accessibility */
-  private readonly stateAttributes: Record<string, string> = {
+
+  // ARIA attributes for accessibility
+  private readonly stateAttributes: IAccordionStateAttributes = {
     ariaExpanded: "aria-expanded",
   };
-  /** Root accordion container element */
-  private rootElement: HTMLElement;
-  /** Collection of accordion button elements */
-  private buttonElements: NodeListOf<HTMLElement>;
-  /** Reactive state object with proxy for automatic UI updates */
-  private state: TypeAccordioState;
 
-  // Initializes accordion: sets up elements, state, and event listeners
+  private rootElement: HTMLElement;
+  private buttonElements: NodeListOf<HTMLElement>;
+  private contentElements: HTMLElement[];
+  private state: IAccordionState;
+
   constructor(rootElement: HTMLElement) {
     this.rootElement = rootElement;
-    this.buttonElements = this.rootElement.querySelectorAll(this.selectors.button);
-    this.state = this.getProxyState({
-      activeAccordionIndex: [...this.buttonElements].findIndex(buttonElement =>
-        buttonElement.classList.contains(this.stateClasses.isActive)
-      ),
+    this.buttonElements = this.rootElement.querySelectorAll(this.selectors.button) as NodeListOf<HTMLElement>;
+    this.contentElements = this.getContentElements();
+
+    // Initialize state with proxy for automatic UI updates
+    this.state = this.createProxyState({
+      activeAccordionIndex: this.getInitialActiveIndex() || -1,
     });
 
-    this.init();
+    if (this.isReady()) {
+      this.initialize();
+    } else {
+      console.warn("Accordion: Required elements not found");
+    }
   }
 
-  // Initializes the accordion if all required elements are present
-  private init(): void {
-    if (!this.isReady()) return;
-    this.bindEvents();
-  }
-
-  // Checks if the accordion has all required elements to function properly
+  // Checks if accordion is ready to work
   private isReady(): boolean {
-    return !!this.rootElement && !!this.buttonElements.length;
+    return !!this.rootElement && this.buttonElements.length > 0 && this.contentElements.length > 0;
   }
 
-  // Binds click event listeners to all accordion buttons
-  private bindEvents(): void {
-    this.buttonElements.forEach((buttonElement, index: number) => {
-      buttonElement?.addEventListener("click", () => this.onButtonClick(index));
-    });
+  // Gets content elements based on buttons
+  private getContentElements(): HTMLElement[] {
+    return Array.from(this.buttonElements).map(button => button.nextElementSibling as HTMLElement);
   }
 
-  // Creates a reactive state object using Proxy for automatic UI updates
-  private getProxyState(state: TypeAccordioState) {
+  // Gets initial active index
+  private getInitialActiveIndex(): number {
+    return Array.from(this.buttonElements).findIndex(button => button.classList.contains(this.stateClasses.isActive));
+  }
+
+  // Creates reactive state object using Proxy for automatic UI updates
+  private createProxyState(state: IAccordionState): IAccordionState {
     return new Proxy(state, {
-      get: (target: TypeAccordioState, prop: keyof TypeAccordioState) => {
+      get: (target: IAccordionState, prop: keyof IAccordionState) => {
         return target[prop];
       },
-      set: (target: TypeAccordioState, prop: keyof TypeAccordioState, value: number) => {
+      set: (target: IAccordionState, prop: keyof IAccordionState, value: number) => {
         target[prop] = value;
         this.updateUI();
-
         return true;
       },
     });
   }
 
-  // Updates the UI based on current state: toggles classes, sets ARIA attributes, and animates content height
-  private updateUI() {
-    const { activeAccordionIndex } = this.state;
-    this.buttonElements.forEach((buttonElement: HTMLElement, index: number) => {
-      const isActive = activeAccordionIndex === index;
-      const content = buttonElement.nextElementSibling as HTMLElement;
+  // Initializes accordion
+  private initialize(): void {
+    this.bindEvents();
+    this.updateUI();
+  }
 
-      buttonElement.classList.toggle(this.stateClasses.isActive, isActive);
-      buttonElement.setAttribute(this.stateAttributes.ariaExpanded, isActive.toString());
-      content.style.maxHeight = isActive ? `${content.scrollHeight}px` : "";
+  // Binds events to buttons
+  private bindEvents(): void {
+    this.buttonElements.forEach((button, index) => {
+      button.addEventListener("click", () => this.handleButtonClick(index));
     });
   }
 
-  // Handles button click events: toggles accordion sections
-  private onButtonClick(index: number) {
+  // Handles button click
+  private handleButtonClick(index: number): void {
     if (this.state.activeAccordionIndex === index) {
       this.state.activeAccordionIndex = -1;
-      return;
+    } else {
+      this.state.activeAccordionIndex = index;
     }
-    this.state.activeAccordionIndex = index;
+  }
+
+  // Updates UI based on current state
+  private updateUI(): void {
+    this.buttonElements.forEach((button, index) => {
+      const isActive = this.state.activeAccordionIndex === index;
+      const content = this.contentElements[index];
+
+      this.updateButtonState(button, isActive);
+      this.updateContentState(content, isActive);
+    });
+  }
+
+  // Updates button state
+  private updateButtonState(button: HTMLElement, isActive: boolean): void {
+    button.classList.toggle(this.stateClasses.isActive, isActive);
+    button.setAttribute(this.stateAttributes.ariaExpanded, isActive.toString());
+  }
+
+  // Updates content block state
+  private updateContentState(content: HTMLElement, isActive: boolean): void {
+    if (isActive) {
+      content.style.maxHeight = `${content.scrollHeight}px`;
+    } else {
+      content.style.maxHeight = "";
+    }
   }
 }
 
 /**
- * AccordionCollection
+ * Accordion Collection
  *
- * Manages multiple accordion instances on the page.
- * Automatically initializes all accordion components found in the document.
+ * Automatically initializes all accordion components on the page.
  *
  * Usage:
  *   new AccordionCollection();
  */
 class AccordionCollection {
-  // Initializes the collection and creates accordion instances for all found elements
   constructor() {
-    this.init();
+    this.initializeAll();
   }
 
-  // Finds all accordion containers and creates Accordion instances for each
-  private init(): void {
-    document.querySelectorAll(rootSelector).forEach(element => new Accordion(element as HTMLElement));
+  // Initializes all accordion components
+  private initializeAll(): void {
+    const accordionElements = document.querySelectorAll("[data-js-accordion]");
+
+    accordionElements.forEach(element => {
+      new Accordion(element as HTMLElement);
+    });
   }
 }
 

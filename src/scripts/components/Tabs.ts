@@ -1,5 +1,5 @@
 /**
- * Tabs
+ * Tabs Component
  *
  * Creates accessible tab components with keyboard navigation and ARIA support.
  * Supports arrow key navigation, home/end keys, and automatic state management.
@@ -20,71 +20,93 @@
  * - Supports multiple tab instances on the same page
  */
 
-const rootSelector = "[data-js-tabs]";
+interface ITabsSelectors {
+  root: string;
+  button: string;
+  content: string;
+}
 
+interface ITabsStateClasses {
+  isActive: string;
+}
+
+interface ITabsStateAttributes {
+  ariaSelected: string;
+  tabIndex: string;
+}
+
+interface ITabsState {
+  activeTabIndex: number;
+}
+
+/**
+ * Main Tabs class
+ */
 class Tabs {
-  /** CSS selectors for tab elements */
-  private readonly selectors: Record<string, string> = {
-    root: rootSelector,
+  // CSS selectors for tab elements
+  private readonly selectors: ITabsSelectors = {
+    root: "[data-js-tabs]",
     button: "[data-js-tabs-button]",
     content: "[data-js-tabs-content]",
   };
 
-  /** CSS classes for state management */
-  private readonly stateClasses: Record<string, string> = {
+  // CSS classes for state management
+  private readonly stateClasses: ITabsStateClasses = {
     isActive: "is-active",
   };
 
-  /** ARIA attributes for accessibility */
-  private readonly stateAttributes: Record<string, string> = {
+  // ARIA attributes for accessibility
+  private readonly stateAttributes: ITabsStateAttributes = {
     ariaSelected: "aria-selected",
     tabIndex: "tabindex",
   };
 
-  /** Root tabs container element */
   private rootElement: HTMLElement;
-  /** Collection of tab button elements */
   private buttonElements: NodeListOf<HTMLElement>;
-  /** Collection of tab content elements */
   private contentElements: NodeListOf<HTMLElement>;
-  /** Reactive state object with proxy for automatic UI updates */
-  private state;
-  /** Maximum tab index for boundary checking */
+  private state: ITabsState;
   private limitTabsIndex: number;
 
-  // Initializes tabs: sets up elements, state, and event listeners
   constructor(rootElement: HTMLElement) {
     this.rootElement = rootElement;
-    this.buttonElements = this.rootElement.querySelectorAll(this.selectors.button);
-    this.contentElements = this.rootElement.querySelectorAll(this.selectors.content);
-    this.state = this.getProxyState({
-      activeTabIndex: [...this.buttonElements].findIndex(buttonElement =>
-        buttonElement.classList.contains(this.stateClasses.isActive)
-      ),
+    this.buttonElements = this.rootElement.querySelectorAll(this.selectors.button) as NodeListOf<HTMLElement>;
+    this.contentElements = this.rootElement.querySelectorAll(this.selectors.content) as NodeListOf<HTMLElement>;
+    
+    // Initialize state with proxy for automatic UI updates
+    this.state = this.createProxyState({
+      activeTabIndex: this.getInitialActiveIndex()
     });
+    
     this.limitTabsIndex = this.buttonElements.length - 1;
 
-    this.init();
+    if (this.isReady()) {
+      this.initialize();
+    } else {
+      console.warn("Tabs: Required elements not found");
+    }
   }
 
-  // Checks if the tabs component has all required elements to function properly
+  // Checks if tabs component is ready to work
   private isReady(): boolean {
-    return !!this.rootElement && !!this.buttonElements.length && !!this.contentElements.length;
+    return !!this.rootElement && 
+           this.buttonElements.length > 0 && 
+           this.contentElements.length > 0;
   }
 
-  // Initializes the tabs if all required elements are present
-  private init(): void {
-    if (!this.isReady()) return;
-    this.bindEvents();
+  // Gets initial active index
+  private getInitialActiveIndex(): number {
+    return Array.from(this.buttonElements).findIndex(button =>
+      button.classList.contains(this.stateClasses.isActive)
+    );
   }
 
-  // Creates a reactive state object using Proxy for automatic UI updates
-  private getProxyState(initialState: TypeTabsState) {
-    return new Proxy(initialState, {
-      get: (target: TypeTabsState, prop: keyof TypeTabsState): number => {
+  // Creates reactive state object using Proxy for automatic UI updates
+  private createProxyState(state: ITabsState): ITabsState {
+    return new Proxy(state, {
+      get: (target: ITabsState, prop: keyof ITabsState) => {
         return target[prop];
       },
-      set: (target: TypeTabsState, prop: keyof TypeTabsState, value: number) => {
+      set: (target: ITabsState, prop: keyof ITabsState, value: number) => {
         target[prop] = value;
         this.updateUI();
         return true;
@@ -92,9 +114,16 @@ class Tabs {
     });
   }
 
-  // Updates the UI based on current state: toggles classes and sets ARIA attributes
+  // Initializes tabs
+  private initialize(): void {
+    this.bindEvents();
+    this.updateUI();
+  }
+
+  // Updates UI based on current state
   private updateUI(): void {
     const { activeTabIndex } = this.state;
+    
     this.buttonElements.forEach((buttonElement, index) => {
       const isActive: boolean = activeTabIndex === index;
 
@@ -109,7 +138,7 @@ class Tabs {
     });
   }
 
-  // Handles button click events: activates the clicked tab
+  // Handles button click events
   private onButtonClick(buttonIndex: number): void {
     this.state.activeTabIndex = buttonIndex;
   }
@@ -168,7 +197,7 @@ class Tabs {
 }
 
 /**
- * TabsCollection
+ * Tabs Collection
  *
  * Manages multiple tabs instances on the page.
  * Automatically initializes all tabs components found in the document.
@@ -177,14 +206,17 @@ class Tabs {
  *   new TabsCollection();
  */
 class TabsCollection {
-  // Initializes the collection and creates tabs instances for all found elements
   constructor() {
-    this.init();
+    this.initializeAll();
   }
 
-  // Finds all tabs containers and creates Tabs instances for each
-  private init(): void {
-    document.querySelectorAll(rootSelector).forEach(element => new Tabs(element as HTMLElement));
+  // Initializes all tabs components
+  private initializeAll(): void {
+    const tabsElements = document.querySelectorAll("[data-js-tabs]");
+    
+    tabsElements.forEach(element => {
+      new Tabs(element as HTMLElement);
+    });
   }
 }
 

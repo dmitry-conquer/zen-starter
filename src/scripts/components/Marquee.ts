@@ -1,5 +1,5 @@
 /**
- * Marquee
+ * Marquee Component
  *
  * Creates smooth scrolling marquee/banner effects with customizable speed and direction.
  * Supports pause on hover functionality and seamless infinite scrolling using content duplication.
@@ -17,70 +17,144 @@
  * - Performance optimized with transform animations
  */
 
-class Marquee {
-  /** Track element that contains the scrolling content */
-  private trackEl: HTMLElement | null = null;
-  /** Animation speed in pixels per frame */
-  private speed: number;
-  /** Current scroll offset position */
-  private offset: number = 0;
-  /** Animation direction: left or right */
-  private direction: "left" | "right";
-  /** Animation frame ID for cancellation */
-  private animationId: number | null = null;
+interface IMarqueeOptions {
+  speed?: number;
+  direction?: "left" | "right";
+  pauseOnHover?: boolean;
+}
 
-  // Initializes marquee with target element ID and optional configuration
-  constructor(id: string, options?: any) {
-    const { speed = 2, direction = "left", pauseOnHover = false } = options || {};
-    this.speed = speed;
-    this.direction = direction;
-    this.trackEl = document.getElementById(id) || null;
-    if (!this.trackEl) return;
+interface IMarqueeState {
+  offset: number;
+  animationId: number | null;
+}
+
+/**
+ * Main Marquee class
+ */
+class Marquee {
+  // Default configuration
+  private readonly defaultOptions: Required<IMarqueeOptions> = {
+    speed: 2,
+    direction: "left",
+    pauseOnHover: false,
+  };
+
+  private trackEl: HTMLElement | null = null;
+  private speed: number;
+  private direction: "left" | "right";
+  private pauseOnHover: boolean;
+  private state: IMarqueeState;
+
+  constructor(id: string, options?: IMarqueeOptions) {
+    // Merge options with defaults
+    const config = { ...this.defaultOptions, ...options };
+    this.speed = config.speed;
+    this.direction = config.direction;
+    this.pauseOnHover = config.pauseOnHover;
+
+    // Initialize state
+    this.state = {
+      offset: 0,
+      animationId: null,
+    };
+
+    this.initialize(id);
+  }
+
+  // Initializes marquee with target element ID
+  private initialize(id: string): void {
+    this.trackEl = document.getElementById(id);
+    
+    if (!this.trackEl) {
+      console.warn(`Marquee: Element with id "${id}" not found`);
+      return;
+    }
+
+    this.setupMarquee();
+  }
+
+  // Sets up marquee functionality
+  private setupMarquee(): void {
     this.duplicateTrack();
-    this.initMove();
-    if (pauseOnHover) {
+    this.startAnimation();
+    
+    if (this.pauseOnHover) {
       this.addHoverListeners();
     }
   }
 
   // Duplicates track content to create seamless infinite scrolling
   private duplicateTrack(): void {
-    this.trackEl!.innerHTML += this.trackEl!.innerHTML;
+    if (!this.trackEl) return;
+    this.trackEl.innerHTML += this.trackEl.innerHTML;
   }
 
   // Adds mouse enter/leave event listeners for pause on hover functionality
   private addHoverListeners(): void {
-    this.trackEl!.addEventListener("mouseenter", () => this.pause());
-    this.trackEl!.addEventListener("mouseleave", () => this.resume());
+    if (!this.trackEl) return;
+    
+    this.trackEl.addEventListener("mouseenter", () => this.pause());
+    this.trackEl.addEventListener("mouseleave", () => this.resume());
   }
 
   // Pauses the marquee animation by canceling the animation frame
   public pause(): void {
-    if (this.animationId) {
-      cancelAnimationFrame(this.animationId);
-      this.animationId = null;
+    if (this.state.animationId) {
+      cancelAnimationFrame(this.state.animationId);
+      this.state.animationId = null;
     }
   }
 
   // Resumes the marquee animation by restarting the move function
   public resume(): void {
-    this.initMove();
+    this.startAnimation();
   }
 
-  // Initializes the continuous scrolling animation using requestAnimationFrame
-  private initMove(): void {
+  // Starts the continuous scrolling animation
+  private startAnimation(): void {
+    this.animate();
+  }
+
+  // Main animation loop using requestAnimationFrame
+  private animate(): void {
+    if (!this.trackEl) return;
+
     const move = () => {
-      const halfWidth = this.trackEl!.scrollWidth / 2;
-      this.offset += this.direction === "left" ? this.speed : -this.speed;
-      if (this.direction === "left" && this.offset >= halfWidth) {
-        this.offset = 0;
-      } else if (this.direction === "right" && this.offset <= 0) {
-        this.offset = halfWidth;
-      }
-      this.trackEl!.style.transform = `translateX(-${this.offset}px)`;
-      this.animationId = requestAnimationFrame(move);
+      this.updatePosition();
+      this.updateTransform();
+      this.state.animationId = requestAnimationFrame(move);
     };
+
     move();
+  }
+
+  // Updates scroll position based on direction and speed
+  private updatePosition(): void {
+    const halfWidth = this.trackEl!.scrollWidth / 2;
+    
+    if (this.direction === "left") {
+      this.state.offset += this.speed;
+      if (this.state.offset >= halfWidth) {
+        this.state.offset = 0;
+      }
+    } else {
+      this.state.offset -= this.speed;
+      if (this.state.offset <= 0) {
+        this.state.offset = halfWidth;
+      }
+    }
+  }
+
+  // Updates CSS transform for smooth scrolling
+  private updateTransform(): void {
+    if (!this.trackEl) return;
+    this.trackEl.style.transform = `translateX(-${this.state.offset}px)`;
+  }
+
+  // Public method to destroy marquee and clean up resources
+  public destroy(): void {
+    this.pause();
+    this.trackEl = null;
   }
 }
 
