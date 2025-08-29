@@ -12,93 +12,230 @@
  * - Restores the element to its original place when viewport > 768px.
  */
 
-class AdaptiveDOM {
-  /** CSS selector for target elements */
-  private readonly selector: string = "[data-adaptive-dom]";
+// Types and interfaces
+type AdaptiveDOMConfig = {
+  containerId: string;
+  breakpoint: number;
+  position: PositionType;
+};
 
-  /** Elements to be repositioned */
-  private targets: HTMLElement[];
+type OriginalPosition = {
+  parent: HTMLElement | null;
+  nextSibling: Node | null;
+};
 
-  /** Stores original parent and sibling for restoration */
-  private originalPosition: Map<HTMLElement, { parent: HTMLElement | null; nextSibling: Node | null }>;
+type PositionType = "first" | "last" | number;
 
+// Constants
+const SELECTOR = "[data-adaptive-dom]";
+const POSITION_TYPES = {
+  FIRST: "first",
+  LAST: "last",
+} as const;
+
+/**
+ * Handles element positioning logic
+ */
+class ElementPositioner {
   /**
-   * Initializes AdaptiveDOM: finds targets and sets up listeners.
+   * Moves the element to the target container at the specified position
    */
-  constructor() {
-    this.targets = Array.from(document.querySelectorAll<HTMLElement>(this.selector));
-    this.originalPosition = new Map();
-    this.init();
-  }
-
-  /**
-   * Parses data attributes and sets up media query listeners for each target.
-   */
-  private init(): void {
-    this.targets.forEach(target => {
-      const { adaptiveDom } = target.dataset;
-      if (!adaptiveDom) return;
-      const [to, breakpoint, position] = adaptiveDom.split(",").map(item => item.trim());
-      if (!to || !breakpoint || !position) return;
-      const toElement = document.getElementById(to);
-      if (!toElement) return;
-      if (position !== "first" && position !== "last" && isNaN(Number(position))) return;
-      this.originalPosition.set(target, {
-        parent: target.parentElement,
-        nextSibling: target.nextSibling,
-      });
-      const mediaQuery = window.matchMedia(`(max-width: ${breakpoint}px)`);
-      this.updatePosition(target, toElement, mediaQuery, position);
-      mediaQuery.addEventListener("change", () => {
-        this.updatePosition(target, toElement, mediaQuery, position);
-      });
-    });
-  }
-
-  /**
-   * Moves or restores the element based on the media query state.
-   */
-  private updatePosition(
-    target: HTMLElement,
-    toElement: HTMLElement,
-    mediaQuery: MediaQueryList,
-    position: string
-  ): void {
-    if (mediaQuery.matches && target.parentElement === toElement) return;
-    if (!mediaQuery.matches && target.parentElement === this.originalPosition.get(target)?.parent) return;
-    if (mediaQuery.matches) {
-      this.moveElement(target, toElement, position);
-    } else {
-      this.restoreElement(target);
+  static moveElement(target: HTMLElement, toElement: HTMLElement, position: PositionType): void {
+    if (position === POSITION_TYPES.FIRST) {
+      toElement.insertBefore(target, toElement.firstChild);
+    } else if (position === POSITION_TYPES.LAST) {
+      toElement.appendChild(target);
+    } else if (typeof position === "number") {
+      this.insertAtPosition(target, toElement, position);
     }
   }
 
   /**
-   * Moves the element to the target container at the specified position.
+   * Inserts element at specific numeric position
    */
-  private moveElement(target: HTMLElement, toElement: HTMLElement, position: string): void {
-    if (position === "first") {
-      toElement.insertBefore(target, toElement.firstChild);
-    } else if (position === "last") {
-      toElement.appendChild(target);
+  private static insertAtPosition(target: HTMLElement, toElement: HTMLElement, index: number): void {
+    const children = Array.from(toElement.children);
+    const insertIndex = Math.min(index, children.length);
+    const referenceNode = children[insertIndex] || null;
+    toElement.insertBefore(target, referenceNode);
+  }
+
+  /**
+   * Restores the element to its original parent and position
+   */
+  static restoreElement(target: HTMLElement, originalPos: OriginalPosition): void {
+    if (!originalPos?.parent) return;
+    originalPos.parent.insertBefore(target, originalPos.nextSibling);
+  }
+}
+
+/**
+ * Handles media query management
+ */
+class MediaQueryManager {
+  private listeners: Map<HTMLElement, () => void> = new Map();
+
+  /**
+   * Creates and manages media query listener for a target element
+   */
+  createListener(target: HTMLElement, config: AdaptiveDOMConfig, onUpdate: (matches: boolean) => void): void {
+    const mediaQuery = window.matchMedia(`(max-width: ${config.breakpoint}px)`);
+
+    const listener = () => onUpdate(mediaQuery.matches);
+    mediaQuery.addEventListener("change", listener);
+
+    // Store listener for cleanup
+    this.listeners.set(target, () => {
+      mediaQuery.removeEventListener("change", listener);
+    });
+
+    // Initial call
+    onUpdate(mediaQuery.matches);
+  }
+
+  /**
+   * Cleans up all media query listeners
+   */
+  cleanup(): void {
+    this.listeners.forEach(cleanup => cleanup());
+    this.listeners.clear();
+  }
+}
+
+/**
+ * Main AdaptiveDOM class
+ */
+class AdaptiveDOM {
+  private targets: HTMLElement[] = [];
+  private readonly originalPositions: Map<HTMLElement, OriginalPosition> = new Map();
+  private readonly mediaQueryManager: MediaQueryManager = new MediaQueryManager();
+
+  constructor() {
+    this.initialize();
+  }
+
+  /**
+   * Initializes AdaptiveDOM: finds targets and sets up listeners
+   */
+  private initialize(): void {
+    this.findTargets();
+    this.setupTargets();
+  }
+
+  /**
+   * Finds all elements with data-adaptive-dom attribute
+   */
+  private findTargets(): void {
+    this.targets = Array.from(document.querySelectorAll<HTMLElement>(SELECTOR));
+  }
+
+  /**
+   * Sets up each target with media query listeners
+   */
+  private setupTargets(): void {
+    this.targets.forEach(target => {
+      const config = this.parseConfig(target);
+      if (!config) return;
+
+      this.storeOriginalPosition(target);
+      this.setupMediaQueryListener(target, config);
+    });
+  }
+
+  /**
+   * Parses data-adaptive-dom attribute into configuration object
+   */
+  private parseConfig(target: HTMLElement): AdaptiveDOMConfig | null {
+    const { adaptiveDom } = target.dataset;
+    if (!adaptiveDom) return null;
+
+    const [containerId, breakpoint, position] = adaptiveDom.split(",").map(item => item.trim());
+
+    if (!this.validateConfig(containerId, breakpoint, position)) return null;
+
+    return {
+      containerId,
+      breakpoint: parseInt(breakpoint),
+      position: this.parsePosition(position),
+    };
+  }
+
+  /**
+   * Parses position string into PositionType
+   */
+  private parsePosition(position: string): PositionType {
+    if (position === POSITION_TYPES.FIRST) return POSITION_TYPES.FIRST;
+    if (position === POSITION_TYPES.LAST) return POSITION_TYPES.LAST;
+    const numPosition = parseInt(position);
+    return isNaN(numPosition) ? POSITION_TYPES.LAST : numPosition;
+  }
+
+  /**
+   * Validates configuration parameters
+   */
+  private validateConfig(containerId: string, breakpoint: string, position: string): boolean {
+    if (!containerId || !breakpoint || !position) return false;
+
+    const targetElement = document.getElementById(containerId);
+    if (!targetElement) return false;
+
+    if (position !== POSITION_TYPES.FIRST && position !== POSITION_TYPES.LAST && isNaN(Number(position))) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Stores original position information for restoration
+   */
+  private storeOriginalPosition(target: HTMLElement): void {
+    this.originalPositions.set(target, {
+      parent: target.parentElement,
+      nextSibling: target.nextSibling,
+    });
+  }
+
+  /**
+   * Sets up media query listener for position updates
+   */
+  private setupMediaQueryListener(target: HTMLElement, config: AdaptiveDOMConfig): void {
+    this.mediaQueryManager.createListener(target, config, matches => {
+      this.updatePosition(target, config, matches);
+    });
+  }
+
+  /**
+   * Updates element position based on media query state
+   */
+  private updatePosition(target: HTMLElement, config: AdaptiveDOMConfig, shouldMove: boolean): void {
+    const targetElement = document.getElementById(config.containerId);
+    if (!targetElement) return;
+
+    const currentParent = target.parentElement;
+    const originalParent = this.originalPositions.get(target)?.parent;
+
+    // Skip if already in correct position
+    if (shouldMove && currentParent === targetElement) return;
+    if (!shouldMove && currentParent === originalParent) return;
+
+    if (shouldMove) {
+      ElementPositioner.moveElement(target, targetElement, config.position);
     } else {
-      const index = parseInt(position);
-      if (!isNaN(index)) {
-        const children = Array.from(toElement.children);
-        const insertIndex = Math.min(index, children.length);
-        const referenceNode = children[insertIndex] || null;
-        toElement.insertBefore(target, referenceNode);
+      const originalPos = this.originalPositions.get(target);
+      if (originalPos) {
+        ElementPositioner.restoreElement(target, originalPos);
       }
     }
   }
 
   /**
-   * Restores the element to its original parent and position.
+   * Cleans up resources and removes listeners
    */
-  private restoreElement(target: HTMLElement): void {
-    const originalPos = this.originalPosition.get(target);
-    if (!originalPos?.parent) return;
-    originalPos.parent.insertBefore(target, originalPos.nextSibling);
+  destroy(): void {
+    this.mediaQueryManager.cleanup();
+    this.originalPositions.clear();
+    this.targets.length = 0;
   }
 }
 
