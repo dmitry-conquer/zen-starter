@@ -79,7 +79,7 @@ const plugins = [
       Object.keys(bundle).forEach(fileName => {
         const file = bundle[fileName];
         if (fileName.includes("main.js") && "code" in file) {
-          file.code = `(() => {\n${file.code}})()`;
+          file.code = `(() => {\n${file.code}})();`;
         }
       });
     },
