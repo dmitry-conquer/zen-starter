@@ -73,32 +73,17 @@ class ElementPositioner {
  * Handles media query management
  */
 class MediaQueryManager {
-  private listeners: Map<HTMLElement, () => void> = new Map();
-
   /**
    * Creates and manages media query listener for a target element
    */
-  createListener(target: HTMLElement, config: AdaptiveDOMConfig, onUpdate: (matches: boolean) => void): void {
+  createListener(config: AdaptiveDOMConfig, onUpdate: (matches: boolean) => void): void {
     const mediaQuery = window.matchMedia(`(max-width: ${config.breakpoint}px)`);
 
     const listener = () => onUpdate(mediaQuery.matches);
     mediaQuery.addEventListener("change", listener);
 
-    // Store listener for cleanup
-    this.listeners.set(target, () => {
-      mediaQuery.removeEventListener("change", listener);
-    });
-
     // Initial call
     onUpdate(mediaQuery.matches);
-  }
-
-  /**
-   * Cleans up all media query listeners
-   */
-  cleanup(): void {
-    this.listeners.forEach(cleanup => cleanup());
-    this.listeners.clear();
   }
 }
 
@@ -200,7 +185,7 @@ class AdaptiveDOM {
    * Sets up media query listener for position updates
    */
   private setupMediaQueryListener(target: HTMLElement, config: AdaptiveDOMConfig): void {
-    this.mediaQueryManager.createListener(target, config, matches => {
+    this.mediaQueryManager.createListener(config, matches => {
       this.updatePosition(target, config, matches);
     });
   }
@@ -227,15 +212,6 @@ class AdaptiveDOM {
         ElementPositioner.restoreElement(target, originalPos);
       }
     }
-  }
-
-  /**
-   * Cleans up resources and removes listeners
-   */
-  destroy(): void {
-    this.mediaQueryManager.cleanup();
-    this.originalPositions.clear();
-    this.targets.length = 0;
   }
 }
 
