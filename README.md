@@ -14,9 +14,20 @@ Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling.
 
 </div>
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-3ecf8e?style=for-the-badge&logo=netlify&logoColor=white)](https://zen-starter.netlify.app/)
+<div style="margin: 30px 0;">
+
 [![Version](https://img.shields.io/badge/Version-1.6.0-3ecf8e?style=for-the-badge)](https://github.com/dmitry-conquer/zen-starter)
 [![License](https://img.shields.io/badge/License-MIT-3ecf8e?style=for-the-badge)](https://github.com/dmitry-conquer/zen-starter/blob/main/LICENSE)
+
+</div>
+
+<div style="background: linear-gradient(135deg, #3ecf8e 0%, #6366f1 100%); border-radius: 12px; padding: 20px; margin: 20px 0; box-shadow: 0 4px 20px rgba(62, 207, 142, 0.2);">
+
+<div style="color: #171717; font-size: 18px; font-weight: 600; margin-bottom: 8px;">🌐 Live Preview</div>
+<div style="color: #171717; font-size: 14px; margin-bottom: 12px;">See ZEN Starter in action</div>
+<a href="https://zen-starter.netlify.app/" style="color: #171717; text-decoration: none; font-weight: 600; font-size: 16px;">zen-starter.netlify.app →</a>
+
+</div>
 
 </div>
 
@@ -29,7 +40,7 @@ Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling.
 <div style="background: #171717; border: 1px solid #3ecf8e; border-radius: 12px; padding: 24px; margin: 20px 0; box-shadow: 0 0 20px rgba(62, 207, 142, 0.1);">
 
 ```bash
-npm create zen@latest my-awesome-project
+npm create zen@latest
 ```
 
 </div>
@@ -138,110 +149,11 @@ Auto-fix linting issues
 
 ---
 
-## 🏗️ Architecture
-
-<div style="background: #282828; border: 1px solid #505050; border-radius: 20px; padding: 32px; margin: 40px 0; position: relative;">
-
-<div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #3ecf8e, transparent);"></div>
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 20px;">
-
-<div style="text-align: center;">
-
-<div style="background: #3ecf8e; color: #171717; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; font-weight: bold;">
-
-📱
-
-</div>
-
-### Markup
-Semantic HTML with Handlebars templating
-
-</div>
-
-<div style="text-align: center;">
-
-<div style="background: #6366f1; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; font-weight: bold;">
-
-🎨
-
-</div>
-
-### Styling
-SCSS with BEM methodology
-
-</div>
-
-<div style="text-align: center;">
-
-<div style="background: #f59e0b; color: #171717; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; font-weight: bold;">
-
-⚙️
-
-</div>
-
-### Logic
-TypeScript class-based components
-
-</div>
-
-<div style="text-align: center;">
-
-<div style="background: #3ecf8e; color: #171717; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; font-weight: bold;">
-
-🚀
-
-</div>
-
-### Performance
-Optimized bundles and lazy loading
-
-</div>
-
-</div>
-
-</div>
-
----
-
-## 📁 Project Structure
-
-```
-zen-starter/
-├── 📁 components/          # HTML components
-├── 📁 pages/              # Multi-page templates  
-├── 📁 src/
-│   ├── 📁 scripts/
-│   │   ├── 📁 components/ # TS components
-│   │   ├── 📁 services/   # Business logic
-│   │   └── 📁 types/      # Type definitions
-│   └── 📁 styles/
-│       ├── 📁 core/       # SCSS architecture
-│       └── 📁 components/ # Component styles
-└── 📄 config files
-```
-
----
-
-## 🎨 Tech Stack
-
-<div align="center">
-
-<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/>
-<img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="Sass"/>
-<img src="https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white" alt="PostCSS"/>
-<img src="https://img.shields.io/badge/Handlebars.js-f0772b?style=for-the-badge&logo=handlebars.js&logoColor=white" alt="Handlebars"/>
-
-</div>
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Create Project
 ```bash
-npm create zen@latest my-project
+npm create zen@latest
 cd my-project
 ```
 
@@ -262,7 +174,6 @@ Navigate to `http://localhost:5173`
 
 ## 📖 Resources
 
-- [**Live Demo**](https://zen-starter.netlify.app/) - See it in action
 - [**GitHub**](https://github.com/dmitry-conquer/zen-starter) - Source code
 - [**Documentation**](https://zen-starter.netlify.app/pages/) - Component examples
 
