@@ -7,12 +7,16 @@
       name="description"
       content="ZEN Starter - Professional Vite-based starter kit for modern web development with TypeScript, SCSS, and enterprise-grade tooling."
     />
-    <link rel="icon" href="/favicon.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
     <meta name="robots" content="index, follow" />
     <title>ZEN Starter - Professional Vite Kit</title>
+    <meta
+      name="description"
+      content="ZEN Starter - Professional Vite-based starter kit for modern web development. Features TypeScript, SCSS, and enterprise-grade tooling for rapid, scalable, and maintainable projects. Includes modern best practices, accessibility, and performance optimizations out of the box."
+    />
 
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -134,11 +138,208 @@
         border-color: var(--border-light);
       }
 
+      /* Mobile Menu */
+      .mobile-menu-toggle {
+        display: flex;
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        cursor: pointer;
+        padding: 8px;
+        flex-direction: column;
+        gap: 4px;
+        transition: all 0.2s ease;
+      }
+
+      @media (min-width: 769px) {
+        .mobile-menu-toggle {
+          display: none;
+        }
+      }
+
+      .mobile-menu-toggle:hover {
+        color: var(--primary);
+      }
+
+      .hamburger-line {
+        width: 24px;
+        height: 2px;
+        background: currentColor;
+        transition: all 0.3s ease;
+        border-radius: 1px;
+      }
+
+      .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+
+      .mobile-menu-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        cursor: pointer;
+        padding: 8px;
+        transition: color 0.2s ease;
+        z-index: 1000;
+      }
+
+      .mobile-menu-close:hover {
+        color: var(--primary);
+      }
+
+      .mobile-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--bg-primary);
+        z-index: 999;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+      }
+
+      @media (min-width: 769px) {
+        .mobile-menu {
+          display: none;
+        }
+      }
+
+      .mobile-menu.active {
+        transform: translateX(0);
+      }
+
+      body.menu-open {
+        overflow: hidden;
+        height: 100vh;
+      }
+
+      .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 80px 0 0;
+        height: 100vh;
+        width: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+
+      .mobile-nav .nav-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+        padding: 20px 30px;
+        border-bottom: 1px solid var(--border);
+        transition: all 0.2s ease;
+        position: relative;
+      }
+
+      .mobile-nav .nav-link:hover {
+        color: var(--primary);
+        background: rgba(62, 207, 142, 0.05);
+        padding-left: 40px;
+      }
+
+      .mobile-nav .nav-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--primary);
+        transform: scaleY(0);
+        transition: transform 0.2s ease;
+      }
+
+      .mobile-nav .nav-link:hover::before {
+        transform: scaleY(1);
+      }
+
+      .mobile-nav .github-btn {
+        margin: 20px 30px;
+        text-align: center;
+        font-size: 16px;
+        padding: 12px 24px;
+      }
+
       /* Hero Section */
       .hero {
         padding: 120px 0 80px;
         text-align: center;
         background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        position: relative;
+      }
+
+      #particles-js {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 3px 8px rgba(62, 207, 142, 0.3);
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+      }
+
+      .back-to-top:hover {
+        background: var(--secondary);
+        transform: translateX(-50%) translateY(-2px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top svg {
+        transition: transform 0.3s ease;
+      }
+
+      .back-to-top:hover svg {
+        transform: translateY(-2px);
       }
 
       .hero-badge {
@@ -239,6 +440,10 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        min-width: 0;
+        font-family: "JetBrains Mono", "Monaco", "Menlo", monospace;
+        font-size: 14px;
+        font-weight: 500;
       }
 
       .copy-btn {
@@ -295,11 +500,6 @@
         border-radius: 16px;
         padding: 32px;
         transition: all 0.2s ease;
-      }
-
-      .feature-card:hover {
-        border-color: var(--primary);
-        transform: translateY(-4px);
         box-shadow: var(--shadow-xl);
       }
 
@@ -327,112 +527,504 @@
         line-height: 1.6;
       }
 
-      /* Philosophy Section */
+      /* Web Development Best Practices Guide */
       .philosophy {
-        padding: 100px 0;
+        padding: 120px 0;
         background: var(--bg-primary);
+        position: relative;
       }
 
-      .philosophy-grid {
+      .philosophy::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      }
+
+      .hero-gradient {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        margin: 0;
+      }
+
+      /* NPM Scripts Section */
+      .npm-scripts {
+        padding: 80px 0 120px;
+        background: var(--bg-secondary);
+        position: relative;
+      }
+
+      .npm-scripts::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      }
+
+      .scripts-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 36px;
-        margin-top: 64px;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 24px;
+        margin-top: 60px;
       }
 
-      .philosophy-card {
+      .script-card {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .script-header {
+        margin-bottom: 12px;
+      }
+
+      .script-command {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        font-family: "JetBrains Mono", "Monaco", "Menlo", monospace;
+        margin: 0;
+      }
+
+      .script-description {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+
+      .guide-content {
+        max-width: 900px;
+        margin: 0 auto;
+        margin-top: 80px;
+      }
+
+      .guide-section {
         background: var(--bg-secondary);
         border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 28px;
-        position: relative;
+        border-radius: 20px;
+        margin-bottom: 40px;
         overflow: hidden;
-      }
-
-      .philosophy-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
-      }
-
-      .philosophy-title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 18px;
-        color: var(--primary);
-      }
-
-      .philosophy-description {
-        color: var(--text-secondary);
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-
-      .philosophy-example {
-        background: #1e1e1e;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 50px 20px 20px 20px;
-        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
-        font-size: 13px;
-        line-height: 1.5;
-        color: #d4d4d4;
-        overflow-x: auto;
+        transition: all 0.3s ease;
         position: relative;
       }
 
-      .philosophy-example::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 36px;
-        background: #2d2d30;
-        border-radius: 8px 8px 0 0;
+      .guide-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 32px 40px;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(135deg, rgba(62, 207, 142, 0.02) 0%, rgba(99, 102, 241, 0.02) 100%);
+      }
+
+      .guide-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+        letter-spacing: -0.01em;
+      }
+
+      .guide-badge {
+        background: var(--primary);
+        color: var(--bg-primary);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .guide-body {
+        padding: 40px;
+      }
+
+      .guide-description {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--text-secondary);
+        margin-bottom: 32px;
+      }
+
+      /* Guide Principles */
+      .guide-principles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 24px;
+      }
+
+      .principle {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .principle h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .principle p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      .principle code {
+        background: var(--bg-secondary);
+        color: var(--primary);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: "JetBrains Mono", "Monaco", "Menlo", monospace;
+        font-size: 13px;
+      }
+
+      /* Guide Features */
+      .guide-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .feature-item {
+        padding: 20px;
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      .feature-item h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .feature-item p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* Guide Grid */
+      .guide-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .grid-item {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .grid-item h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .grid-item p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* Architecture Diagram */
+      .architecture-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+
+      .arch-item {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        min-width: 180px;
+      }
+
+      .arch-icon {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+
+      .arch-item h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .arch-item p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .arch-arrow {
+        font-size: 24px;
+        color: var(--primary);
+        font-weight: bold;
+      }
+
+      /* TypeScript Features */
+      .typescript-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .ts-feature {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .ts-feature h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 8px;
+      }
+
+      .ts-feature p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* Performance Metrics */
+      .performance-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 24px;
+        margin-top: 24px;
+      }
+
+      .metric {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .metric-value {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .metric-label {
+        font-size: 12px;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+      }
+
+      /* A11y Checklist */
+      .a11y-checklist {
+        margin-top: 24px;
+      }
+
+      .checklist-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
         border-bottom: 1px solid var(--border);
       }
 
-      .philosophy-example::after {
-        content: "● ● ●";
-        position: absolute;
-        top: 12px;
-        left: 16px;
-        color: #6a6a6a;
+      .checklist-item:last-child {
+        border-bottom: none;
+      }
+
+      .check-icon {
+        width: 20px;
+        height: 20px;
+        background: var(--primary);
+        color: var(--bg-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 12px;
-        letter-spacing: 2px;
+        font-weight: bold;
+        flex-shrink: 0;
       }
 
-      .philosophy-example code {
-        color: #569cd6;
+      .checklist-item span {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
       }
 
-      .philosophy-example .string {
-        color: #ce9178;
+      /* Testing Pyramid */
+      .testing-pyramid {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
       }
 
-      .philosophy-example .comment {
-        color: #6a9955;
+      .pyramid-level {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        position: relative;
       }
 
-      .philosophy-example .keyword {
-        color: #c586c0;
+      .pyramid-level:first-child {
+        background: var(--bg-primary);
+        border-color: var(--border);
       }
 
-      .philosophy-example .function {
-        color: #dcdcaa;
+      .pyramid-level:nth-child(2) {
+        background: var(--bg-primary);
+        border-color: var(--border);
       }
 
-      .philosophy-example .number {
-        color: #b5cea8;
+      .pyramid-level h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
       }
 
-      .philosophy-example .operator {
-        color: #d4d4d4;
+      .pyramid-level p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* Security Pillars */
+      .security-pillars {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .pillar {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .pillar h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .pillar p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .philosophy {
+          padding: 80px 0;
+        }
+
+        .guide-content {
+          margin-top: 60px;
+        }
+
+        .guide-section {
+          margin-bottom: 32px;
+        }
+
+        .guide-header {
+          padding: 24px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+
+        .guide-body {
+          padding: 24px;
+        }
+
+        .guide-title {
+          font-size: 20px;
+        }
+
+        .architecture-diagram {
+          flex-direction: column;
+        }
+
+        .arch-arrow {
+          transform: rotate(90deg);
+        }
+
+        .guide-principles,
+        .guide-features,
+        .guide-grid,
+        .typescript-features,
+        .performance-metrics,
+        .security-pillars {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .guide-header {
+          padding: 20px;
+        }
+
+        .guide-body {
+          padding: 20px;
+        }
+
+        .guide-title {
+          font-size: 18px;
+        }
+
+        .guide-description {
+          font-size: 15px;
+        }
       }
 
       /* Footer */
@@ -467,6 +1059,56 @@
           align-items: stretch;
         }
 
+        /* Hide particles on mobile for performance */
+        #particles-js {
+          display: none;
+        }
+
+        .back-to-top {
+          width: 35px;
+          height: 35px;
+          bottom: 15px;
+        }
+
+        .mobile-menu-close {
+          top: 15px;
+          right: 15px;
+        }
+
+        .mobile-nav {
+          padding: 60px 0 0;
+          height: 100vh;
+        }
+
+        .mobile-nav .nav-link {
+          font-size: 16px;
+          padding: 16px 20px;
+        }
+
+        .mobile-nav .github-btn {
+          margin: 16px 20px;
+          font-size: 14px;
+          padding: 10px 20px;
+        }
+
+        .install-command {
+          padding: 10px 12px;
+          gap: 8px;
+        }
+
+        .command-text {
+          font-size: 12px;
+        }
+
+        .copy-btn {
+          padding: 4px;
+        }
+
+        .copy-btn svg {
+          width: 14px;
+          height: 14px;
+        }
+
         .features-grid {
           grid-template-columns: 1fr;
         }
@@ -492,6 +1134,7 @@
         .nav {
           display: none;
         }
+
       }
 
       @media (max-width: 480px) {
@@ -504,9 +1147,21 @@
         }
 
         .install-command {
-          flex-direction: column;
-          gap: 16px;
-          text-align: center;
+          flex-direction: row;
+          gap: 12px;
+          text-align: left;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .command-text {
+          flex: 1;
+          min-width: 0;
+          word-break: break-all;
+        }
+
+        .copy-btn {
+          flex-shrink: 0;
         }
       }
     </style>
@@ -520,6 +1175,28 @@
           <nav class="nav">
             <a href="#features" class="nav-link">Features</a>
             <a href="#philosophy" class="nav-link">Philosophy</a>
+            <a href="#scripts" class="nav-link">Scripts</a>
+            <a href="https://github.com/dmitry-conquer/zen-starter" class="github-btn" target="_blank" rel="noopener">
+              GitHub
+            </a>
+          </nav>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+          <button class="mobile-menu-close" id="mobile-menu-close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <nav class="mobile-nav">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#philosophy" class="nav-link">Philosophy</a>
+            <a href="#scripts" class="nav-link">Scripts</a>
             <a href="https://github.com/dmitry-conquer/zen-starter" class="github-btn" target="_blank" rel="noopener">
               GitHub
             </a>
@@ -530,9 +1207,10 @@
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
+      <div id="particles-js"></div>
       <div class="container">
         <div class="hero-badge" data-aos="fade-up" data-aos-delay="100">
-          v1.5.4 released on August 24, 2025 • Professional Starter Kit • MIT License
+          v1.6.0 released on September 5, 2025 • MIT License
         </div>
 
         <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Build Faster, Ship Sooner</h1>
@@ -558,6 +1236,9 @@
         </div>
       </div>
     </section>
+
+    <!-- Hero Gradient -->
+    <div class="hero-gradient"></div>
 
     <!-- Features Section -->
     <section class="features" id="features">
@@ -626,247 +1307,352 @@
       </div>
     </section>
 
-    <!-- Philosophy Section -->
+    <!-- Web Development Best Practices Guide -->
     <section class="philosophy" id="philosophy">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2 class="section-title">Development Philosophy</h2>
-          <p class="section-subtitle">Core principles and architectural decisions that make ZEN Starter exceptional</p>
+          <p class="section-subtitle">
+            The core principles and architectural decisions that make ZEN Starter exceptional. Built with modern best
+            practices and designed for professional development teams.
+          </p>
         </div>
 
-        <div class="philosophy-grid">
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Modular TypeScript Architecture</h3>
-            <p class="philosophy-description">
-              Class-based component system with proper dependency injection. Each component is self-contained with clear
-              interfaces.
-            </p>
-            <div class="philosophy-example">
-              <span class="keyword">import</span> { <span class="function">Header</span> }
-              <span class="keyword">from</span> <span class="string">'@/components'</span>;<br />
-              <span class="keyword">const</span> header = <span class="keyword">new</span>
-              <span class="function">Header</span>(<span class="string">'#header'</span>, options);
+        <div class="guide-content">
+          <!-- Markup Structure -->
+          <div class="guide-section" data-aos="fade-up">
+            <div class="guide-header">
+              <h3 class="guide-title">Markup Structure</h3>
+            </div>
+            <div class="guide-body">
+              <p class="guide-description">
+                Semantic HTML structure with proper accessibility features, multi-page support, and Handlebars
+                templating. Clean, maintainable markup that works everywhere.
+              </p>
+              <div class="guide-grid">
+                <div class="grid-item">
+                  <h4>Semantic Structure</h4>
+                  <p>Proper HTML5 elements with meaningful hierarchy</p>
+            </div>
+                <div class="grid-item">
+                  <h4>Multi-Page Support</h4>
+                  <p>Handlebars templating for multiple HTML pages</p>
+          </div>
+                <div class="grid-item">
+                  <h4>Component Templates</h4>
+                  <p>Reusable HTML components in dedicated folder</p>
+            </div>
+                <div class="grid-item">
+                  <h4>Progressive Enhancement</h4>
+                  <p>Works everywhere, enhanced where possible</p>
+          </div>
+                <div class="grid-item">
+                  <h4>Performance Markup</h4>
+                  <p>Optimized HTML structure for fast loading and rendering</p>
+            </div>
+                <div class="grid-item">
+                  <h4>Handlebars Templating</h4>
+                  <p>Powerful templating engine for dynamic content and component reuse</p>
+          </div>
+              </div>
             </div>
           </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Responsive Design Principles</h3>
-            <p class="philosophy-description">
-              Mobile-first approach with fluid typography using rem units. CSS custom properties for consistent spacing
-              and breakpoints.
-            </p>
-            <div class="philosophy-example">
-              <span class="keyword">:root</span> {<br />
-              <span class="string">--spacing-xs</span>: <span class="number">0.5rem</span>;<br />
-              <span class="string">--spacing-lg</span>: <span class="number">2rem</span>;<br />
-              }
+          <!-- Styling Architecture -->
+          <div class="guide-section" data-aos="fade-up">
+            <div class="guide-header">
+              <h3 class="guide-title">Styling Architecture</h3>
+            </div>
+            <div class="guide-body">
+              <p class="guide-description">
+                Modular SCSS architecture with BEM methodology, responsive design system, and modern CSS features.
+                Built-in rem() and fluid() functions ensure consistent scaling and optimal performance.
+              </p>
+              <div class="guide-principles">
+                <div class="principle">
+                  <h4>BEM Methodology</h4>
+                  <p>Consistent naming with <code>.block__element--modifier</code> pattern</p>
+            </div>
+                <div class="principle">
+                  <h4>Responsive System</h4>
+                  <p>rem() function, fluid typography, mobile-first approach</p>
+          </div>
+                <div class="principle">
+                  <h4>Modern CSS</h4>
+                  <p>CSS Grid, Flexbox, Custom Properties, Container Queries</p>
+            </div>
+                <div class="principle">
+                  <h4>SCSS Modules</h4>
+                  <p>@use and @forward for modular architecture and dependency management</p>
+          </div>
+                <div class="principle">
+                  <h4>Mixins & Functions</h4>
+                  <p>Custom mixins for common patterns and utility functions</p>
+            </div>
+                <div class="principle">
+                  <h4>Variables & Theming</h4>
+                  <p>CSS custom properties and SCSS variables for consistent theming</p>
+          </div>
+              </div>
             </div>
           </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Performance-First CSS</h3>
-            <p class="philosophy-description">
-              PostCSS optimization pipeline with media query combining. Critical CSS extraction and unused rule
-              elimination.
-            </p>
-            <div class="philosophy-example">
-              <span class="comment">// Automatically combines media queries</span><br />
-              <span class="comment">// Sorts breakpoints logically</span><br />
-              <span class="comment">// Eliminates duplicate rules</span>
+          <!-- Application Logic -->
+          <div class="guide-section" data-aos="fade-up">
+            <div class="guide-header">
+              <h3 class="guide-title">Application Logic</h3>
+            </div>
+            <div class="guide-body">
+              <p class="guide-description">
+                TypeScript class-based architecture with strict type checking, modern ES6+ features, and comprehensive
+                error handling. Each component is self-contained with clear interfaces.
+              </p>
+              <div class="guide-features">
+                <div class="feature-item">
+                  <h4>Class-Based Components</h4>
+                  <p>Object-oriented approach with proper inheritance and lifecycle methods</p>
+            </div>
+                <div class="feature-item">
+                  <h4>Type Safety</h4>
+                  <p>Strict TypeScript configuration for maximum type safety and error prevention</p>
+          </div>
+                <div class="feature-item">
+                  <h4>Modern JavaScript</h4>
+                  <p>ES6+ features, async/await patterns, and modern DOM APIs</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Accessibility by Default</h3>
-            <p class="philosophy-description">
-              ARIA attributes, keyboard navigation, and semantic HTML structure. Screen reader compatibility and focus
-              management.
-            </p>
-            <div class="philosophy-example">
-              &lt;<span class="keyword">button</span> <span class="string">aria-expanded</span>=<span class="string"
-                >"false"</span
-              >&gt;<br />
-              &lt;<span class="keyword">span</span> <span class="string">class</span>=<span class="string"
-                >"sr-only"</span
-              >&gt;Toggle menu&lt;/<span class="keyword">span</span>&gt;<br />
-              &lt;/<span class="keyword">button</span>&gt;
+          <!-- Bundle Optimization -->
+          <div class="guide-section" data-aos="fade-up">
+            <div class="guide-header">
+              <h3 class="guide-title">Bundle Optimization</h3>
+            </div>
+            <div class="guide-body">
+              <p class="guide-description">
+                Advanced optimization strategies including code splitting, lazy loading, minification, and critical CSS
+                extraction. Built for maximum performance and minimal bundle size with Vite-powered build system.
+              </p>
+              <div class="guide-features">
+                <div class="feature-item">
+                  <h4>Code Splitting</h4>
+                  <p>Automatic chunk optimization and dynamic imports for optimal loading</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Minification</h4>
+                  <p>CSS and JavaScript minification with PostCSS and Vite optimization</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Tree Shaking</h4>
+                  <p>Dead code elimination and unused export removal</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Lazy Loading</h4>
+                  <p>Dynamic component loading and image optimization</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Lenis Integration</h4>
+                  <p>Smooth scrolling with performance-optimized animations</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Asset Optimization</h4>
+                  <p>Image compression, font optimization, and resource bundling</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Service Layer Pattern</h3>
-            <p class="philosophy-description">
-              Reusable service modules for common functionality. API abstraction, storage management, and utility
-              functions.
-            </p>
-            <div class="philosophy-example">
-              <span class="keyword">class</span> <span class="function">StorageService</span> {<br />
-              <span class="keyword">static</span> <span class="function">get</span>(<span class="string">key</span>:
-              <span class="keyword">string</span>): <span class="keyword">any</span> { ... }<br />
-              <span class="keyword">static</span> <span class="function">set</span>(<span class="string">key</span>:
-              <span class="keyword">string</span>, <span class="string">value</span>: <span class="keyword">any</span>):
-              <span class="keyword">void</span> { ... }<br />
-              }
+          <!-- Structure -->
+          <div class="guide-section" data-aos="fade-up">
+            <div class="guide-header">
+              <h3 class="guide-title">Structure</h3>
+            </div>
+            <div class="guide-body">
+              <p class="guide-description">
+                Clean, organized project structure with clear separation of concerns. Each part of the application has
+                its dedicated place for maximum maintainability.
+              </p>
+              <div class="guide-features">
+                <div class="feature-item">
+                  <h4>TypeScript Components</h4>
+                  <p><code>src/scripts/components/</code> - Class-based component architecture</p>
+                </div>
+                <div class="feature-item">
+                  <h4>SCSS Styles</h4>
+                  <p><code>src/styles/components/</code> - Modular styling system</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Services & Utils</h4>
+                  <p><code>src/scripts/services/</code> - Business logic and utilities</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Multi-page Templates</h4>
+                  <p><code>pages/</code> - Handlebars-powered HTML templates</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Reusable Components</h4>
+                  <p><code>components/</code> - HTML component library</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Type Definitions</h4>
+                  <p><code>src/scripts/types/</code> - TypeScript type definitions</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Responsive Typography with rem()</h3>
-            <p class="philosophy-description">
-              SCSS rem() function for consistent scaling across breakpoints. Automatic pixel-to-rem conversion with base
-              font size consideration.
-            </p>
-            <div class="philosophy-example">
-              <span class="comment">// SCSS rem() function</span><br />
-              <span class="string">font-size</span>: <span class="function">rem</span>(<span class="number">16px</span
-              >); <span class="comment">// 1rem</span><br />
-              <span class="string">padding</span>: <span class="function">rem</span>(<span class="number">24px</span>);
-              <span class="comment">// 1.5rem</span><br />
-              <span class="comment">// Automatically scales with root font-size</span>
+          <!-- Accessibility -->
+          <div class="guide-section" data-aos="fade-up">
+            <div class="guide-header">
+              <h3 class="guide-title">Accessibility</h3>
+            </div>
+            <div class="guide-body">
+              <p class="guide-description">
+                Built-in accessibility features following WCAG 2.1 AA guidelines. Semantic HTML, ARIA attributes,
+                keyboard navigation, and screen reader compatibility.
+              </p>
+              <div class="guide-features">
+                <div class="feature-item">
+                  <h4>Semantic HTML</h4>
+                  <p>Proper heading hierarchy and landmark regions for screen readers</p>
+                </div>
+                <div class="feature-item">
+                  <h4>ARIA Attributes</h4>
+                  <p>Complex interactive elements with proper labeling and states</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Keyboard Navigation</h4>
+                  <p>Full keyboard support for all interactive elements</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Focus Management</h4>
+                  <p>Visible focus indicators and logical tab order</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Screen Reader Support</h4>
+                  <p>Comprehensive support for assistive technologies</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Motion Preferences</h4>
+                  <p>Respects user's motion preferences and reduced motion settings</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Fluid Scaling with fluid()</h3>
-            <p class="philosophy-description">
-              CSS fluid() function for smooth scaling between breakpoints. Eliminates the need for multiple media
-              queries for typography.
-            </p>
-            <div class="philosophy-example">
-              <span class="comment">// Fluid typography scaling</span><br />
-              <span class="string">font-size</span>: <span class="function">fluid</span>(<span class="number">16px</span
-              >, <span class="number">24px</span>, <span class="number">320px</span>,
-              <span class="number">1200px</span>);<br />
-              <span class="comment">// Smoothly scales from 16px to 24px</span>
+          <!-- Development Workflow -->
+          <div class="guide-section" data-aos="fade-up">
+            <div class="guide-header">
+              <h3 class="guide-title">Development Workflow</h3>
+            </div>
+            <div class="guide-body">
+              <p class="guide-description">
+                Lightning-fast development with Vite, PostCSS optimization, and comprehensive tooling. Hot Module
+                Replacement, ESLint, Prettier, and TypeScript integration for professional development.
+              </p>
+              <div class="guide-features">
+                <div class="feature-item">
+                  <h4>Hot Module Replacement</h4>
+                  <p>Instant feedback during development with Vite's HMR</p>
+            </div>
+                <div class="feature-item">
+                  <h4>PostCSS Pipeline</h4>
+                  <p>Autoprefixer, media query combining, and CSS optimization</p>
+          </div>
+                <div class="feature-item">
+                  <h4>Developer Tools</h4>
+                  <p>ESLint, Prettier, comprehensive error handling and debugging</p>
+                </div>
+                <div class="feature-item">
+                  <h4>TypeScript Integration</h4>
+                  <p>Full TypeScript support with strict configuration</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Multi-page Support</h4>
+                  <p>Handlebars templating for scalable multi-page applications</p>
+                </div>
+                <div class="feature-item">
+                  <h4>Build Optimization</h4>
+                  <p>Production-ready builds with automatic optimization</p>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Component-Based SCSS Structure</h3>
-            <p class="philosophy-description">
-              Modular SCSS architecture with component-specific files. BEM methodology and consistent naming conventions
-              for maintainability.
-            </p>
-            <div class="philosophy-example">
-              <span class="comment">// Component-based SCSS</span><br />
-              <span class="keyword">.button</span> {<br />
-              <span class="keyword">&--primary</span> { <span class="keyword">@extend</span>
-              <span class="keyword">.button</span>; }<br />
-              <span class="keyword">&--secondary</span> { <span class="keyword">@extend</span>
-              <span class="keyword">.button</span>; }<br />
-              }
-            </div>
+    <!-- Build Commands Section -->
+    <section class="npm-scripts" id="scripts">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2 class="section-title">Build Commands</h2>
+          <p class="section-subtitle">
+            Essential commands for working with the ZEN Starter build system. 
+            Everything you need to develop, build, and maintain your project.
+          </p>
           </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Accessibility & Semantic HTML</h3>
-            <p class="philosophy-description">
-              Proper heading hierarchy, landmark regions, and ARIA labels. Keyboard navigation support and screen reader
-              optimization.
-            </p>
-            <div class="philosophy-example">
-              &lt;<span class="keyword">main</span> <span class="string">role</span>=<span class="string">"main"</span
-              >&gt;<br />
-              &lt;<span class="keyword">section</span> <span class="string">aria-labelledby</span>=<span class="string"
-                >"section-title"</span
-              >&gt;<br />
-              &lt;<span class="keyword">h2</span> <span class="string">id</span>=<span class="string"
-                >"section-title"</span
-              >&gt;Section&lt;/<span class="keyword">h2</span>&gt;<br />
-              &lt;/<span class="keyword">section</span>&gt;<br />
-              &lt;/<span class="keyword">main</span>&gt;
+        <div class="scripts-grid">
+          <div class="script-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="script-header">
+              <h3 class="script-command">npm run dev</h3>
             </div>
+            <p class="script-description">
+              Start the development server with Vite. Features hot module replacement, 
+              instant feedback, and optimized development experience.
+            </p>
+            </div>
+
+          <div class="script-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="script-header">
+              <h3 class="script-command">npm run host</h3>
+            </div>
+            <p class="script-description">
+              Start development server with network access. Allows testing on mobile devices 
+              and other machines on the same network.
+            </p>
           </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Mobile-First Responsive Design</h3>
-            <p class="philosophy-description">
-              Progressive enhancement approach starting from mobile devices. Touch-friendly interactions and optimized
-              performance for small screens.
-            </p>
-            <div class="philosophy-example">
-              <span class="comment">// Mobile-first media queries</span><br />
-              <span class="keyword">.element</span> {<br />
-              <span class="string">padding</span>: <span class="number">1rem</span>;
-              <span class="comment">// Mobile default</span><br />
-              <span class="keyword">@media</span> (<span class="string">min-width</span>:
-              <span class="number">768px</span>) {<br />
-              <span class="string">padding</span>: <span class="number">2rem</span>;
-              <span class="comment">// Tablet+</span><br />
-              }<br />
-              }
+          <div class="script-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="script-header">
+              <h3 class="script-command">npm run build</h3>
             </div>
+            <p class="script-description">
+              Build the project for production. Compiles TypeScript, optimizes assets, 
+              and generates production-ready files.
+            </p>
+            </div>
+
+          <div class="script-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="script-header">
+              <h3 class="script-command">npm run preview</h3>
+            </div>
+            <p class="script-description">
+              Preview the production build locally. Test the optimized version 
+              before deployment to ensure everything works correctly.
+            </p>
           </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">PostCSS Optimization Pipeline</h3>
-            <p class="philosophy-description">
-              Advanced PostCSS processing with autoprefixer, media query combining, and CSS optimization. Automatic
-              vendor prefixing and cross-browser compatibility.
-            </p>
-            <div class="philosophy-example">
-              <span class="comment">// PostCSS configuration</span><br />
-              <span class="function">autoprefixer</span>(),<br />
-              <span class="function">mqpacker</span>(), <span class="comment">// Combine media queries</span><br />
-              <span class="function">cssnano</span>() <span class="comment">// Minification</span>
+          <div class="script-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="script-header">
+              <h3 class="script-command">npm run lint</h3>
             </div>
-          </div>
+            <p class="script-description">
+              Run ESLint to check code quality and find potential issues. 
+              Analyzes TypeScript files for code style and best practices.
+            </p>
+            </div>
 
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">TypeScript Class Architecture</h3>
-            <p class="philosophy-description">
-              Object-oriented approach with proper inheritance and composition. Interface definitions, type guards, and
-              strict type checking.
-            </p>
-            <div class="philosophy-example">
-              <span class="keyword">interface</span> <span class="function">ComponentOptions</span> {<br />
-              <span class="string">selector</span>: <span class="keyword">string</span>;<br />
-              <span class="string">config</span>?: <span class="function">Config</span>;<br />
-              }<br />
-              <span class="keyword">class</span> <span class="function">Component</span> {<br />
-              <span class="keyword">constructor</span>(<span class="string">options</span>:
-              <span class="function">ComponentOptions</span>) { ... }<br />
-              }
+          <div class="script-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="script-header">
+              <h3 class="script-command">npm run lint:fix</h3>
             </div>
-          </div>
-
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Modern JavaScript Patterns</h3>
-            <p class="philosophy-description">
-              ES6+ features, async/await patterns, and modern DOM APIs. Event delegation, performance optimization, and
-              memory management.
+            <p class="script-description">
+              Automatically fix ESLint issues that can be resolved. 
+              Saves time by automatically correcting common code style problems.
             </p>
-            <div class="philosophy-example">
-              <span class="comment">// Modern JavaScript patterns</span><br />
-              <span class="keyword">const</span> observer = <span class="keyword">new</span>
-              <span class="function">IntersectionObserver</span>(<span class="string">entries</span> => {<br />
-              <span class="string">entries</span>.<span class="function">forEach</span>(<span class="string"
-                >entry</span
-              >
-              => {<br />
-              <span class="keyword">if</span> (<span class="string">entry</span>.<span class="string"
-                >isIntersecting</span
-              >) { ... }<br />
-              });<br />
-              });
-            </div>
-          </div>
-
-          <div class="philosophy-card" data-aos="fade-up">
-            <h3 class="philosophy-title">Build System Excellence</h3>
-            <p class="philosophy-description">
-              Vite configuration with custom plugins, asset optimization, and development server customization. Hot
-              module replacement and fast refresh.
-            </p>
-            <div class="philosophy-example">
-              <span class="comment">// Vite configuration</span><br />
-              <span class="keyword">export</span> <span class="keyword">default</span>
-              <span class="function">defineConfig</span>({<br />
-              <span class="string">plugins</span>: [<span class="function">handlebars</span>(),
-              <span class="function">customPlugin</span>()],<br />
-              <span class="string">build</span>: { <span class="string">rollupOptions</span>: { ... } }<br />
-              });
-            </div>
           </div>
         </div>
       </div>
@@ -881,8 +1667,17 @@
       </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+    </button>
+
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <script>
       // Initialize AOS
@@ -891,6 +1686,160 @@
         easing: "ease-out-cubic",
         once: true,
         offset: 100,
+      });
+
+      // Initialize Particles.js
+      particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 60,
+            "density": {
+              "enable": true,
+              "value_area": 600
+            }
+          },
+          "color": {
+            "value": "#3ecf8e"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            }
+          },
+          "opacity": {
+            "value": 0.3,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 4,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 2,
+              "size_min": 2,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 120,
+            "color": "#3ecf8e",
+            "opacity": 0.2,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 0.5,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": false,
+              "mode": "repulse"
+            },
+            "onclick": {
+              "enable": false,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 200,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 200,
+              "size": 8,
+              "duration": 2,
+              "opacity": 0.8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 100,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      // Mobile Menu functionality
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+      
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      }
+      
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+      
+      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+      mobileMenuClose.addEventListener('click', closeMobileMenu);
+      
+      // Close mobile menu when clicking on a link
+      const mobileNavLinks = mobileMenu.querySelectorAll('.nav-link');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (mobileMenu.classList.contains('active') && 
+            !mobileMenuToggle.contains(event.target) && 
+            !mobileMenu.contains(event.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Back to Top Button functionality
+      const backToTopBtn = document.getElementById('back-to-top');
+      
+      // Show/hide button based on scroll position
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 600) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+      
+      // Smooth scroll to top when clicked
+      backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       });
 
       // Copy to clipboard functionality
