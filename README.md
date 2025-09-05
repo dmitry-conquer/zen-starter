@@ -27,8 +27,8 @@ Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling.
 
 <div style="position: relative; z-index: 2; text-align: center;">
 
-<div style="color: #171717; font-size: 20px; font-weight: 700; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">✨ Live Preview</div>
-<div style="color: #171717; font-size: 14px; margin-bottom: 20px; opacity: 0.8;">Experience ZEN Starter in action</div>
+<div style="color: #171717; font-size: 20px; font-weight: 700; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">🌐 Additional Information</div>
+<div style="color: #171717; font-size: 14px; margin-bottom: 20px; opacity: 0.8;">Explore more details and examples</div>
 
 <a href="https://zen-starter.netlify.app/" style="
   display: inline-block;
@@ -80,19 +80,45 @@ Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling.
 ">
 <div style="position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(62, 207, 142, 0.1) 0%, transparent 70%);"></div>
 <div style="position: relative; z-index: 2; text-align: center;">
-<div style="color: #3ecf8e; font-size: 18px; font-weight: 600; margin-bottom: 16px; text-shadow: 0 0 10px rgba(62, 207, 142, 0.3);">🚀 One Command Setup</div>
+<div style="color: #3ecf8e; font-size: 18px; font-weight: 600; margin-bottom: 20px; text-shadow: 0 0 10px rgba(62, 207, 142, 0.3);">🚀 One Command Setup</div>
+
+<div style="
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  border: 1px solid #3ecf8e;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(62, 207, 142, 0.2);
+">
+<div style="
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3ecf8e, #6366f1, #f59e0b);
+  border-radius: 12px 12px 0 0;
+"></div>
 <code style="
-  background: rgba(23, 23, 23, 0.8); 
-  color: #3ecf8e; 
-  padding: 12px 20px; 
-  border-radius: 8px; 
-  font-size: 16px; 
-  font-weight: 600;
-  border: 1px solid rgba(62, 207, 142, 0.3);
-  display: inline-block;
+  background: transparent;
+  color: #3ecf8e;
+  font-size: 18px;
+  font-weight: 700;
   font-family: 'JetBrains Mono', 'Monaco', 'Menlo', monospace;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  text-shadow: 0 0 10px rgba(62, 207, 142, 0.3);
+  letter-spacing: 0.5px;
+  display: block;
+  text-align: center;
 ">npm create zen@latest</code>
+<div style="
+  color: #c0c0c0;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 8px;
+  opacity: 0.8;
+">Copy and run this command in your terminal</div>
+</div>
 </div>
 </div>
 </div>
