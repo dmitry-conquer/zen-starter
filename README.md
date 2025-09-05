@@ -80,44 +80,104 @@ Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling.
 ">
 <div style="position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(62, 207, 142, 0.1) 0%, transparent 70%);"></div>
 <div style="position: relative; z-index: 2; text-align: center;">
-<div style="color: #3ecf8e; font-size: 18px; font-weight: 600; margin-bottom: 20px; text-shadow: 0 0 10px rgba(62, 207, 142, 0.3);">🚀 One Command Setup</div>
-
 <div style="
   background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-  border: 1px solid #3ecf8e;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 16px 0;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 32px;
+  margin: 20px 0;
   position: relative;
-  box-shadow: 0 8px 32px rgba(62, 207, 142, 0.2);
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(62, 207, 142, 0.15);
 ">
 <div style="
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  bottom: 0;
+  background: linear-gradient(45deg, #3ecf8e, #6366f1, #f59e0b, #3ecf8e);
+  background-size: 300% 300%;
+  border-radius: 20px;
+  padding: 2px;
+">
+<div style="
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  border-radius: 18px;
+  height: 100%;
+  padding: 28px;
+  position: relative;
+">
+<div style="position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(62, 207, 142, 0.08) 0%, transparent 70%);"></div>
+
+<div style="position: relative; z-index: 2; text-align: center;">
+
+<div style="
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(62, 207, 142, 0.1);
+  color: #3ecf8e;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  border: 1px solid rgba(62, 207, 142, 0.2);
+">
+<span>🚀</span>
+<span>One Command Setup</span>
+</div>
+
+<div style="
+  background: rgba(23, 23, 23, 0.8);
+  border: 1px solid rgba(62, 207, 142, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+">
+<div style="
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
   background: linear-gradient(90deg, #3ecf8e, #6366f1, #f59e0b);
   border-radius: 12px 12px 0 0;
 "></div>
 <code style="
   background: transparent;
   color: #3ecf8e;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   font-family: 'JetBrains Mono', 'Monaco', 'Menlo', monospace;
-  text-shadow: 0 0 10px rgba(62, 207, 142, 0.3);
-  letter-spacing: 0.5px;
+  text-shadow: 0 0 15px rgba(62, 207, 142, 0.4);
+  letter-spacing: 0.8px;
   display: block;
   text-align: center;
+  line-height: 1.4;
 ">npm create zen@latest</code>
+</div>
+
 <div style="
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   color: #c0c0c0;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 8px;
-  opacity: 0.8;
-">Copy and run this command in your terminal</div>
+  font-size: 14px;
+  margin-top: 16px;
+  opacity: 0.9;
+">
+<span>📋</span>
+<span>Copy and run this command in your terminal</span>
+</div>
+
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
