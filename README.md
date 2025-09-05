@@ -8,9 +8,9 @@
 
 </div>
 
-<div style="color: #c0c0c0; font-size: 18px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+<div style="color: #c0c0c0; font-size: 18px; margin-bottom: 40px; max-width: 600px;">
 
-Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling. Designed for developers who value quality, performance, and maintainability.
+Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling.
 
 </div>
 
@@ -24,51 +24,13 @@ Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling. D
 
 <div align="center">
 
-## 🎯 Why Choose ZEN Starter?
+## ⚡ Quick Start
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0;">
+<div style="background: #171717; border: 1px solid #3ecf8e; border-radius: 12px; padding: 24px; margin: 20px 0; box-shadow: 0 0 20px rgba(62, 207, 142, 0.1);">
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 16px; padding: 32px; text-align: left;">
-
-### ⚡ Lightning Fast Development
-Vite-powered HMR with instant feedback. Multi-page application support with Handlebars templating. Optimized build pipeline for production-ready deployments.
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 16px; padding: 32px; text-align: left;">
-
-### 🔧 Type-Safe Architecture
-Full TypeScript integration with class-based component architecture. Modular design patterns for scalable applications. Comprehensive type definitions.
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 16px; padding: 32px; text-align: left;">
-
-### 🎨 Professional Styling
-SCSS with PostCSS optimization. CSS-in-JS alternatives with proper scoping. Responsive design utilities and modern CSS features.
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 16px; padding: 32px; text-align: left;">
-
-### 🧩 Ready Components
-Production-ready interactive components: Accordion, Tabs, Modal, Theme switcher. Built with accessibility and performance in mind.
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 16px; padding: 32px; text-align: left;">
-
-### 🚀 Performance Optimized
-Lenis smooth scrolling integration. Optimized bundle splitting. Critical CSS extraction and lazy loading strategies.
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 16px; padding: 32px; text-align: left;">
-
-### 🛠️ Developer Experience
-ESLint + Prettier configuration. Hot module replacement. Comprehensive error handling and debugging tools.
-
-</div>
+```bash
+npm create zen@latest my-awesome-project
+```
 
 </div>
 
@@ -76,70 +38,99 @@ ESLint + Prettier configuration. Hot module replacement. Comprehensive error han
 
 ---
 
-## 🚀 Quick Start
+## 🎯 Core Features
 
-<div style="background: #282828; border: 1px solid #505050; border-radius: 12px; padding: 20px; margin: 20px 0;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 30px 0;">
 
-```bash
-npm create zen@latest
-```
+<div style="background: linear-gradient(135deg, #171717 0%, #282828 100%); border: 1px solid #505050; border-radius: 16px; padding: 24px; transition: all 0.3s ease;">
+
+### ⚡ Lightning Fast
+Vite-powered HMR with instant feedback and optimized build pipeline.
 
 </div>
 
-Or clone and install manually:
+<div style="background: linear-gradient(135deg, #171717 0%, #282828 100%); border: 1px solid #505050; border-radius: 16px; padding: 24px; transition: all 0.3s ease;">
 
-```bash
-git clone https://github.com/dmitry-conquer/zen-starter.git
-cd zen-starter
-npm install
-npm run dev
-```
+### 🔧 Type-Safe
+Full TypeScript integration with class-based component architecture.
+
+</div>
+
+<div style="background: linear-gradient(135deg, #171717 0%, #282828 100%); border: 1px solid #505050; border-radius: 16px; padding: 24px; transition: all 0.3s ease;">
+
+### 🎨 Professional Styling
+SCSS with PostCSS optimization and modern CSS features.
+
+</div>
+
+<div style="background: linear-gradient(135deg, #171717 0%, #282828 100%); border: 1px solid #505050; border-radius: 16px; padding: 24px; transition: all 0.3s ease;">
+
+### 🧩 Ready Components
+Production-ready interactive components with accessibility in mind.
+
+</div>
+
+<div style="background: linear-gradient(135deg, #171717 0%, #282828 100%); border: 1px solid #505050; border-radius: 16px; padding: 24px; transition: all 0.3s ease;">
+
+### 🚀 Performance
+Lenis smooth scrolling, code splitting, and critical CSS extraction.
+
+</div>
+
+<div style="background: linear-gradient(135deg, #171717 0%, #282828 100%); border: 1px solid #505050; border-radius: 16px; padding: 24px; transition: all 0.3s ease;">
+
+### 🛠️ Developer Experience
+ESLint + Prettier, HMR, and comprehensive error handling.
+
+</div>
+
+</div>
 
 ---
 
 ## 🛠️ Build Commands
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 30px 0;">
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
+<div style="background: #171717; border-left: 4px solid #3ecf8e; border-radius: 8px; padding: 20px;">
 
 ### `npm run dev`
-Start the development server with Vite. Features hot module replacement, instant feedback, and optimized development experience.
+Start development server with HMR
 
 </div>
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
+<div style="background: #171717; border-left: 4px solid #6366f1; border-radius: 8px; padding: 20px;">
 
 ### `npm run host`
-Start development server with network access. Allows testing on mobile devices and other machines on the same network.
+Dev server with network access
 
 </div>
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
+<div style="background: #171717; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 20px;">
 
 ### `npm run build`
-Build the project for production. Compiles TypeScript, optimizes assets, and generates production-ready files.
+Build for production
 
 </div>
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
+<div style="background: #171717; border-left: 4px solid #3ecf8e; border-radius: 8px; padding: 20px;">
 
 ### `npm run preview`
-Preview the production build locally. Test the optimized version before deployment to ensure everything works correctly.
+Preview production build
 
 </div>
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
+<div style="background: #171717; border-left: 4px solid #6366f1; border-radius: 8px; padding: 20px;">
 
 ### `npm run lint`
-Run ESLint to check code quality and find potential issues. Analyzes TypeScript files for code style and best practices.
+Check code quality
 
 </div>
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
+<div style="background: #171717; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 20px;">
 
 ### `npm run lint:fix`
-Automatically fix ESLint issues that can be resolved. Saves time by automatically correcting common code style problems.
+Auto-fix linting issues
 
 </div>
 
@@ -147,53 +138,63 @@ Automatically fix ESLint issues that can be resolved. Saves time by automaticall
 
 ---
 
-## 🏗️ Development Philosophy
+## 🏗️ Architecture
 
-<div style="background: #282828; border: 1px solid #505050; border-radius: 20px; padding: 40px; margin: 40px 0;">
+<div style="background: #282828; border: 1px solid #505050; border-radius: 20px; padding: 32px; margin: 40px 0; position: relative;">
 
-### 🎯 Core Principles
+<div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #3ecf8e, transparent);"></div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 30px 0;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 20px;">
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
+<div style="text-align: center;">
 
-#### 📱 **Markup Structure**
-Semantic HTML structure with proper accessibility features, multi-page support, and Handlebars templating. Clean, maintainable markup that works everywhere.
+<div style="background: #3ecf8e; color: #171717; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; font-weight: bold;">
 
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
-
-#### 🎨 **Styling Architecture**
-Modular SCSS architecture with BEM methodology, responsive design system, and modern CSS features. Built-in rem() and fluid() functions ensure consistent scaling.
+📱
 
 </div>
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
-
-#### ⚙️ **Application Logic**
-TypeScript class-based architecture with strict type checking, modern ES6+ features, and comprehensive error handling. Each component is self-contained with clear interfaces.
+### Markup
+Semantic HTML with Handlebars templating
 
 </div>
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
+<div style="text-align: center;">
 
-#### 🚀 **Bundle Optimization**
-Advanced optimization strategies including code splitting, lazy loading, minification, and critical CSS extraction. Built for maximum performance and minimal bundle size.
+<div style="background: #6366f1; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; font-weight: bold;">
 
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
-
-#### ♿ **Accessibility**
-Built-in accessibility features following WCAG 2.1 AA guidelines. Semantic HTML, ARIA attributes, keyboard navigation, and screen reader compatibility.
+🎨
 
 </div>
 
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 20px;">
+### Styling
+SCSS with BEM methodology
 
-#### 🔧 **Development Workflow**
-Lightning-fast development with Vite, PostCSS optimization, and comprehensive tooling. Hot Module Replacement, ESLint, Prettier, and TypeScript integration.
+</div>
+
+<div style="text-align: center;">
+
+<div style="background: #f59e0b; color: #171717; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; font-weight: bold;">
+
+⚙️
+
+</div>
+
+### Logic
+TypeScript class-based components
+
+</div>
+
+<div style="text-align: center;">
+
+<div style="background: #3ecf8e; color: #171717; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; font-weight: bold;">
+
+🚀
+
+</div>
+
+### Performance
+Optimized bundles and lazy loading
 
 </div>
 
@@ -207,20 +208,17 @@ Lightning-fast development with Vite, PostCSS optimization, and comprehensive to
 
 ```
 zen-starter/
-├── 📁 components/          # Reusable HTML components
-├── 📁 pages/              # Multi-page HTML templates
-├── 📁 public/             # Static assets
+├── 📁 components/          # HTML components
+├── 📁 pages/              # Multi-page templates  
 ├── 📁 src/
 │   ├── 📁 scripts/
-│   │   ├── 📁 components/ # TypeScript components
-│   │   ├── 📁 services/   # Business logic & utilities
-│   │   └── 📁 types/      # TypeScript definitions
+│   │   ├── 📁 components/ # TS components
+│   │   ├── 📁 services/   # Business logic
+│   │   └── 📁 types/      # Type definitions
 │   └── 📁 styles/
 │       ├── 📁 core/       # SCSS architecture
 │       └── 📁 components/ # Component styles
-├── 📄 package.json
-├── 📄 vite.config.js
-└── 📄 tsconfig.json
+└── 📄 config files
 ```
 
 ---
@@ -234,81 +232,6 @@ zen-starter/
 <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="Sass"/>
 <img src="https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white" alt="PostCSS"/>
 <img src="https://img.shields.io/badge/Handlebars.js-f0772b?style=for-the-badge&logo=handlebars.js&logoColor=white" alt="Handlebars"/>
-<img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" alt="ESLint"/>
-<img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white" alt="Prettier"/>
-
-</div>
-
----
-
-## 🌟 Features
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 24px;">
-
-### ⚡ **Performance**
-- Vite-powered HMR with instant feedback
-- Optimized bundle splitting and lazy loading
-- Critical CSS extraction
-- Lenis smooth scrolling integration
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 24px;">
-
-### 🎯 **Developer Experience**
-- TypeScript with strict configuration
-- ESLint + Prettier setup
-- Hot module replacement
-- Comprehensive error handling
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 24px;">
-
-### 🧩 **Components**
-- Accordion with smooth animations
-- Tab system with keyboard navigation
-- Modal with focus management
-- Theme switcher with persistence
-- Back-to-top button
-- Responsive header with mobile menu
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 24px;">
-
-### 🎨 **Styling**
-- SCSS with BEM methodology
-- Responsive design system
-- CSS custom properties
-- Modern CSS features (Grid, Flexbox)
-- Mobile-first approach
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 24px;">
-
-### ♿ **Accessibility**
-- WCAG 2.1 AA compliant
-- Semantic HTML structure
-- ARIA attributes
-- Keyboard navigation
-- Screen reader support
-
-</div>
-
-<div style="background: #171717; border: 1px solid #505050; border-radius: 12px; padding: 24px;">
-
-### 🏗️ **Architecture**
-- Class-based TypeScript components
-- Modular SCSS architecture
-- Multi-page support with Handlebars
-- Clean project structure
-- Type-safe development
-
-</div>
 
 </div>
 
@@ -316,57 +239,32 @@ zen-starter/
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 1. Create Project
+```bash
+npm create zen@latest my-project
+cd my-project
+```
 
-- Node.js 18+ 
-- npm or yarn
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-### Installation
+### 3. Start Development
+```bash
+npm run dev
+```
 
-1. **Create a new project:**
-   ```bash
-   npm create zen@latest
-   cd my-project
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser:**
-   Navigate to `http://localhost:5173`
+### 4. Open Browser
+Navigate to `http://localhost:5173`
 
 ---
 
-## 📖 Documentation
+## 📖 Resources
 
-- [Live Demo](https://zen-starter.netlify.app/) - See ZEN Starter in action
-- [GitHub Repository](https://github.com/dmitry-conquer/zen-starter) - Source code and issues
-- [Component Examples](https://zen-starter.netlify.app/pages/) - Interactive component showcase
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](https://github.com/dmitry-conquer/zen-starter/blob/main/CONTRIBUTING.md) for details.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/dmitry-conquer/zen-starter/blob/main/LICENSE) file for details.
+- [**Live Demo**](https://zen-starter.netlify.app/) - See it in action
+- [**GitHub**](https://github.com/dmitry-conquer/zen-starter) - Source code
+- [**Documentation**](https://zen-starter.netlify.app/pages/) - Component examples
 
 ---
 
@@ -374,19 +272,9 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## 🌟 Star this repository if you found it helpful!
 
-<div style="margin: 40px 0;">
-
 [![GitHub stars](https://img.shields.io/github/stars/dmitry-conquer/zen-starter?style=social)](https://github.com/dmitry-conquer/zen-starter)
 [![GitHub forks](https://img.shields.io/github/forks/dmitry-conquer/zen-starter?style=social)](https://github.com/dmitry-conquer/zen-starter)
 
-</div>
-
 **Built with ❤️ by [Dmytro Frolov](https://github.com/dmitry-conquer)**
-
-<div style="color: #808080; font-size: 14px; margin-top: 20px;">
-
-Made with modern web technologies and a passion for clean, maintainable code.
-
-</div>
 
 </div>
