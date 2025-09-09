@@ -28,7 +28,7 @@ export class PanelNavigator {
     const nextButton = target.closest(".next-panel");
     const backButton = target.closest(".prev-panel");
     if (nextButton) {
-      event?.preventDefault();
+      e?.preventDefault();
       const id = (nextButton as HTMLElement).dataset.panel;
       if (!id) return;
       this.historyStack.push(id);
@@ -40,4 +40,9 @@ export class PanelNavigator {
       this.showPanel(this.historyStack[this.historyStack.length - 1]);
     }
   };
+
+  public reset(): void {
+    this.historyStack = ["main"];
+    this.showPanel("main");
+  }
 }

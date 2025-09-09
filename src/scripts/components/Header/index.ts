@@ -1,10 +1,22 @@
-import { selectors } from "./constants";
-import { attributes } from "./constants";
-import { stateClasses } from "./constants";
-import { isTouchDevice } from "./utils";
-import { PanelNavigator } from "./PanelNavigator";
+import { isTouchDevice } from "../../utils/helpers";
+import { PanelNavigator } from "./modules/PanelNavigator";
 
 export class Header {
+  private attributes: Record<string, string> = {
+    ariaExpanded: "aria-expanded",
+  };
+  private selectors: Record<string, string> = {
+    root: "[data-js-header]",
+    overlay: "[data-js-header-overlay]",
+    triggerButton: "[data-js-header-trigger-button]",
+    itemHasSubmenu: ".has-submenu",
+    panel: "[data-js-header-panel]",
+  };
+  private stateClasses: Record<string, string> = {
+    isActive: "is-active",
+    isLock: "is-lock",
+  };
+
   private rootElement: HTMLElement | null;
   private overlayElement: HTMLElement | null;
   private triggerButtonElement: HTMLElement | null;
@@ -14,15 +26,15 @@ export class Header {
   private panelNavigator: PanelNavigator;
 
   constructor() {
-    this.rootElement = document.querySelector(selectors.root);
-    this.overlayElement = this.rootElement?.querySelector(selectors.overlay) || null;
-    this.triggerButtonElement = this.rootElement?.querySelector(selectors.triggerButton) || null;
+    this.rootElement = document.querySelector(this.selectors.root);
+    this.overlayElement = this.rootElement?.querySelector(this.selectors.overlay) || null;
+    this.triggerButtonElement = this.rootElement?.querySelector(this.selectors.triggerButton) || null;
     this.toggleElements = [this.rootElement, this.overlayElement, this.triggerButtonElement].filter(
       Boolean
     ) as HTMLElement[];
-    this.panels = Array.from(this.rootElement?.querySelectorAll(selectors.panel) || []) as HTMLElement[];
+    this.panels = Array.from(this.rootElement?.querySelectorAll(this.selectors.panel) || []) as HTMLElement[];
     this.itemHasSubmenuElements = Array.from(
-      this.rootElement?.querySelectorAll(selectors.itemHasSubmenu) || []
+      this.rootElement?.querySelectorAll(this.selectors.itemHasSubmenu) || []
     ) as HTMLElement[];
     this.panelNavigator = new PanelNavigator(this.panels);
 
@@ -43,16 +55,16 @@ export class Header {
   }
 
   private onButtonClick = (): void => {
-    const isActive = this.rootElement?.classList.contains(stateClasses.isActive);
+    const isActive = this.rootElement?.classList.contains(this.stateClasses.isActive);
     this.setActive(!isActive);
   };
 
   private onDocumentClick = (e: MouseEvent): void => {
     const target = e.target as HTMLElement;
     if (
-      target.closest(selectors.triggerButton) ||
-      target.closest(selectors.overlay) ||
-      target.closest(selectors.itemHasSubmenu)
+      target.closest(this.selectors.triggerButton) ||
+      target.closest(this.selectors.overlay) ||
+      target.closest(this.selectors.itemHasSubmenu)
     )
       return;
     this.setActive(false);
@@ -61,15 +73,15 @@ export class Header {
 
   private toggleSubmenu(currentIndex: number): void {
     this.itemHasSubmenuElements.forEach((menuItem, index) => {
-      const subMenu = menuItem.querySelector(".mega-header__menu-dropdown") as HTMLElement;
+      const subMenu = menuItem.querySelector("ul") as HTMLElement;
       if (!subMenu) return;
-      const active = menuItem.classList.contains(stateClasses.isActive);
+      const active = menuItem.classList.contains(this.stateClasses.isActive);
 
       if (currentIndex === index) {
-        menuItem?.classList.toggle(stateClasses.isActive);
+        menuItem?.classList.toggle(this.stateClasses.isActive);
         subMenu.style.maxHeight = active ? "" : `${subMenu.scrollHeight}px`;
       } else {
-        menuItem.classList.remove(stateClasses.isActive);
+        menuItem.classList.remove(this.stateClasses.isActive);
         subMenu.style.maxHeight = "";
       }
     });
@@ -79,27 +91,26 @@ export class Header {
     this.itemHasSubmenuElements.forEach(menuItem => {
       const subMenu = menuItem.querySelector(".nav-content") as HTMLElement;
       if (!subMenu) return;
-      menuItem?.classList.remove(stateClasses.isActive);
+      menuItem?.classList.remove(this.stateClasses.isActive);
       subMenu.style.maxHeight = "";
     });
-    this.panelNavigator.historyStack = ["main"];
-    this.panelNavigator.showPanel("main");
+    this.panelNavigator.reset();
     this.setActive(false);
   }
 
   private setActive(state: boolean): void {
-    this.toggleElements.forEach(el => el.classList.toggle(stateClasses.isActive, state));
-    document.documentElement.classList.toggle(stateClasses.isLock, state);
+    this.toggleElements.forEach(el => el.classList.toggle(this.stateClasses.isActive, state));
+    document.documentElement.classList.toggle(this.stateClasses.isLock, state);
     this.setAttributes(state);
   }
 
   private setAttributes(state: boolean): void {
-    this.triggerButtonElement?.setAttribute(attributes.ariaExpanded, String(state));
+    this.triggerButtonElement?.setAttribute(this.attributes.ariaExpanded, String(state));
   }
 
   private handleInteraction(index: number, e: MouseEvent) {
     const menuItem = this.itemHasSubmenuElements[index];
-    const isActive = menuItem.classList.contains(stateClasses.isActive);
+    const isActive = menuItem.classList.contains(this.stateClasses.isActive);
 
     if (!isActive) {
       e.preventDefault();
