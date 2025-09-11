@@ -14,7 +14,7 @@ Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling.
 
 </div>
 
-[![Version](https://img.shields.io/badge/Version-1.6.0-3ecf8e?style=for-the-badge)](https://github.com/dmitry-conquer/zen-starter)
+[![Version](https://img.shields.io/badge/Version-1.6.1-3ecf8e?style=for-the-badge)](https://github.com/dmitry-conquer/zen-starter)
 [![License](https://img.shields.io/badge/License-MIT-3ecf8e?style=for-the-badge)](https://github.com/dmitry-conquer/zen-starter/blob/main/LICENSE)
 
 [![More Details](https://img.shields.io/badge/🌐_More_Details-3ecf8e?style=for-the-badge&logo=netlify&logoColor=white)](https://zen-starter.netlify.app/)
