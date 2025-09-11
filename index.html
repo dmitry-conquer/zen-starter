@@ -256,7 +256,7 @@
       }
 
       .mobile-nav .nav-link::before {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         top: 0;
@@ -280,7 +280,7 @@
 
       /* Hero Section */
       .hero {
-        padding: 120px 0 80px;
+        padding: 180px 0 80px;
         text-align: center;
         background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
         position: relative;
@@ -601,7 +601,6 @@
         line-height: 1.5;
         margin: 0;
       }
-
 
       .guide-content {
         max-width: 900px;
@@ -1134,7 +1133,6 @@
         .nav {
           display: none;
         }
-
       }
 
       @media (max-width: 480px) {
@@ -1167,72 +1165,23 @@
     </style>
   </head>
   <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="container">
-        <div class="header-content">
-          <a href="#" class="logo">ZEN</a>
-          <nav class="nav">
-            <a href="#features" class="nav-link">Features</a>
-            <a href="#philosophy" class="nav-link">Philosophy</a>
-            <a href="#scripts" class="nav-link">Scripts</a>
-            <a href="https://github.com/dmitry-conquer/zen-starter" class="github-btn" target="_blank" rel="noopener">
-              GitHub
-            </a>
-          </nav>
-          <button class="mobile-menu-toggle" id="mobile-menu-toggle">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-          </button>
-        </div>
-        <div class="mobile-menu" id="mobile-menu">
-          <button class="mobile-menu-close" id="mobile-menu-close">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-          <nav class="mobile-nav">
-            <a href="#features" class="nav-link">Features</a>
-            <a href="#philosophy" class="nav-link">Philosophy</a>
-            <a href="#scripts" class="nav-link">Scripts</a>
-            <a href="https://github.com/dmitry-conquer/zen-starter" class="github-btn" target="_blank" rel="noopener">
-              GitHub
-            </a>
-          </nav>
-        </div>
-      </div>
-    </header>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
       <div id="particles-js"></div>
       <div class="container">
         <div class="hero-badge" data-aos="fade-up" data-aos-delay="100">
-          v1.6.1 released on September 11, 2025 • MIT License
+          Standard Version
         </div>
-
-        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Build Faster, Ship Sooner</h1>
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Welcome to ZEN Starter</h1>
 
         <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
-          Enterprise-grade Vite starter with TypeScript, SCSS, and professional tooling. Designed for developers who
-          value quality, performance, and maintainability.
+          Your project has been created and is ready for development. Explore the available commands or start building your application.
         </p>
 
         <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
-          <a href="/pages/index.html" class="btn-primary" target="_blank" rel="noopener"> Get Started </a>
-          <a href="https://github.com/dmitry-conquer/zen-starter" class="btn-secondary"> Learn More </a>
-        </div>
-
-        <div class="install-command" data-aos="fade-up" data-aos-delay="500">
-          <span class="command-text" id="install-command">npm create zen@latest</span>
-          <button class="copy-btn" id="copy-btn" title="Copy command">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-          </button>
+          <a href="/pages/index.html" class="btn-primary">Start Development</a>
+          <a href="#scripts" class="btn-secondary">View Commands</a>
         </div>
       </div>
     </section>
@@ -1240,359 +1189,16 @@
     <!-- Hero Gradient -->
     <div class="hero-gradient"></div>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">Why Choose ZEN Starter?</h2>
-          <p class="section-subtitle">
-            Built with modern best practices and enterprise-grade tooling for professional development teams
-          </p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="feature-icon">⚡</div>
-            <h3 class="feature-title">Lightning Fast Development</h3>
-            <p class="feature-description">
-              Vite-powered HMR with instant feedback. Multi-page application support with Handlebars templating.
-              Optimized build pipeline for production-ready deployments.
-            </p>
-          </div>
-
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="feature-icon">🔧</div>
-            <h3 class="feature-title">Type-Safe Architecture</h3>
-            <p class="feature-description">
-              Full TypeScript integration with class-based component architecture. Modular design patterns for scalable
-              applications. Comprehensive type definitions.
-            </p>
-          </div>
-
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="feature-icon">🎨</div>
-            <h3 class="feature-title">Professional Styling</h3>
-            <p class="feature-description">
-              SCSS with PostCSS optimization. CSS-in-JS alternatives with proper scoping. Responsive design utilities
-              and modern CSS features.
-            </p>
-          </div>
-
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
-            <div class="feature-icon">🧩</div>
-            <h3 class="feature-title">Ready Components</h3>
-            <p class="feature-description">
-              Production-ready interactive components: Accordion, Tabs, Modal, Theme switcher. Built with accessibility
-              and performance in mind.
-            </p>
-          </div>
-
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
-            <div class="feature-icon">🚀</div>
-            <h3 class="feature-title">Performance Optimized</h3>
-            <p class="feature-description">
-              Lenis smooth scrolling integration. Optimized bundle splitting. Critical CSS extraction and lazy loading
-              strategies.
-            </p>
-          </div>
-
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
-            <div class="feature-icon">🛠️</div>
-            <h3 class="feature-title">Developer Experience</h3>
-            <p class="feature-description">
-              ESLint + Prettier configuration. Hot module replacement. Comprehensive error handling and debugging tools.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Web Development Best Practices Guide -->
-    <section class="philosophy" id="philosophy">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">Development Philosophy</h2>
-          <p class="section-subtitle">
-            The core principles and architectural decisions that make ZEN Starter exceptional. Built with modern best
-            practices and designed for professional development teams.
-          </p>
-        </div>
-
-        <div class="guide-content">
-          <!-- Markup Structure -->
-          <div class="guide-section" data-aos="fade-up">
-            <div class="guide-header">
-              <h3 class="guide-title">Markup Structure</h3>
-            </div>
-            <div class="guide-body">
-              <p class="guide-description">
-                Semantic HTML structure with proper accessibility features, multi-page support, and Handlebars
-                templating. Clean, maintainable markup that works everywhere.
-              </p>
-              <div class="guide-grid">
-                <div class="grid-item">
-                  <h4>Semantic Structure</h4>
-                  <p>Proper HTML5 elements with meaningful hierarchy</p>
-            </div>
-                <div class="grid-item">
-                  <h4>Multi-Page Support</h4>
-                  <p>Handlebars templating for multiple HTML pages</p>
-          </div>
-                <div class="grid-item">
-                  <h4>Component Templates</h4>
-                  <p>Reusable HTML components in dedicated folder</p>
-            </div>
-                <div class="grid-item">
-                  <h4>Progressive Enhancement</h4>
-                  <p>Works everywhere, enhanced where possible</p>
-          </div>
-                <div class="grid-item">
-                  <h4>Performance Markup</h4>
-                  <p>Optimized HTML structure for fast loading and rendering</p>
-            </div>
-                <div class="grid-item">
-                  <h4>Handlebars Templating</h4>
-                  <p>Powerful templating engine for dynamic content and component reuse</p>
-          </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Styling Architecture -->
-          <div class="guide-section" data-aos="fade-up">
-            <div class="guide-header">
-              <h3 class="guide-title">Styling Architecture</h3>
-            </div>
-            <div class="guide-body">
-              <p class="guide-description">
-                Modular SCSS architecture with BEM methodology, responsive design system, and modern CSS features.
-                Built-in rem() and fluid() functions ensure consistent scaling and optimal performance.
-              </p>
-              <div class="guide-principles">
-                <div class="principle">
-                  <h4>BEM Methodology</h4>
-                  <p>Consistent naming with <code>.block__element--modifier</code> pattern</p>
-            </div>
-                <div class="principle">
-                  <h4>Responsive System</h4>
-                  <p>rem() function, fluid typography, mobile-first approach</p>
-          </div>
-                <div class="principle">
-                  <h4>Modern CSS</h4>
-                  <p>CSS Grid, Flexbox, Custom Properties, Container Queries</p>
-            </div>
-                <div class="principle">
-                  <h4>SCSS Modules</h4>
-                  <p>@use and @forward for modular architecture and dependency management</p>
-          </div>
-                <div class="principle">
-                  <h4>Mixins & Functions</h4>
-                  <p>Custom mixins for common patterns and utility functions</p>
-            </div>
-                <div class="principle">
-                  <h4>Variables & Theming</h4>
-                  <p>CSS custom properties and SCSS variables for consistent theming</p>
-          </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Application Logic -->
-          <div class="guide-section" data-aos="fade-up">
-            <div class="guide-header">
-              <h3 class="guide-title">Application Logic</h3>
-            </div>
-            <div class="guide-body">
-              <p class="guide-description">
-                TypeScript class-based architecture with strict type checking, modern ES6+ features, and comprehensive
-                error handling. Each component is self-contained with clear interfaces.
-              </p>
-              <div class="guide-features">
-                <div class="feature-item">
-                  <h4>Class-Based Components</h4>
-                  <p>Object-oriented approach with proper inheritance and lifecycle methods</p>
-            </div>
-                <div class="feature-item">
-                  <h4>Type Safety</h4>
-                  <p>Strict TypeScript configuration for maximum type safety and error prevention</p>
-          </div>
-                <div class="feature-item">
-                  <h4>Modern JavaScript</h4>
-                  <p>ES6+ features, async/await patterns, and modern DOM APIs</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bundle Optimization -->
-          <div class="guide-section" data-aos="fade-up">
-            <div class="guide-header">
-              <h3 class="guide-title">Bundle Optimization</h3>
-            </div>
-            <div class="guide-body">
-              <p class="guide-description">
-                Advanced optimization strategies including code splitting, lazy loading, minification, and critical CSS
-                extraction. Built for maximum performance and minimal bundle size with Vite-powered build system.
-              </p>
-              <div class="guide-features">
-                <div class="feature-item">
-                  <h4>Code Splitting</h4>
-                  <p>Automatic chunk optimization and dynamic imports for optimal loading</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Minification</h4>
-                  <p>CSS and JavaScript minification with PostCSS and Vite optimization</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Tree Shaking</h4>
-                  <p>Dead code elimination and unused export removal</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Lazy Loading</h4>
-                  <p>Dynamic component loading and image optimization</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Lenis Integration</h4>
-                  <p>Smooth scrolling with performance-optimized animations</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Asset Optimization</h4>
-                  <p>Image compression, font optimization, and resource bundling</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Structure -->
-          <div class="guide-section" data-aos="fade-up">
-            <div class="guide-header">
-              <h3 class="guide-title">Structure</h3>
-            </div>
-            <div class="guide-body">
-              <p class="guide-description">
-                Clean, organized project structure with clear separation of concerns. Each part of the application has
-                its dedicated place for maximum maintainability.
-              </p>
-              <div class="guide-features">
-                <div class="feature-item">
-                  <h4>TypeScript Components</h4>
-                  <p><code>src/scripts/components/</code> - Class-based component architecture</p>
-                </div>
-                <div class="feature-item">
-                  <h4>SCSS Styles</h4>
-                  <p><code>src/styles/components/</code> - Modular styling system</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Services & Utils</h4>
-                  <p><code>src/scripts/services/</code> - Business logic and utilities</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Multi-page Templates</h4>
-                  <p><code>pages/</code> - Handlebars-powered HTML templates</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Reusable Components</h4>
-                  <p><code>components/</code> - HTML component library</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Type Definitions</h4>
-                  <p><code>src/scripts/types/</code> - TypeScript type definitions</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Accessibility -->
-          <div class="guide-section" data-aos="fade-up">
-            <div class="guide-header">
-              <h3 class="guide-title">Accessibility</h3>
-            </div>
-            <div class="guide-body">
-              <p class="guide-description">
-                Built-in accessibility features following WCAG 2.1 AA guidelines. Semantic HTML, ARIA attributes,
-                keyboard navigation, and screen reader compatibility.
-              </p>
-              <div class="guide-features">
-                <div class="feature-item">
-                  <h4>Semantic HTML</h4>
-                  <p>Proper heading hierarchy and landmark regions for screen readers</p>
-                </div>
-                <div class="feature-item">
-                  <h4>ARIA Attributes</h4>
-                  <p>Complex interactive elements with proper labeling and states</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Keyboard Navigation</h4>
-                  <p>Full keyboard support for all interactive elements</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Focus Management</h4>
-                  <p>Visible focus indicators and logical tab order</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Screen Reader Support</h4>
-                  <p>Comprehensive support for assistive technologies</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Motion Preferences</h4>
-                  <p>Respects user's motion preferences and reduced motion settings</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Development Workflow -->
-          <div class="guide-section" data-aos="fade-up">
-            <div class="guide-header">
-              <h3 class="guide-title">Development Workflow</h3>
-            </div>
-            <div class="guide-body">
-              <p class="guide-description">
-                Lightning-fast development with Vite, PostCSS optimization, and comprehensive tooling. Hot Module
-                Replacement, ESLint, Prettier, and TypeScript integration for professional development.
-              </p>
-              <div class="guide-features">
-                <div class="feature-item">
-                  <h4>Hot Module Replacement</h4>
-                  <p>Instant feedback during development with Vite's HMR</p>
-            </div>
-                <div class="feature-item">
-                  <h4>PostCSS Pipeline</h4>
-                  <p>Autoprefixer, media query combining, and CSS optimization</p>
-          </div>
-                <div class="feature-item">
-                  <h4>Developer Tools</h4>
-                  <p>ESLint, Prettier, comprehensive error handling and debugging</p>
-                </div>
-                <div class="feature-item">
-                  <h4>TypeScript Integration</h4>
-                  <p>Full TypeScript support with strict configuration</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Multi-page Support</h4>
-                  <p>Handlebars templating for scalable multi-page applications</p>
-                </div>
-                <div class="feature-item">
-                  <h4>Build Optimization</h4>
-                  <p>Production-ready builds with automatic optimization</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Build Commands Section -->
     <section class="npm-scripts" id="scripts">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2 class="section-title">Build Commands</h2>
           <p class="section-subtitle">
-            Essential commands for working with the ZEN Starter build system. 
-            Everything you need to develop, build, and maintain your project.
+            Essential commands for working with the ZEN Starter build system. Everything you need to develop, build, and
+            maintain your project.
           </p>
-          </div>
+        </div>
 
         <div class="scripts-grid">
           <div class="script-card" data-aos="fade-up" data-aos-delay="100">
@@ -1600,18 +1206,18 @@
               <h3 class="script-command">npm run dev</h3>
             </div>
             <p class="script-description">
-              Start the development server with Vite. Features hot module replacement, 
-              instant feedback, and optimized development experience.
+              Start the development server with Vite. Features hot module replacement, instant feedback, and optimized
+              development experience.
             </p>
-            </div>
+          </div>
 
           <div class="script-card" data-aos="fade-up" data-aos-delay="200">
             <div class="script-header">
               <h3 class="script-command">npm run host</h3>
             </div>
             <p class="script-description">
-              Start development server with network access. Allows testing on mobile devices 
-              and other machines on the same network.
+              Start development server with network access. Allows testing on mobile devices and other machines on the
+              same network.
             </p>
           </div>
 
@@ -1620,18 +1226,18 @@
               <h3 class="script-command">npm run build</h3>
             </div>
             <p class="script-description">
-              Build the project for production. Compiles TypeScript, optimizes assets, 
-              and generates production-ready files.
+              Build the project for production. Compiles TypeScript, optimizes assets, and generates production-ready
+              files.
             </p>
-            </div>
+          </div>
 
           <div class="script-card" data-aos="fade-up" data-aos-delay="400">
             <div class="script-header">
               <h3 class="script-command">npm run preview</h3>
             </div>
             <p class="script-description">
-              Preview the production build locally. Test the optimized version 
-              before deployment to ensure everything works correctly.
+              Preview the production build locally. Test the optimized version before deployment to ensure everything
+              works correctly.
             </p>
           </div>
 
@@ -1640,23 +1246,24 @@
               <h3 class="script-command">npm run lint</h3>
             </div>
             <p class="script-description">
-              Run ESLint to check code quality and find potential issues. 
-              Analyzes TypeScript files for code style and best practices.
+              Run ESLint to check code quality and find potential issues. Analyzes TypeScript files for code style and
+              best practices.
             </p>
-            </div>
+          </div>
 
           <div class="script-card" data-aos="fade-up" data-aos-delay="600">
             <div class="script-header">
               <h3 class="script-command">npm run lint:fix</h3>
             </div>
             <p class="script-description">
-              Automatically fix ESLint issues that can be resolved. 
-              Saves time by automatically correcting common code style problems.
+              Automatically fix ESLint issues that can be resolved. Saves time by automatically correcting common code
+              style problems.
             </p>
           </div>
         </div>
       </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -1670,7 +1277,7 @@
     <!-- Back to Top Button -->
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M18 15l-6-6-6 6"/>
+        <path d="M18 15l-6-6-6 6" />
       </svg>
     </button>
 
@@ -1690,155 +1297,157 @@
 
       // Initialize Particles.js
       particlesJS("particles-js", {
-        "particles": {
-          "number": {
-            "value": 60,
-            "density": {
-              "enable": true,
-              "value_area": 600
-            }
+        particles: {
+          number: {
+            value: 60,
+            density: {
+              enable: true,
+              value_area: 600,
+            },
           },
-          "color": {
-            "value": "#3ecf8e"
+          color: {
+            value: "#3ecf8e",
           },
-          "shape": {
-            "type": "circle",
-            "stroke": {
-              "width": 0,
-              "color": "#000000"
-            }
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
           },
-          "opacity": {
-            "value": 0.3,
-            "random": true,
-            "anim": {
-              "enable": true,
-              "speed": 1,
-              "opacity_min": 0.1,
-              "sync": false
-            }
+          opacity: {
+            value: 0.3,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false,
+            },
           },
-          "size": {
-            "value": 4,
-            "random": true,
-            "anim": {
-              "enable": true,
-              "speed": 2,
-              "size_min": 2,
-              "sync": false
-            }
+          size: {
+            value: 4,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 2,
+              size_min: 2,
+              sync: false,
+            },
           },
-          "line_linked": {
-            "enable": true,
-            "distance": 120,
-            "color": "#3ecf8e",
-            "opacity": 0.2,
-            "width": 1
+          line_linked: {
+            enable: true,
+            distance: 120,
+            color: "#3ecf8e",
+            opacity: 0.2,
+            width: 1,
           },
-          "move": {
-            "enable": true,
-            "speed": 0.5,
-            "direction": "none",
-            "random": true,
-            "straight": false,
-            "out_mode": "out",
-            "bounce": false
-          }
+          move: {
+            enable: true,
+            speed: 0.5,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          },
         },
-        "interactivity": {
-          "detect_on": "canvas",
-          "events": {
-            "onhover": {
-              "enable": false,
-              "mode": "repulse"
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: false,
+              mode: "repulse",
             },
-            "onclick": {
-              "enable": false,
-              "mode": "push"
+            onclick: {
+              enable: false,
+              mode: "push",
             },
-            "resize": true
+            resize: true,
           },
-          "modes": {
-            "grab": {
-              "distance": 200,
-              "line_linked": {
-                "opacity": 1
-              }
+          modes: {
+            grab: {
+              distance: 200,
+              line_linked: {
+                opacity: 1,
+              },
             },
-            "bubble": {
-              "distance": 200,
-              "size": 8,
-              "duration": 2,
-              "opacity": 0.8,
-              "speed": 3
+            bubble: {
+              distance: 200,
+              size: 8,
+              duration: 2,
+              opacity: 0.8,
+              speed: 3,
             },
-            "repulse": {
-              "distance": 100,
-              "duration": 0.4
+            repulse: {
+              distance: 100,
+              duration: 0.4,
             },
-            "push": {
-              "particles_nb": 4
+            push: {
+              particles_nb: 4,
             },
-            "remove": {
-              "particles_nb": 2
-            }
-          }
+            remove: {
+              particles_nb: 2,
+            },
+          },
         },
-        "retina_detect": true
+        retina_detect: true,
       });
 
       // Mobile Menu functionality
-      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuClose = document.getElementById('mobile-menu-close');
-      
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+
       function toggleMobileMenu() {
-        mobileMenu.classList.toggle('active');
-        mobileMenuToggle.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
+        mobileMenu.classList.toggle("active");
+        mobileMenuToggle.classList.toggle("active");
+        document.body.classList.toggle("menu-open");
       }
-      
+
       function closeMobileMenu() {
-        mobileMenu.classList.remove('active');
-        mobileMenuToggle.classList.remove('active');
-        document.body.classList.remove('menu-open');
+        mobileMenu.classList.remove("active");
+        mobileMenuToggle.classList.remove("active");
+        document.body.classList.remove("menu-open");
       }
-      
-      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-      mobileMenuClose.addEventListener('click', closeMobileMenu);
-      
+
+      mobileMenuToggle.addEventListener("click", toggleMobileMenu);
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+
       // Close mobile menu when clicking on a link
-      const mobileNavLinks = mobileMenu.querySelectorAll('.nav-link');
+      const mobileNavLinks = mobileMenu.querySelectorAll(".nav-link");
       mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
+        link.addEventListener("click", closeMobileMenu);
       });
-      
+
       // Close mobile menu when clicking outside
-      document.addEventListener('click', function(event) {
-        if (mobileMenu.classList.contains('active') && 
-            !mobileMenuToggle.contains(event.target) && 
-            !mobileMenu.contains(event.target)) {
+      document.addEventListener("click", function (event) {
+        if (
+          mobileMenu.classList.contains("active") &&
+          !mobileMenuToggle.contains(event.target) &&
+          !mobileMenu.contains(event.target)
+        ) {
           closeMobileMenu();
         }
       });
 
       // Back to Top Button functionality
-      const backToTopBtn = document.getElementById('back-to-top');
-      
+      const backToTopBtn = document.getElementById("back-to-top");
+
       // Show/hide button based on scroll position
-      window.addEventListener('scroll', function() {
+      window.addEventListener("scroll", function () {
         if (window.pageYOffset > 600) {
-          backToTopBtn.classList.add('visible');
+          backToTopBtn.classList.add("visible");
         } else {
-          backToTopBtn.classList.remove('visible');
+          backToTopBtn.classList.remove("visible");
         }
       });
-      
+
       // Smooth scroll to top when clicked
-      backToTopBtn.addEventListener('click', function() {
+      backToTopBtn.addEventListener("click", function () {
         window.scrollTo({
           top: 0,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       });
 
