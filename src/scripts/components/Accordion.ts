@@ -15,49 +15,49 @@
  *   new AccordionCollection();
  */
 
-interface IAccordionSelectors {
+type TypeAccordionSelectors = {
   root: string;
   button: string;
   content: string;
-}
+};
 
-interface IAccordionStateClasses {
+type TypeAccordionStateClasses = {
   isActive: string;
-}
+};
 
-interface IAccordionStateAttributes {
+type TypeAccordionStateAttributes = {
   ariaExpanded: string;
-}
+};
 
-interface IAccordionState {
+type TypeAccordionState = {
   activeAccordionIndex: number;
-}
+};
 
 /**
  * Main Accordion class
  */
 class Accordion {
   // CSS selectors for accordion elements
-  private readonly selectors: IAccordionSelectors = {
+  private readonly selectors: TypeAccordionSelectors = {
     root: "[data-js-accordion]",
     button: "[data-js-accordion-button]",
     content: "[data-js-accordion-content]",
   };
 
   // CSS classes for state management
-  private readonly stateClasses: IAccordionStateClasses = {
+  private readonly stateClasses: TypeAccordionStateClasses = {
     isActive: "is-active",
   };
 
   // ARIA attributes for accessibility
-  private readonly stateAttributes: IAccordionStateAttributes = {
+  private readonly stateAttributes: TypeAccordionStateAttributes = {
     ariaExpanded: "aria-expanded",
   };
 
   private rootElement: HTMLElement;
   private buttonElements: NodeListOf<HTMLElement>;
   private contentElements: HTMLElement[];
-  private state: IAccordionState;
+  private state: TypeAccordionState;
 
   constructor(rootElement: HTMLElement) {
     this.rootElement = rootElement;
@@ -92,12 +92,12 @@ class Accordion {
   }
 
   // Creates reactive state object using Proxy for automatic UI updates
-  private createProxyState(state: IAccordionState): IAccordionState {
+  private createProxyState(state: TypeAccordionState): TypeAccordionState {
     return new Proxy(state, {
-      get: (target: IAccordionState, prop: keyof IAccordionState) => {
+      get: (target: TypeAccordionState, prop: keyof TypeAccordionState) => {
         return target[prop];
       },
-      set: (target: IAccordionState, prop: keyof IAccordionState, value: number) => {
+      set: (target: TypeAccordionState, prop: keyof TypeAccordionState, value: number) => {
         target[prop] = value;
         this.updateUI();
         return true;

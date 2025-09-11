@@ -17,23 +17,23 @@
  * - Performance optimized with transform animations
  */
 
-interface IMarqueeOptions {
+type TypeMarqueeOptions = {
   speed?: number;
   direction?: "left" | "right";
   pauseOnHover?: boolean;
-}
+};
 
-interface IMarqueeState {
+type TypeMarqueeState = {
   offset: number;
   animationId: number | null;
-}
+};
 
 /**
  * Main Marquee class
  */
 class Marquee {
   // Default configuration
-  private readonly defaultOptions: Required<IMarqueeOptions> = {
+  private readonly defaultOptions: Required<TypeMarqueeOptions> = {
     speed: 2,
     direction: "left",
     pauseOnHover: false,
@@ -43,9 +43,9 @@ class Marquee {
   private speed: number;
   private direction: "left" | "right";
   private pauseOnHover: boolean;
-  private state: IMarqueeState;
+  private state: TypeMarqueeState;
 
-  constructor(id: string, options?: IMarqueeOptions) {
+  constructor(id: string, options?: TypeMarqueeOptions) {
     // Merge options with defaults
     const config = { ...this.defaultOptions, ...options };
     this.speed = config.speed;
@@ -64,7 +64,7 @@ class Marquee {
   // Initializes marquee with target element ID
   private initialize(id: string): void {
     this.trackEl = document.getElementById(id);
-    
+
     if (!this.trackEl) {
       console.warn(`Marquee: Element with id "${id}" not found`);
       return;
@@ -77,7 +77,7 @@ class Marquee {
   private setupMarquee(): void {
     this.duplicateTrack();
     this.startAnimation();
-    
+
     if (this.pauseOnHover) {
       this.addHoverListeners();
     }
@@ -92,7 +92,7 @@ class Marquee {
   // Adds mouse enter/leave event listeners for pause on hover functionality
   private addHoverListeners(): void {
     if (!this.trackEl) return;
-    
+
     this.trackEl.addEventListener("mouseenter", () => this.pause());
     this.trackEl.addEventListener("mouseleave", () => this.resume());
   }
@@ -131,7 +131,7 @@ class Marquee {
   // Updates scroll position based on direction and speed
   private updatePosition(): void {
     const halfWidth = this.trackEl!.scrollWidth / 2;
-    
+
     if (this.direction === "left") {
       this.state.offset += this.speed;
       if (this.state.offset >= halfWidth) {

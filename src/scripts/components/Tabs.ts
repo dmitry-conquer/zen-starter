@@ -20,43 +20,43 @@
  * - Supports multiple tab instances on the same page
  */
 
-interface ITabsSelectors {
+type TypeTabsSelectors = {
   root: string;
   button: string;
   content: string;
-}
+};
 
-interface ITabsStateClasses {
+type TypeTabsStateClasses = {
   isActive: string;
-}
+};
 
-interface ITabsStateAttributes {
+type TypeTabsStateAttributes = {
   ariaSelected: string;
   tabIndex: string;
-}
+};
 
-interface ITabsState {
+type TypeTabsState = {
   activeTabIndex: number;
-}
+};
 
 /**
  * Main Tabs class
  */
 class Tabs {
   // CSS selectors for tab elements
-  private readonly selectors: ITabsSelectors = {
+  private readonly selectors: TypeTabsSelectors = {
     root: "[data-js-tabs]",
     button: "[data-js-tabs-button]",
     content: "[data-js-tabs-content]",
   };
 
   // CSS classes for state management
-  private readonly stateClasses: ITabsStateClasses = {
+  private readonly stateClasses: TypeTabsStateClasses = {
     isActive: "is-active",
   };
 
   // ARIA attributes for accessibility
-  private readonly stateAttributes: ITabsStateAttributes = {
+  private readonly stateAttributes: TypeTabsStateAttributes = {
     ariaSelected: "aria-selected",
     tabIndex: "tabindex",
   };
@@ -64,19 +64,19 @@ class Tabs {
   private rootElement: HTMLElement;
   private buttonElements: NodeListOf<HTMLElement>;
   private contentElements: NodeListOf<HTMLElement>;
-  private state: ITabsState;
+  private state: TypeTabsState;
   private limitTabsIndex: number;
 
   constructor(rootElement: HTMLElement) {
     this.rootElement = rootElement;
     this.buttonElements = this.rootElement.querySelectorAll(this.selectors.button) as NodeListOf<HTMLElement>;
     this.contentElements = this.rootElement.querySelectorAll(this.selectors.content) as NodeListOf<HTMLElement>;
-    
+
     // Initialize state with proxy for automatic UI updates
     this.state = this.createProxyState({
-      activeTabIndex: this.getInitialActiveIndex()
+      activeTabIndex: this.getInitialActiveIndex(),
     });
-    
+
     this.limitTabsIndex = this.buttonElements.length - 1;
 
     if (this.isReady()) {
@@ -88,25 +88,21 @@ class Tabs {
 
   // Checks if tabs component is ready to work
   private isReady(): boolean {
-    return !!this.rootElement && 
-           this.buttonElements.length > 0 && 
-           this.contentElements.length > 0;
+    return !!this.rootElement && this.buttonElements.length > 0 && this.contentElements.length > 0;
   }
 
   // Gets initial active index
   private getInitialActiveIndex(): number {
-    return Array.from(this.buttonElements).findIndex(button =>
-      button.classList.contains(this.stateClasses.isActive)
-    );
+    return Array.from(this.buttonElements).findIndex(button => button.classList.contains(this.stateClasses.isActive));
   }
 
   // Creates reactive state object using Proxy for automatic UI updates
-  private createProxyState(state: ITabsState): ITabsState {
+  private createProxyState(state: TypeTabsState): TypeTabsState {
     return new Proxy(state, {
-      get: (target: ITabsState, prop: keyof ITabsState) => {
+      get: (target: TypeTabsState, prop: keyof TypeTabsState) => {
         return target[prop];
       },
-      set: (target: ITabsState, prop: keyof ITabsState, value: number) => {
+      set: (target: TypeTabsState, prop: keyof TypeTabsState, value: number) => {
         target[prop] = value;
         this.updateUI();
         return true;
@@ -123,7 +119,7 @@ class Tabs {
   // Updates UI based on current state
   private updateUI(): void {
     const { activeTabIndex } = this.state;
-    
+
     this.buttonElements.forEach((buttonElement, index) => {
       const isActive: boolean = activeTabIndex === index;
 
@@ -213,7 +209,7 @@ class TabsCollection {
   // Initializes all tabs components
   private initializeAll(): void {
     const tabsElements = document.querySelectorAll("[data-js-tabs]");
-    
+
     tabsElements.forEach(element => {
       new Tabs(element as HTMLElement);
     });

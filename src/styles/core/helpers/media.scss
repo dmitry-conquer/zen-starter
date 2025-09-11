@@ -1,19 +1,5 @@
 @use "functions" as *;
-
-// X-Large devices (large desktops, less than 1400px)
-$x-large: 1399.98;
-
-// Large devices (desktops, less than 1200px)
-$large: 1199.98;
-
-// Medium devices (tablets, less than 992px)
-$medium: 991.98;
-
-// Small devices (landscape phones, less than 768px)
-$small: 767.98;
-
-// X-Small devices (portrait phones, less than 576px)
-$x-small: 575.98;
+@use "breakpoints" as *;
 
 @mixin x-large {
   @media (max-width: rem($x-large)) {
