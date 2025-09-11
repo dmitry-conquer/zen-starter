@@ -79,204 +79,6 @@
         padding: 0 24px;
       }
 
-      /* Header */
-      .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: rgba(23, 23, 23, 0.8);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .header-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 16px 0;
-      }
-
-      .logo {
-        font-size: 24px;
-        font-weight: 800;
-        color: var(--primary);
-        text-decoration: none;
-      }
-
-      .nav {
-        display: flex;
-        gap: 32px;
-        align-items: center;
-      }
-
-      .nav-link {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.2s ease;
-      }
-
-      .nav-link:hover {
-        color: var(--primary);
-      }
-
-      .github-btn {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-        padding: 8px 16px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 500;
-        border: 1px solid var(--border);
-        transition: all 0.2s ease;
-      }
-
-      .github-btn:hover {
-        background: var(--bg-tertiary);
-        border-color: var(--border-light);
-      }
-
-      /* Mobile Menu */
-      .mobile-menu-toggle {
-        display: flex;
-        background: none;
-        border: none;
-        color: var(--text-primary);
-        cursor: pointer;
-        padding: 8px;
-        flex-direction: column;
-        gap: 4px;
-        transition: all 0.2s ease;
-      }
-
-      @media (min-width: 769px) {
-        .mobile-menu-toggle {
-          display: none;
-        }
-      }
-
-      .mobile-menu-toggle:hover {
-        color: var(--primary);
-      }
-
-      .hamburger-line {
-        width: 24px;
-        height: 2px;
-        background: currentColor;
-        transition: all 0.3s ease;
-        border-radius: 1px;
-      }
-
-      .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
-        opacity: 0;
-      }
-
-      .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-      }
-
-      .mobile-menu-close {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        color: var(--text-primary);
-        cursor: pointer;
-        padding: 8px;
-        transition: color 0.2s ease;
-        z-index: 1000;
-      }
-
-      .mobile-menu-close:hover {
-        color: var(--primary);
-      }
-
-      .mobile-menu {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: var(--bg-primary);
-        z-index: 999;
-        transform: translateX(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden;
-      }
-
-      @media (min-width: 769px) {
-        .mobile-menu {
-          display: none;
-        }
-      }
-
-      .mobile-menu.active {
-        transform: translateX(0);
-      }
-
-      body.menu-open {
-        overflow: hidden;
-        height: 100vh;
-      }
-
-      .mobile-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        padding: 80px 0 0;
-        height: 100vh;
-        width: 100%;
-        overflow-y: auto;
-        box-sizing: border-box;
-      }
-
-      .mobile-nav .nav-link {
-        color: var(--text-primary);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 18px;
-        padding: 20px 30px;
-        border-bottom: 1px solid var(--border);
-        transition: all 0.2s ease;
-        position: relative;
-      }
-
-      .mobile-nav .nav-link:hover {
-        color: var(--primary);
-        background: rgba(62, 207, 142, 0.05);
-        padding-left: 40px;
-      }
-
-      .mobile-nav .nav-link::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 4px;
-        background: var(--primary);
-        transform: scaleY(0);
-        transition: transform 0.2s ease;
-      }
-
-      .mobile-nav .nav-link:hover::before {
-        transform: scaleY(1);
-      }
-
-      .mobile-nav .github-btn {
-        margin: 20px 30px;
-        text-align: center;
-        font-size: 16px;
-        padding: 12px 24px;
-      }
 
       /* Hero Section */
       .hero {
@@ -418,50 +220,6 @@
         border-color: var(--border-light);
       }
 
-      .install-command {
-        background: var(--bg-secondary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 12px 16px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 310px;
-        margin: 0 auto;
-        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
-        font-size: 16px;
-      }
-
-      .command-text {
-        color: var(--text-primary);
-        user-select: all;
-        flex: 1;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        min-width: 0;
-        font-family: "JetBrains Mono", "Monaco", "Menlo", monospace;
-        font-size: 14px;
-        font-weight: 500;
-      }
-
-      .copy-btn {
-        background: none;
-        border: none;
-        color: var(--text-muted);
-        cursor: pointer;
-        padding: 6px;
-        border-radius: 6px;
-        transition: all 0.2s ease;
-        flex-shrink: 0;
-        margin-left: 8px;
-      }
-
-      .copy-btn:hover {
-        background: var(--bg-tertiary);
-        color: var(--text-primary);
-      }
 
       /* Features Section */
       .features {
@@ -1069,44 +827,7 @@
           bottom: 15px;
         }
 
-        .mobile-menu-close {
-          top: 15px;
-          right: 15px;
-        }
 
-        .mobile-nav {
-          padding: 60px 0 0;
-          height: 100vh;
-        }
-
-        .mobile-nav .nav-link {
-          font-size: 16px;
-          padding: 16px 20px;
-        }
-
-        .mobile-nav .github-btn {
-          margin: 16px 20px;
-          font-size: 14px;
-          padding: 10px 20px;
-        }
-
-        .install-command {
-          padding: 10px 12px;
-          gap: 8px;
-        }
-
-        .command-text {
-          font-size: 12px;
-        }
-
-        .copy-btn {
-          padding: 4px;
-        }
-
-        .copy-btn svg {
-          width: 14px;
-          height: 14px;
-        }
 
         .features-grid {
           grid-template-columns: 1fr;
@@ -1130,9 +851,6 @@
           padding: 24px;
         }
 
-        .nav {
-          display: none;
-        }
       }
 
       @media (max-width: 480px) {
@@ -1144,23 +862,6 @@
           font-size: 32px;
         }
 
-        .install-command {
-          flex-direction: row;
-          gap: 12px;
-          text-align: left;
-          align-items: center;
-          justify-content: space-between;
-        }
-
-        .command-text {
-          flex: 1;
-          min-width: 0;
-          word-break: break-all;
-        }
-
-        .copy-btn {
-          flex-shrink: 0;
-        }
       }
     </style>
   </head>
@@ -1394,42 +1095,6 @@
         retina_detect: true,
       });
 
-      // Mobile Menu functionality
-      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const mobileMenuClose = document.getElementById("mobile-menu-close");
-
-      function toggleMobileMenu() {
-        mobileMenu.classList.toggle("active");
-        mobileMenuToggle.classList.toggle("active");
-        document.body.classList.toggle("menu-open");
-      }
-
-      function closeMobileMenu() {
-        mobileMenu.classList.remove("active");
-        mobileMenuToggle.classList.remove("active");
-        document.body.classList.remove("menu-open");
-      }
-
-      mobileMenuToggle.addEventListener("click", toggleMobileMenu);
-      mobileMenuClose.addEventListener("click", closeMobileMenu);
-
-      // Close mobile menu when clicking on a link
-      const mobileNavLinks = mobileMenu.querySelectorAll(".nav-link");
-      mobileNavLinks.forEach(link => {
-        link.addEventListener("click", closeMobileMenu);
-      });
-
-      // Close mobile menu when clicking outside
-      document.addEventListener("click", function (event) {
-        if (
-          mobileMenu.classList.contains("active") &&
-          !mobileMenuToggle.contains(event.target) &&
-          !mobileMenu.contains(event.target)
-        ) {
-          closeMobileMenu();
-        }
-      });
 
       // Back to Top Button functionality
       const backToTopBtn = document.getElementById("back-to-top");
@@ -1451,29 +1116,6 @@
         });
       });
 
-      // Copy to clipboard functionality
-      const copyBtn = document.getElementById("copy-btn");
-      const commandText = document.getElementById("install-command");
-
-      copyBtn.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(commandText.textContent);
-
-          // Visual feedback
-          const originalText = copyBtn.innerHTML;
-          copyBtn.innerHTML = `
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            `;
-
-          setTimeout(() => {
-            copyBtn.innerHTML = originalText;
-          }, 2000);
-        } catch (err) {
-          console.error("Failed to copy text: ", err);
-        }
-      });
 
       // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1489,15 +1131,6 @@
         });
       });
 
-      // Header background on scroll
-      window.addEventListener("scroll", () => {
-        const header = document.querySelector(".header");
-        if (window.scrollY > 50) {
-          header.style.background = "rgba(23, 23, 23, 0.95)";
-        } else {
-          header.style.background = "rgba(23, 23, 23, 0.8)";
-        }
-      });
     </script>
   </body>
 </html>
