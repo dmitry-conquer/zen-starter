@@ -1,4 +1,4 @@
-import { isTouchDevice } from "../../utils/helpers";
+import { isTouchDevice } from "../../utilities/helpers";
 import { PanelNavigator } from "./modules/PanelNavigator";
 
 export class Header {
