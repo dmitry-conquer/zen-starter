@@ -1,26 +1,25 @@
-<section data-js-accordion>
-  <div>
+<section class="accordion" data-js-accordion itemscope itemtype="https://schema.org/FAQPage">
+  <div class="accordion__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <button
+      class="accordion__button"
       id="accordion-button-1"
       type="button"
       aria-expanded="false"
       aria-controls="accordion-panel-1"
       data-js-accordion-button
     >
-      Button 1
+      <span itemprop="name">Button 1</span>
     </button>
-    <div role="region" id="accordion-panel-1" aria-labelledby="accordion-button-1">CONTENT 1</div>
-  </div>
-  <div>
-    <button
-      id="accordion-button-2"
-      type="button"
-      aria-expanded="false"
-      aria-controls="accordion-panel-2"
-      data-js-accordion-button
+    <div
+      class="accordion__panel"
+      role="region"
+      id="accordion-panel-1"
+      aria-labelledby="accordion-button-1"
+      itemscope
+      itemprop="acceptedAnswer"
+      itemtype="https://schema.org/Answer"
     >
-      Button 2
-    </button>
-    <div role="region" id="accordion-panel-2" aria-labelledby="accordion-button-2">CONTENT 2</div>
+      <div class="accordion__content" itemprop="text">CONTENT 1</div>
+    </div>
   </div>
 </section>
