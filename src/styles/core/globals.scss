@@ -1,14 +1,14 @@
 @use "helpers" as *;
 
 html {
-  font-size: 16px;
+  font-size: 100%;
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
 }
 
 body {
+  font-size: 1rem;
   font-family: var(--font-family-base);
-  font-size: var(--font-size-base);
   color: var(--color-black);
   background-color: var(--color-white);
   line-height: 1.5;
