@@ -13,10 +13,7 @@
   @return math.div(math.round($number * $factor), $factor);
 }
 
-@function fluid($min, $max) {
-  $maxViewportWidth: 1440;
-  $minViewportWidth: 375;
-
+@function fluid($min, $max, $maxViewportWidth: 1440, $minViewportWidth: 375) {
   $maxSize: round-to(math.div($max, 16));
   $minSize: round-to(math.div($min, 16));
   $maxWidth: round-to(math.div($maxViewportWidth, 16));
