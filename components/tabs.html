@@ -1,73 +1,14 @@
+<!-- Initialize new TabsCollection() to activate tabs behavior. -->
 <div class="tabs" aria-labelledby="tabs-title" data-js-tabs>
-  <h2 class="sr-only" id="tabs-title">Tabs</h2>
-  <div class="tabs__buttons" role="tablist" aria-labelledby="tabs-title">
-    <button
-      type="button"
-      class="tabs__button is-active"
-      data-js-tabs-button
-      id="tab-1"
-      role="tab"
-      aria-controls="tabpanel-1"
-      aria-selected="true"
-      tabindex="0"
-    >
-      First tab
-    </button>
-    <button
-      type="button"
-      class="tabs__button"
-      id="tab-2"
-      role="tab"
-      aria-controls="tabpanel-2"
-      data-js-tabs-button
-      aria-selected="false"
-      tabindex="-1"
-    >
-      Second tab
-    </button>
-    <button
-      type="button"
-      class="tabs__button"
-      id="tab-3"
-      role="tab"
-      aria-controls="tabpanel-3"
-      data-js-tabs-button
-      aria-selected="false"
-      tabindex="-1"
-    >
-      Third tab
-    </button>
+  <h2 id="tabs-title">Tabs</h2>
+  <div role="tablist" aria-labelledby="tabs-title">
+    <button data-js-tabs-button type="button" id="tab-1" role="tab" aria-controls="tabpanel-1" aria-selected="true" tabindex="0" class="is-active">First tab</button>
+    <button data-js-tabs-button type="button" id="tab-2" role="tab" aria-controls="tabpanel-2" aria-selected="false" tabindex="-1">Second tab</button>
+    <button data-js-tabs-button type="button" id="tab-3" role="tab" aria-controls="tabpanel-3" aria-selected="false" tabindex="-1">Third tab</button>
   </div>
-  <div class="tabs__body">
-    <div
-      class="tabs__content is-active"
-      tabindex="0"
-      role="tabpanel"
-      data-js-tabs-content
-      aria-labelledby="tab-1"
-      id="tabpanel-1"
-    >
-      content1
-    </div>
-    <div
-      class="tabs__content"
-      role="tabpanel"
-      tabindex="0"
-      data-js-tabs-content
-      aria-labelledby="tab-2"
-      id="tabpanel-2"
-    >
-      content2
-    </div>
-    <div
-      class="tabs__content"
-      tabindex="0"
-      role="tabpanel"
-      data-js-tabs-content
-      aria-labelledby="tab-3"
-      id="tabpanel-3"
-    >
-      content3
-    </div>
+  <div>
+    <div data-js-tabs-content role="tabpanel" aria-labelledby="tab-1" aria-hidden="false" id="tabpanel-1" class="is-active">content1</div>
+    <div data-js-tabs-content role="tabpanel" aria-labelledby="tab-2" aria-hidden="true" id="tabpanel-2" hidden>content2</div>
+    <div data-js-tabs-content role="tabpanel" aria-labelledby="tab-3" aria-hidden="true" id="tabpanel-3" hidden>content3</div>
   </div>
 </div>

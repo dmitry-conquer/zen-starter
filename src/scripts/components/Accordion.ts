@@ -1,137 +1,87 @@
 /**
- * Accordion Component
+ * Accordion component for accessible single-panel expansion with smooth height animation.
+ * Handles ARIA state, focusability, and inert on hidden panels.
  *
- * Creates interactive accordion components with smooth animations and
- * accessibility features. Supports single-item expansion with automatic
- * state management and ARIA attributes.
- *
- * Usage:
- *   <div data-js-accordion>
- *     <button data-js-accordion-button class="is-active">Section 1</button>
- *     <div data-js-accordion-content>Content 1</div>
- *     <button data-js-accordion-button>Section 2</button>
- *     <div data-js-accordion-content>Content 2</div>
- *   </div>
- *   new AccordionCollection();
+ * Features:
+ * - Proper ARIA attributes for accessibility
+ * - Reactive state management using Set
+ * - Automatic focus management
+ * - Supports multiple accordions instances on the same page
+ * - Toggles tabindex and max-height to control focus and animation
  */
 
-type TypeAccordionSelectors = {
-  root: string;
-  button: string;
-  content: string;
-};
-
-type TypeAccordionStateClasses = {
-  isActive: string;
-};
-
-type TypeAccordionStateAttributes = {
-  ariaExpanded: string;
-};
-
-type TypeAccordionState = {
-  activeAccordionIndex: number;
-};
-
-/**
- * Main Accordion class
- */
 class Accordion {
-  // CSS selectors for accordion elements
-  private readonly selectors: TypeAccordionSelectors = {
+  private readonly selectors: Record<string, string> = {
     root: "[data-js-accordion]",
     button: "[data-js-accordion-button]",
     content: "[data-js-accordion-content]",
   };
 
-  // CSS classes for state management
-  private readonly stateClasses: TypeAccordionStateClasses = {
+  private readonly stateClasses: Record<string, string> = {
     isActive: "is-active",
   };
 
-  // ARIA attributes for accessibility
-  private readonly stateAttributes: TypeAccordionStateAttributes = {
+  private readonly stateAttributes: Record<string, string> = {
     ariaExpanded: "aria-expanded",
+    ariaHidden: "aria-hidden",
+    tabIndex: "tabindex",
+    inert: "inert",
   };
 
   private rootElement: HTMLElement;
   private buttonElements: NodeListOf<HTMLElement>;
-  private contentElements: HTMLElement[];
-  private state: TypeAccordionState;
+  private contentElements: NodeListOf<HTMLElement>;
+  private _activeIndex: number;
 
   constructor(rootElement: HTMLElement) {
     this.rootElement = rootElement;
     this.buttonElements = this.rootElement.querySelectorAll(this.selectors.button) as NodeListOf<HTMLElement>;
-    this.contentElements = this.getContentElements();
+    this.contentElements = this.rootElement.querySelectorAll(this.selectors.content) as NodeListOf<HTMLElement>;
 
-    // Initialize state with proxy for automatic UI updates
-    const initialIndex = this.getInitialActiveIndex();
-    this.state = this.createProxyState({
-      activeAccordionIndex: initialIndex >= 0 ? initialIndex : -1,
-    });
+    this._activeIndex = this.getInitialActiveIndex() >= 0 ? this.getInitialActiveIndex() : -1;
 
     if (this.isReady()) {
-      this.initialize();
+      this.init();
     } else {
       console.warn("Accordion: Required elements not found");
     }
   }
 
-  // Checks if accordion is ready to work
   private isReady(): boolean {
     return !!this.rootElement && this.buttonElements.length > 0 && this.contentElements.length > 0;
   }
 
-  // Gets content elements based on buttons
-  private getContentElements(): HTMLElement[] {
-    return Array.from(this.buttonElements).map(button => button.nextElementSibling as HTMLElement);
-  }
-
-  // Gets initial active index
   private getInitialActiveIndex(): number {
     return Array.from(this.buttonElements).findIndex(button => button.classList.contains(this.stateClasses.isActive));
   }
 
-  // Creates reactive state object using Proxy for automatic UI updates
-  private createProxyState(state: TypeAccordionState): TypeAccordionState {
-    return new Proxy(state, {
-      get: (target: TypeAccordionState, prop: keyof TypeAccordionState) => {
-        return target[prop];
-      },
-      set: (target: TypeAccordionState, prop: keyof TypeAccordionState, value: number) => {
-        target[prop] = value;
-        this.updateUI();
-        return true;
-      },
-    });
-  }
-
-  // Initializes accordion
-  private initialize(): void {
-    this.bindEvents();
+  set activeIndex(index: number) {
+    this._activeIndex = index;
     this.updateUI();
   }
 
-  // Binds events to buttons
+  private init(): void {
+    this.bindEvents();
+    this.activeIndex = this._activeIndex;
+  }
+
   private bindEvents(): void {
     this.buttonElements.forEach((button, index) => {
       button.addEventListener("click", () => this.handleButtonClick(index));
     });
   }
 
-  // Handles button click
   private handleButtonClick(index: number): void {
-    if (this.state.activeAccordionIndex === index) {
-      this.state.activeAccordionIndex = -1;
+    if (this._activeIndex === index) {
+      this.activeIndex = -1;
     } else {
-      this.state.activeAccordionIndex = index;
+      this.activeIndex = index;
     }
   }
 
-  // Updates UI based on current state
   private updateUI(): void {
     this.buttonElements.forEach((button, index) => {
-      const isActive = this.state.activeAccordionIndex === index;
+      const isActive = this._activeIndex === index;
       const content = this.contentElements[index];
 
       this.updateButtonState(button, isActive);
@@ -139,19 +89,15 @@ class Accordion {
     });
   }
 
-  // Updates button state
   private updateButtonState(button: HTMLElement, isActive: boolean): void {
     button.classList.toggle(this.stateClasses.isActive, isActive);
     button.setAttribute(this.stateAttributes.ariaExpanded, isActive.toString());
   }
 
-  // Updates content block state
   private updateContentState(content: HTMLElement, isActive: boolean): void {
-    if (isActive) {
-      content.style.maxHeight = `${content.scrollHeight}px`;
-    } else {
-      content.style.maxHeight = "";
-    }
+    content.toggleAttribute(this.stateAttributes.inert, !isActive);
+    content.setAttribute(this.stateAttributes.ariaHidden, (!isActive).toString());
+    content.style.maxHeight = isActive ? `${content.scrollHeight}px` : "";
   }
 }
 
@@ -165,11 +111,11 @@ class Accordion {
  */
 class AccordionCollection {
   constructor() {
-    this.initializeAll();
+    this.init();
   }
 
   // Initializes all accordion components
-  private initializeAll(): void {
+  private init(): void {
     const accordionElements = document.querySelectorAll("[data-js-accordion]");
 
     accordionElements.forEach(element => {
