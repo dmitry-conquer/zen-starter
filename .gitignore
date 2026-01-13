@@ -10,9 +10,9 @@ lerna-debug.log*
 node_modules
 sftp
 dist
+.env
 dist-ssr
 *.local
-NEW_FEATURES.txt
 
 # Editor directories and files
 .vscode/*
@@ -24,10 +24,3 @@ NEW_FEATURES.txt
 *.njsproj
 *.sln
 *.sw?
-
-# Bun
-bun.lockb
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local

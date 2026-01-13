@@ -18,7 +18,7 @@ fs.readdirSync(PAGES_DIR).forEach(file => {
     buildInput[name] = path.resolve(PAGES_DIR, file);
   }
 });
-buildInput.main = path.resolve(SRC_DIR, "scripts/main.ts");
+buildInput.script = path.resolve(SRC_DIR, "scripts/main.ts");
 
 // CSS configuration
 const cssConfig = {
@@ -75,7 +75,7 @@ const plugins = [
     generateBundle(outputOptions, bundle) {
       Object.keys(bundle).forEach(fileName => {
         const file = bundle[fileName];
-        if (fileName.includes("main.js") && "code" in file) {
+        if (fileName.includes("script.js") && "code" in file) {
           file.code = `(() => {\n${file.code}})();`;
         }
       });

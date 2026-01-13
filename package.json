@@ -8,13 +8,15 @@
     "url": "https://github.com/dmitroconquer/zen-starter.git"
   },
   "private": true,
-  "version": "1.7.0",
+  "version": "1.7.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "host": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "deploy": "npm run build && node scripts/deploy.js",
+    "deploy:only": "node scripts/deploy.js",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },
@@ -26,7 +28,9 @@
     "@eslint/js": "^9.39.2",
     "@types/micromodal": "^0.3.5",
     "autoprefixer": "^10.4.23",
+    "dotenv": "^17.2.3",
     "eslint": "^9.39.2",
+    "ftp-deploy": "^2.4.7",
     "globals": "^17.0.0",
     "postcss": "^8.5.6",
     "postcss-combine-media-query": "^2.1.0",
