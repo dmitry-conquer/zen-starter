@@ -3,7 +3,6 @@ import handlebars from "vite-plugin-handlebars";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import process from "node:process";
 
 // Constants
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -36,7 +35,6 @@ const buildConfig = {
   appType: "mpa",
   publicDir: "public",
   modulePreload: false,
-  reportCompressedSize: false,
   rollupOptions: {
     input: buildInput,
     output: {
@@ -104,70 +102,9 @@ const plugins = [
       }
     },
   },
-  {
-    name: "build-complete-message",
-    buildStart() {
-      this.buildStartTime = Date.now();
-      
-      // Progress bar animation
-      const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
-      let frameIndex = 0;
-      
-      process.stdout.write("\n");
-      this.progressInterval = setInterval(() => {
-        process.stdout.write(`\r${frames[frameIndex]} Building...`);
-        frameIndex = (frameIndex + 1) % frames.length;
-      }, 80);
-    },
-    closeBundle() {
-      // Clear progress animation
-      if (this.progressInterval) {
-        clearInterval(this.progressInterval);
-        process.stdout.write("\r" + " ".repeat(30) + "\r");
-      }
-      
-      const duration = ((Date.now() - this.buildStartTime) / 1000).toFixed(2);
-      const time = new Date().toLocaleTimeString("uk-UA", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-
-      // ANSI colors
-      const green = "\x1b[32m";
-      const bold = "\x1b[1m";
-      const reset = "\x1b[0m";
-
-      const distDir = path.resolve(__dirname, "dist/assets");
-      const getFileSize = (filePath) => {
-        if (!fs.existsSync(filePath)) return null;
-        return (fs.statSync(filePath).size / 1024).toFixed(2);
-      };
-
-      const cssSize = getFileSize(path.join(distDir, "style.css"));
-      const jsSize = getFileSize(path.join(distDir, "main.js"));
-
-      console.log("=".repeat(50));
-      console.log(green + bold + "✓ Build completed successfully!" + reset);
-      console.log("-".repeat(50));
-      console.log(`Time:     ${time}`);
-      console.log(`Duration: ${duration}s`);
-      console.log("-".repeat(50));
-      
-      if (cssSize) {
-        console.log(`style.css  ${cssSize.padStart(8)} kB`);
-      }
-      if (jsSize) {
-        console.log(`main.js    ${jsSize.padStart(8)} kB`);
-      }
-      
-      console.log("=".repeat(50) + "\n");
-    },
-  },
 ];
 
 export default defineConfig({
-  logLevel: "warn",
   css: cssConfig,
   build: buildConfig,
   plugins: plugins,
