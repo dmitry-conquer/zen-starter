@@ -2,7 +2,6 @@
 
 Professional Vite-based starter kit for modern static site development with TypeScript, SCSS, and enterprise-grade tooling.
 
-[![Version](https://img.shields.io/badge/version-1.7.1-3ecf8e?style=flat-square)](https://github.com/dmitry-conquer/zen-starter)
 [![License](https://img.shields.io/badge/license-MIT-3ecf8e?style=flat-square)](LICENSE)
 [![Vite](https://img.shields.io/badge/vite-7.x-646cff?style=flat-square)](https://vitejs.dev/)
 [![TypeScript](https://img.shields.io/badge/typescript-5.x-3178c6?style=flat-square)](https://www.typescriptlang.org/)
