@@ -53,6 +53,7 @@ const buildConfig = {
 const plugins = [
   handlebars({
     partialDirectory: COMPONENTS_DIR,
+    reloadOnPartialChange: true,
   }),
   {
     name: "handlebars-watcher",

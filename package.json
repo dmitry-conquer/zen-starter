@@ -8,7 +8,6 @@
     "url": "https://github.com/dmitroconquer/zen-starter.git"
   },
   "private": true,
-  "version": "1.7.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
