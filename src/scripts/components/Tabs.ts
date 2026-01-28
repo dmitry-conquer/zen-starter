@@ -26,7 +26,6 @@ class Tabs {
 
   private readonly stateAttributes: Record<string, string> = {
     ariaSelected: "aria-selected",
-    ariaHidden: "aria-hidden",
     tabIndex: "tabindex",
     hidden: "hidden",
   };
@@ -81,7 +80,6 @@ class Tabs {
 
     this.contentElements.forEach((contentElement, index) => {
       const isActive = this._activeIndex === index;
-      contentElement.setAttribute(this.stateAttributes.ariaHidden, (!isActive).toString());
       contentElement.toggleAttribute(this.stateAttributes.hidden, !isActive);
       contentElement.classList.toggle(this.stateClasses.isActive, isActive);
     });

@@ -23,7 +23,6 @@ class Accordion {
 
   private readonly stateAttributes: Record<string, string> = {
     ariaExpanded: "aria-expanded",
-    ariaHidden: "aria-hidden",
     tabIndex: "tabindex",
     inert: "inert",
   };
@@ -96,7 +95,6 @@ class Accordion {
 
   private updateContentState(content: HTMLElement, isActive: boolean): void {
     content.toggleAttribute(this.stateAttributes.inert, !isActive);
-    content.setAttribute(this.stateAttributes.ariaHidden, (!isActive).toString());
     content.style.maxHeight = isActive ? `${content.scrollHeight}px` : "";
   }
 }
