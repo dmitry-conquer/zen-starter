@@ -82,10 +82,13 @@
 
       /* Hero Section */
       .hero {
-        padding: 180px 0 80px;
+        min-height: 100vh;
+        padding: 0;
         text-align: center;
         background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
         position: relative;
+        display: flex;
+        align-items: center;
       }
 
       #particles-js {
@@ -871,109 +874,20 @@
     <section class="hero" id="hero">
       <div id="particles-js"></div>
       <div class="container">
-        <div class="hero-badge" data-aos="fade-up" data-aos-delay="100">
-          Standard Version
-        </div>
         <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Welcome to ZEN Starter</h1>
 
         <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
-          Your project has been created and is ready for development. Explore the available commands or start building your application.
+          Your project has been created and is ready for development.
         </p>
 
         <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
           <a href="/pages/index.html" class="btn-primary">Start Development</a>
-          <a href="#scripts" class="btn-secondary">View Commands</a>
         </div>
       </div>
     </section>
 
     <!-- Hero Gradient -->
     <div class="hero-gradient"></div>
-
-    <!-- Build Commands Section -->
-    <section class="npm-scripts" id="scripts">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">Build Commands</h2>
-          <p class="section-subtitle">
-            Essential commands for working with the ZEN Starter build system. Everything you need to develop, build, and
-            maintain your project.
-          </p>
-        </div>
-
-        <div class="scripts-grid">
-          <div class="script-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="script-header">
-              <h3 class="script-command">npm run dev</h3>
-            </div>
-            <p class="script-description">
-              Start the development server with Vite. Features hot module replacement, instant feedback, and optimized
-              development experience.
-            </p>
-          </div>
-
-          <div class="script-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="script-header">
-              <h3 class="script-command">npm run host</h3>
-            </div>
-            <p class="script-description">
-              Start development server with network access. Allows testing on mobile devices and other machines on the
-              same network.
-            </p>
-          </div>
-
-          <div class="script-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="script-header">
-              <h3 class="script-command">npm run build</h3>
-            </div>
-            <p class="script-description">
-              Build the project for production. Compiles TypeScript, optimizes assets, and generates production-ready
-              files.
-            </p>
-          </div>
-
-          <div class="script-card" data-aos="fade-up" data-aos-delay="400">
-            <div class="script-header">
-              <h3 class="script-command">npm run preview</h3>
-            </div>
-            <p class="script-description">
-              Preview the production build locally. Test the optimized version before deployment to ensure everything
-              works correctly.
-            </p>
-          </div>
-
-          <div class="script-card" data-aos="fade-up" data-aos-delay="500">
-            <div class="script-header">
-              <h3 class="script-command">npm run lint</h3>
-            </div>
-            <p class="script-description">
-              Run ESLint to check code quality and find potential issues. Analyzes TypeScript files for code style and
-              best practices.
-            </p>
-          </div>
-
-          <div class="script-card" data-aos="fade-up" data-aos-delay="600">
-            <div class="script-header">
-              <h3 class="script-command">npm run lint:fix</h3>
-            </div>
-            <p class="script-description">
-              Automatically fix ESLint issues that can be resolved. Saves time by automatically correcting common code
-              style problems.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <p>Built with ❤️ by Dmytro Frolov • MIT License</p>
-        </div>
-      </div>
-    </footer>
 
     <!-- Back to Top Button -->
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
