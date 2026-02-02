@@ -213,9 +213,3 @@ scroll.initSmoothScroll();
 - Firefox ESR+
 - Safari (last 2 versions)
 - No IE support
-
----
-
-## License
-
-MIT © [Dmytro Frolov](https://github.com/dmitry-conquer)
