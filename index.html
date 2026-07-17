@@ -3,1048 +3,143 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="ZEN Starter - Professional Vite-based starter kit for modern web development with TypeScript, SCSS, and enterprise-grade tooling."
-    />
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <meta name="description" content="Project entry page." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/images/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
-    <meta name="robots" content="index, follow" />
-    <title>ZEN Starter - Professional Vite Kit</title>
-    <meta
-      name="description"
-      content="ZEN Starter - Professional Vite-based starter kit for modern web development. Features TypeScript, SCSS, and enterprise-grade tooling for rapid, scalable, and maintainable projects. Includes modern best practices, accessibility, and performance optimizations out of the box."
-    />
-
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-    <!-- Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <title>Project Ready</title>
 
     <style>
       :root {
-        --primary: #3ecf8e;
-        --primary-dark: #2d9d6b;
-        --secondary: #6366f1;
-        --accent: #f59e0b;
-        --text-primary: #ffffff;
-        --text-secondary: #c0c0c0;
-        --text-muted: #808080;
-        --bg-primary: #171717;
-        --bg-secondary: #282828;
-        --bg-tertiary: #333333;
-        --border: #505050;
-        --border-light: #606060;
-        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        color-scheme: light;
+        --page-bg: #f8fbff;
+        --text: #101828;
+        --muted: #66768a;
+        --accent: #1685d9;
+        --accent-hover: #0e6fb8;
       }
 
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
 
       html {
-        scroll-behavior: smooth;
+        min-height: 100%;
       }
 
       body {
-        font-family:
-          "Inter",
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          system-ui,
-          sans-serif;
-        background: var(--bg-primary);
-        color: var(--text-primary);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-
-      /* Hero Section */
-      .hero {
         min-height: 100vh;
+        margin: 0;
+        font-family: "SF Mono", "Cascadia Code", "JetBrains Mono", "Fira Code", ui-monospace, system-ui, monospace;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 15% 20%, rgb(57 169 255 / 0.22), transparent 26rem), radial-gradient(circle at 85% 15%, rgb(165 213 255 / 0.34), transparent 28rem),
+          linear-gradient(120deg, #ffffff, var(--page-bg), #eef8ff, #ffffff);
+        background-size: 140% 140%;
+        animation: page-shift 14s ease-in-out infinite alternate;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .intro {
+        width: min(100%, 560px);
         padding: 0;
         text-align: center;
-        background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-        position: relative;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(36px, 7vw, 72px);
+        font-weight: 650;
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .actions {
         display: flex;
-        align-items: center;
+        justify-content: center;
+        margin-top: 28px;
       }
 
-      #particles-js {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-      }
-
-      .hero .container {
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Back to Top Button */
-      .back-to-top {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 40px;
-        height: 40px;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
+      .button {
+        display: inline-flex;
+        min-height: 48px;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 3px 8px rgba(62, 207, 142, 0.3);
-        transition: all 0.3s ease;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1000;
-      }
-
-      .back-to-top:hover {
-        background: var(--secondary);
-        transform: translateX(-50%) translateY(-2px);
-        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-      }
-
-      .back-to-top.visible {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .back-to-top svg {
-        transition: transform 0.3s ease;
-      }
-
-      .back-to-top:hover svg {
-        transform: translateY(-2px);
-      }
-
-      .hero-badge {
-        display: inline-block;
-        background: rgba(62, 207, 142, 0.1);
-        color: var(--primary);
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 14px;
+        border-radius: 999px;
+        padding: 0 24px;
+        font-size: 15px;
         font-weight: 600;
-        margin-bottom: 24px;
-        border: 1px solid rgba(62, 207, 142, 0.2);
-      }
-
-      .hero-title {
-        font-size: 64px;
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 24px;
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .hero-subtitle {
-        font-size: 20px;
-        color: var(--text-secondary);
-        margin-bottom: 40px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions {
-        display: flex;
-        gap: 16px;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 48px;
-      }
-
-      .btn-primary {
-        background: var(--primary);
-        color: var(--bg-primary);
-        padding: 16px 32px;
-        border-radius: 12px;
         text-decoration: none;
-        font-weight: 600;
-        font-size: 16px;
-        transition: all 0.2s ease;
-        border: none;
-        cursor: pointer;
+        transition:
+          background-color 160ms ease,
+          color 160ms ease,
+          transform 160ms ease;
       }
 
-      .btn-primary:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
+      .button:hover {
+        transform: translateY(-1px);
       }
 
-      .btn-secondary {
-        background: transparent;
-        color: var(--text-primary);
-        padding: 16px 32px;
-        border-radius: 12px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 16px;
-        border: 1px solid var(--border);
-        transition: all 0.2s ease;
+      .button:focus-visible {
+        outline: 3px solid rgb(22 133 217 / 0.25);
+        outline-offset: 3px;
       }
 
-      .btn-secondary:hover {
-        background: var(--bg-secondary);
-        border-color: var(--border-light);
+      .button-primary {
+        background: var(--accent);
+        color: #ffffff;
       }
 
-
-      /* Features Section */
-      .features {
-        padding: 80px 0;
-        background: var(--bg-secondary);
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 80px;
-      }
-
-      .section-title {
-        font-size: 48px;
-        font-weight: 700;
-        margin-bottom: 16px;
-        color: var(--text-primary);
-      }
-
-      .section-subtitle {
-        font-size: 18px;
-        color: var(--text-secondary);
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 32px;
-      }
-
-      .feature-card {
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 32px;
-        transition: all 0.2s ease;
-        box-shadow: var(--shadow-xl);
-      }
-
-      .feature-icon {
-        width: 48px;
-        height: 48px;
-        background: rgba(62, 207, 142, 0.1);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 24px;
-        font-size: 24px;
-      }
-
-      .feature-title {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 16px;
-        color: var(--text-primary);
-      }
-
-      .feature-description {
-        color: var(--text-secondary);
-        line-height: 1.6;
-      }
-
-      /* Web Development Best Practices Guide */
-      .philosophy {
-        padding: 120px 0;
-        background: var(--bg-primary);
-        position: relative;
-      }
-
-      .philosophy::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      }
-
-      .hero-gradient {
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--primary), transparent);
-        margin: 0;
-      }
-
-      /* NPM Scripts Section */
-      .npm-scripts {
-        padding: 80px 0 120px;
-        background: var(--bg-secondary);
-        position: relative;
-      }
-
-      .npm-scripts::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      }
-
-      .scripts-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 24px;
-        margin-top: 60px;
-      }
-
-      .script-card {
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-        transition: all 0.3s ease;
-      }
-
-      .script-header {
-        margin-bottom: 12px;
-      }
-
-      .script-command {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-primary);
-        font-family: "JetBrains Mono", "Monaco", "Menlo", monospace;
-        margin: 0;
-      }
-
-      .script-description {
-        font-size: 14px;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      .guide-content {
-        max-width: 900px;
-        margin: 0 auto;
-        margin-top: 80px;
-      }
-
-      .guide-section {
-        background: var(--bg-secondary);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        margin-bottom: 40px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .guide-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 32px 40px;
-        border-bottom: 1px solid var(--border);
-        background: linear-gradient(135deg, rgba(62, 207, 142, 0.02) 0%, rgba(99, 102, 241, 0.02) 100%);
-      }
-
-      .guide-title {
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin: 0;
-        letter-spacing: -0.01em;
-      }
-
-      .guide-badge {
-        background: var(--primary);
-        color: var(--bg-primary);
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .guide-body {
-        padding: 40px;
-      }
-
-      .guide-description {
-        font-size: 16px;
-        line-height: 1.7;
-        color: var(--text-secondary);
-        margin-bottom: 32px;
-      }
-
-      /* Guide Principles */
-      .guide-principles {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 24px;
-        margin-top: 24px;
-      }
-
-      .principle {
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-      }
-
-      .principle h4 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-      }
-
-      .principle p {
-        font-size: 14px;
-        color: var(--text-secondary);
-        line-height: 1.5;
-      }
-
-      .principle code {
-        background: var(--bg-secondary);
-        color: var(--primary);
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-family: "JetBrains Mono", "Monaco", "Menlo", monospace;
-        font-size: 13px;
-      }
-
-      /* Guide Features */
-      .guide-features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 24px;
-      }
-
-      .feature-item {
-        padding: 20px;
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-      }
-
-      .feature-item h4 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-      }
-
-      .feature-item p {
-        font-size: 14px;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      /* Guide Grid */
-      .guide-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 24px;
-      }
-
-      .grid-item {
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-      }
-
-      .grid-item h4 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-      }
-
-      .grid-item p {
-        font-size: 14px;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      /* Architecture Diagram */
-      .architecture-diagram {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 24px;
-        flex-wrap: wrap;
-      }
-
-      .arch-item {
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 24px;
-        text-align: center;
-        min-width: 180px;
-      }
-
-      .arch-icon {
-        font-size: 32px;
-        margin-bottom: 12px;
-      }
-
-      .arch-item h4 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-      }
-
-      .arch-item p {
-        font-size: 14px;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      .arch-arrow {
-        font-size: 24px;
-        color: var(--primary);
-        font-weight: bold;
-      }
-
-      /* TypeScript Features */
-      .typescript-features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 24px;
-      }
-
-      .ts-feature {
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-      }
-
-      .ts-feature h4 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--primary);
-        margin-bottom: 8px;
-      }
-
-      .ts-feature p {
-        font-size: 14px;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      /* Performance Metrics */
-      .performance-metrics {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 24px;
-        margin-top: 24px;
-      }
-
-      .metric {
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-      }
-
-      .metric-value {
-        font-size: 24px;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-      }
-
-      .metric-label {
-        font-size: 12px;
-        color: var(--text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-weight: 600;
-      }
-
-      /* A11y Checklist */
-      .a11y-checklist {
-        margin-top: 24px;
-      }
-
-      .checklist-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 0;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .checklist-item:last-child {
-        border-bottom: none;
-      }
-
-      .check-icon {
-        width: 20px;
-        height: 20px;
-        background: var(--primary);
-        color: var(--bg-primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        font-weight: bold;
-        flex-shrink: 0;
-      }
-
-      .checklist-item span {
-        font-size: 14px;
-        color: var(--text-secondary);
-        line-height: 1.5;
-      }
-
-      /* Testing Pyramid */
-      .testing-pyramid {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 24px;
-      }
-
-      .pyramid-level {
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-        position: relative;
-      }
-
-      .pyramid-level:first-child {
-        background: var(--bg-primary);
-        border-color: var(--border);
-      }
-
-      .pyramid-level:nth-child(2) {
-        background: var(--bg-primary);
-        border-color: var(--border);
-      }
-
-      .pyramid-level h4 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-      }
-
-      .pyramid-level p {
-        font-size: 14px;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      /* Security Pillars */
-      .security-pillars {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 24px;
-      }
-
-      .pillar {
-        background: var(--bg-primary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-      }
-
-      .pillar h4 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-      }
-
-      .pillar p {
-        font-size: 14px;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin: 0;
+      .button-primary:hover {
+        background: var(--accent-hover);
       }
 
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .philosophy {
-          padding: 80px 0;
+      @keyframes page-shift {
+        from {
+          background-position: 0% 50%;
         }
 
-        .guide-content {
-          margin-top: 60px;
-        }
-
-        .guide-section {
-          margin-bottom: 32px;
-        }
-
-        .guide-header {
-          padding: 24px;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 16px;
-        }
-
-        .guide-body {
-          padding: 24px;
-        }
-
-        .guide-title {
-          font-size: 20px;
-        }
-
-        .architecture-diagram {
-          flex-direction: column;
-        }
-
-        .arch-arrow {
-          transform: rotate(90deg);
-        }
-
-        .guide-principles,
-        .guide-features,
-        .guide-grid,
-        .typescript-features,
-        .performance-metrics,
-        .security-pillars {
-          grid-template-columns: 1fr;
+        to {
+          background-position: 100% 50%;
         }
       }
 
-      @media (max-width: 480px) {
-        .guide-header {
-          padding: 20px;
-        }
-
-        .guide-body {
-          padding: 20px;
-        }
-
-        .guide-title {
-          font-size: 18px;
-        }
-
-        .guide-description {
-          font-size: 15px;
-        }
-      }
-
-      /* Footer */
-      .footer {
-        background: var(--bg-secondary);
-        border-top: 1px solid var(--border);
-        padding: 48px 0;
-        text-align: center;
-      }
-
-      .footer-content {
-        color: var(--text-muted);
-        font-size: 14px;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .container {
-          padding: 0 16px;
-        }
-
-        .hero-title {
-          font-size: 48px;
-        }
-
-        .hero-subtitle {
-          font-size: 18px;
-        }
-
-        .hero-actions {
-          flex-direction: column;
+      @media (max-width: 540px) {
+        .page {
           align-items: stretch;
+          padding: 16px;
         }
 
-        /* Hide particles on mobile for performance */
-        #particles-js {
-          display: none;
+        .actions {
+          display: block;
         }
 
-        .back-to-top {
-          width: 35px;
-          height: 35px;
-          bottom: 15px;
+        .button {
+          width: 100%;
         }
-
-
-
-        .features-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .philosophy {
-          padding: 60px 0;
-        }
-
-        .section-header {
-          margin-bottom: 48px;
-        }
-
-        .philosophy-grid {
-          grid-template-columns: 1fr;
-          gap: 24px;
-          margin-top: 48px;
-        }
-
-        .philosophy-card {
-          padding: 24px;
-        }
-
-      }
-
-      @media (max-width: 480px) {
-        .hero-title {
-          font-size: 36px;
-        }
-
-        .section-title {
-          font-size: 32px;
-        }
-
       }
     </style>
   </head>
   <body>
+    <main class="page">
+      <section class="intro" aria-labelledby="page-title">
+        <h1 id="page-title">Your project is ready.</h1>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div id="particles-js"></div>
-      <div class="container">
-        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Welcome to ZEN Starter</h1>
-
-        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
-          Your project has been created and is ready for development.
-        </p>
-
-        <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
-          <a href="/pages/index.html" class="btn-primary">Start Development</a>
+        <div class="actions">
+          <a class="button button-primary" href="/pages/index.html">Start development</a>
         </div>
-      </div>
-    </section>
-
-    <!-- Hero Gradient -->
-    <div class="hero-gradient"></div>
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M18 15l-6-6-6 6" />
-      </svg>
-    </button>
-
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-    <script>
-      // Initialize AOS
-      AOS.init({
-        duration: 800,
-        easing: "ease-out-cubic",
-        once: true,
-        offset: 100,
-      });
-
-      // Initialize Particles.js
-      particlesJS("particles-js", {
-        particles: {
-          number: {
-            value: 60,
-            density: {
-              enable: true,
-              value_area: 600,
-            },
-          },
-          color: {
-            value: "#3ecf8e",
-          },
-          shape: {
-            type: "circle",
-            stroke: {
-              width: 0,
-              color: "#000000",
-            },
-          },
-          opacity: {
-            value: 0.3,
-            random: true,
-            anim: {
-              enable: true,
-              speed: 1,
-              opacity_min: 0.1,
-              sync: false,
-            },
-          },
-          size: {
-            value: 4,
-            random: true,
-            anim: {
-              enable: true,
-              speed: 2,
-              size_min: 2,
-              sync: false,
-            },
-          },
-          line_linked: {
-            enable: true,
-            distance: 120,
-            color: "#3ecf8e",
-            opacity: 0.2,
-            width: 1,
-          },
-          move: {
-            enable: true,
-            speed: 0.5,
-            direction: "none",
-            random: true,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-          },
-        },
-        interactivity: {
-          detect_on: "canvas",
-          events: {
-            onhover: {
-              enable: false,
-              mode: "repulse",
-            },
-            onclick: {
-              enable: false,
-              mode: "push",
-            },
-            resize: true,
-          },
-          modes: {
-            grab: {
-              distance: 200,
-              line_linked: {
-                opacity: 1,
-              },
-            },
-            bubble: {
-              distance: 200,
-              size: 8,
-              duration: 2,
-              opacity: 0.8,
-              speed: 3,
-            },
-            repulse: {
-              distance: 100,
-              duration: 0.4,
-            },
-            push: {
-              particles_nb: 4,
-            },
-            remove: {
-              particles_nb: 2,
-            },
-          },
-        },
-        retina_detect: true,
-      });
-
-
-      // Back to Top Button functionality
-      const backToTopBtn = document.getElementById("back-to-top");
-
-      // Show/hide button based on scroll position
-      window.addEventListener("scroll", function () {
-        if (window.pageYOffset > 600) {
-          backToTopBtn.classList.add("visible");
-        } else {
-          backToTopBtn.classList.remove("visible");
-        }
-      });
-
-      // Smooth scroll to top when clicked
-      backToTopBtn.addEventListener("click", function () {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      });
-
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
-      });
-
-    </script>
+      </section>
+    </main>
   </body>
 </html>
