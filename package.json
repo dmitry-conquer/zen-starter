@@ -1,7 +1,6 @@
 {
   "name": "starter",
   "description": "A lightweight starter kit for modern static site markup with Vite, TypeScript, and SCSS. Perfect for quick integration into any CMS.",
-  "author": "Dmytro Frolov",
   "license": "MIT",
   "repository": {
     "type": "git",
