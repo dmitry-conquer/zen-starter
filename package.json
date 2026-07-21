@@ -1,10 +1,10 @@
 {
-  "name": "starter",
+  "name": "basis-starter",
   "description": "A lightweight starter kit for modern static site markup with Vite, TypeScript, and SCSS. Perfect for quick integration into any CMS.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dmitroconquer/zen-starter.git"
+    "url": "https://github.com/dmitroconquer/basis-starter.git"
   },
   "private": true,
   "type": "module",

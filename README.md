@@ -1,4 +1,4 @@
-# Starter
+# Basis Starter
 
 A lightweight starter kit for building modern, multi-page static websites. It uses Vite, TypeScript, SCSS, and Handlebars, with a structure designed for easy integration into a CMS.
 
@@ -50,4 +50,3 @@ Copy `.env.example` to `.env` and add the FTP/SFTP credentials required by the d
 ```bash
 npm run deploy
 ```
-
